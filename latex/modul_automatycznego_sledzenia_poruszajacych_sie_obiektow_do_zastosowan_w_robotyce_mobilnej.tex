@@ -1,0 +1,167 @@
+\documentclass{aghdpl}
+% \documentclass[11pt]{aghdpl}
+% \documentclass[en,11pt]{aghdpl}  % praca w języku angielskim
+
+
+
+% dodatkowe pakiety
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage[english, polish]{babel}
+\usepackage{enumerate}
+\usepackage{listings}
+\usepackage{amsmath}
+\usepackage{mathtools}
+\usepackage{epstopdf}
+\usepackage[labelfont=bf]{caption}
+\usepackage[nocompress]{cite}
+\usepackage{caption}
+\usepackage{array}
+\usepackage{bm}
+\usepackage{todonotes}
+
+\lstloadlanguages{TeX}
+
+
+
+% Operator wartości bezwzględnej \abs{} - dwie pionowe kreski 
+\DeclarePairedDelimiter\abs{\lvert}{\rvert}%
+
+% Operator normy \norm{} - dwie podwójne pionowe kreski
+\DeclarePairedDelimiter\norm{\lVert}{\rVert}%
+
+% Operator minimum \argmin{} - min()
+\DeclareMathOperator*{\argmin}{arg\,min}
+
+% Operator wyznacznika macierzy \Det{} - Det()
+\DeclarePairedDelimiter{\Tr}{\mathrm{Tr(}}{\mathrm{)}}%
+
+% Operator śladu macierzy \Tr{} - Tr()
+\DeclarePairedDelimiter{\Det}{\mathrm{Det(}}{\mathrm{)}}%
+
+% Równanie indeksowane z podpisem mycapequ, użycie:
+% begin{mycapequ}
+% 	begin{equation}
+%	label{etykieta}
+%		treść równania
+%	end{equation}
+%	caption{podpis}
+% end{mycapequ}
+%\DeclareCaptionType{mycapequ}[][List of equations]
+%\captionsetup[mycapequ]{labelformat=empty}
+
+% Opis równania conditions, użycie:
+% \begin{conditions}
+%	symbol1 & objaśnienie symbolu1 \\
+%	symbol2 & objaśnienie symbolu2 \\
+%	...		& ...				   \\   
+% \end{conditions}
+\newenvironment{conditions}
+  {\par\vspace{\abovedisplayskip}\noindent\begin{tabular}{>{$}l<{$} @{${}-{}$} l}}
+  {\end{tabular}\par\vspace{\belowdisplayskip}}
+  
+  
+% Opis równania conditionseq, użycie:
+% \begin{conditions}
+%	symbol1 & objaśnienie symbolu1 \\
+%	symbol2 & objaśnienie symbolu2 \\
+%	...		& ...				   \\   
+% \end{conditions}
+\newenvironment{conditionseq}
+  {\par\vspace{\abovedisplayskip}\noindent\begin{tabular}{>{$}l<{$} @{${}={}$} l}}
+  {\end{tabular}\par\vspace{\belowdisplayskip}}
+
+% Symbole wektorów pogrubiona czcionka
+\renewcommand{\vec}[1]{\mathbf{#1}}
+
+% Symbole wektorów z operatorem ^ pogrubiona czcionka
+\let\oldhat\hat
+\renewcommand{\hat}[1]{\oldhat{\mathbf{#1}}}
+
+% Symbole macierzy pgrubiona czcionka
+\newcommand{\matr}[1]{\mathbf{#1}}
+
+
+\newcommand*{\longcaptionsource}[3]{%
+  \caption[{#1}]{%
+    #1\\#2%
+    \\\hspace{\linewidth}%
+    \textbf{Źródło:} #3%
+  }%
+}
+
+\newcommand*{\captionsource}[2]{%
+  \caption[{#1}]{%
+    #1%
+    \\\hspace{\linewidth}%
+    \textbf{Źródło:} #2%
+  }%
+}
+
+%---------------------------------------------------------------------------
+
+\author{Stanisław Maciąg}
+\shortauthor{S. Maciąg}
+
+\titlePL{Moduł automatycznego śledzenia poruszających się obiektów do zastosowań w robotyce mobilnej}
+\titleEN{Automatic module for tracking of moving object in mobile robotics}
+
+\shorttitlePL{Moduł automatycznego śledzenia poruszających się obiektów do zastosowań w robotyce mobilnej}
+\shorttitleEN{Automatic module for tracking of moving object in mobile robotics}
+
+\thesistype{Praca dyplomowa magisterska}
+%\thesistype{Master of Science Thesis}
+
+\supervisor{prof. dr hab. inż. Tadeusz Uhl}
+%\supervisor{prof. Tadeusz Uhl}
+
+\degreeprogramme{Automatyka i Robotyka}
+%\degreeprogramme{Automatics and Robotics}
+
+\date{2014}
+
+\department{Katedra Robotyki i Mechatroniki}
+%\department{Department of Department of Robotics and Mechatronics}
+
+\faculty{Wydział Inżynierii Mechanicznej i Robotyki}
+%\faculty{Faculty of Mechanical Engineering and Robotics}
+
+\acknowledgements{...}
+
+
+\setlength{\cftsecnumwidth}{10mm}
+
+\renewcommand\UrlFont{\rmfamily\itshape}
+
+
+
+
+
+%---------------------------------------------------------------------------
+
+\begin{document}
+
+%\titlepages
+
+\tableofcontents
+
+\listoffigures
+
+\clearpage
+
+%\include{Wstep}
+%\include{Pojazdy_UAV_i_systemy_AVS}
+%\include{Architektura_systemu_AVS}
+%\include{Metody_wykrywania_i_sledzenia_poruszajacych_sie_obiektow}
+%\include{Ogolny_zarys_architektury_systemu_sterowania}
+\include{analiza_literaturowa_zagadnienia}
+
+% itd.
+% \appendix
+% \include{dodatekA}
+% \include{dodatekB}
+% itd.
+
+\bibliography{bibliografia.bib}
+\bibliographystyle{plplain}
+\end{document}

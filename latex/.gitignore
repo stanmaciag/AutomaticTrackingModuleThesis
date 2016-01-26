@@ -1,0 +1,17 @@
+# Texmaker session files #
+*.tks
+
+# LaTeX generated files #
+*.pdf
+*.bbl
+*.blg
+*.lof
+*.log
+*.synctex.gz
+*.toc
+
+# JabRef backup files
+*.bak
+
+# Temporary files directory
+ignored/

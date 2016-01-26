@@ -1,8 +1,0 @@
-# temporary files
-.gitignore~
-
-# literature sources directory
-sources/
-
-# not-in-use source directiories
-matlab/

@@ -1,3 +1,6 @@
+# temporary files
+.gitignore~
+
 # literature sources directory
 sources/
 

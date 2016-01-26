@@ -15,3 +15,7 @@
 
 # Temporary files directory
 ignored/
+
+# Temporary files 
+bibliografia.bib~
+.gitignore~

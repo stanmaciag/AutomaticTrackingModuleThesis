@@ -1,24 +1,8 @@
-\chapter{Analiza literaturowa zagadnienia}
-\label{cha:Analiza_literaturowa_zagadnienia}
-Systemy realizujące zadanie śledzenia obiektów, rozumiane jako ciągłą obserwację zmiany stanu obiektu określonego wcześniej jako obiekt zainteresowania, charakteryzują się dużą złożonością i interdyscyplinarnością. W odniesieniu do robotyki mobilnej, w literaturze pod pojęciem ,,śledzenie obiektów'' (ang. \textit{object tracking}) rozumie się:
+\chapter{Zagadnienia z dziedziny cyfrowego przetwarzania obrazów występujące w kontekście zadania śledzenia obiektów}
+\label{cha:Zagadnienia_z_dziedziny_cyfrowego_przetwarzania_obrazow}
 
-\begin{enumerate}
-
-	\item \label{itm:Algorytm_przetwarzania_obrazow} Funkcję algorytmu cyfrowego przetwarzania obrazów, polegającą na wyróżnieniu obiektu zainteresowania, określeniu jego charakterystycznych właściwości oraz uaktualnieniu informacji o jego położeniu na kolejnych klatkach sekwencji video %\cite{Campoy2009, Hu2015, Liem2008, Markovic2014, Mohamed2014, Olivares-Mendez2009, Sadeghi-Tehran2014, Fernandez-Caballero2010,  Zhao2013, Park2011}
-
-	\item \label{itm:System_sterowania} Funkcję systemu sterowania robota, dokonującego rejestracji obecności obiektu zainteresowania oraz zmiany stanu robota pozwalającej na utrzymanie tego obiektu w zasięgu pokładowych sensorów, ewentualnie przy jednoczesnej realizacji określonego zadania, np. jak największym zbliżeniu się do obiektu %\cite{Bahn2011, Campoy2009, Chen2012, Deng2010, Deng2010a, Germa2010, Han2013, Hashimoto2007, Hwang2010, Kim2011, Kim2012, Lee2011, Li2007, Liem2008, Liu2014, Markovic2014, Murakami2012, Olivares-Mendez2009, Park2011, Park2010, Rui2009, Tinh2014, Yu2008}
-	
-\end{enumerate}
-
-Poniżej dokonano obszerniejszej analizy tych dwóch grup zagadnień.
-
-\todo{Opisać powiązanie poprzez Visual Servoing}
-
-\section{Zagadnienia z dziedziny cyfrowego przetwarzania obrazów występujące w kontekście zadania śledzenia obiektów}
-\label{sec:Zagadnienia_z_dziedziny_cyfrowego_przetwarzania_obrazow}
-
-\subsection{Ekstrakcja i deskrypcja cech obrazu}
-\label{subsec:Ekstrakcja_i_deskrypcja_cech_obrazu}
+\section{Ekstrakcja i deskrypcja cech obrazu}
+\label{sec:Ekstrakcja_i_deskrypcja_cech_obrazu}
 Pojęcie \textbf{cechy obrazu} (ang. \textit{image feature}) jest z natury nieprecyzyjne i ogólnie może oznaczać dowolną informację związaną z obrazem, która jest przydatna w ramach wykonywania określonego algorytmu \cite{Campoy2009}. Funkcjonuje ono w literaturze również w nieco konkretniejszym ujęciu i według monografii \cite{Szeliski2011} obiekty określane cechami obrazu należą do jednej z trzech podstawowych kategorii:
 
 \begin{enumerate}
@@ -37,7 +21,9 @@ Porównanie przykładowych cech obrazów należących do poszczególnych kategor
 \label{fig:Przyklady_cech}
 \end{figure}
 
-\textbf{Punkt zainteresowania} można rozumieć jako punkt na obrazie wyróżniający się spośród otoczenia, np. narożnik występujący w konturze obiektu widocznego na obrazie. Analogicznie, \textbf{region zainteresowania} posiada cechę charakterystyczną odróżniającą go od tła, np. ma jednolity kolor. W obu przypadkach stwierdzenie ,,charakterystyczności'' odbywa się poprzez porównanie z otoczeniem. Porównanie to polega zwykle (w dużym uproszczeniu) na znalezieniu maksimów lokalnych pewnej funkcji oceniającej ,,charakterystyczność'' dla każdego punktu obrazu oraz jego lokalnego otoczenia. Po wykryciu zbioru cech wykonuje się ich \textbf{deskrypcję} (ang. \textit{feature description}), polegającą na wyznaczeniu ich formalnego opisu (zwykle w postaci wektora liczb) cechującego się zwięzłością, powtarzalnością oraz inwariantnością \cite{Szeliski2011}, tzn. odpornością na przekształcenia afiniczne, zmiany oświetlenia, szum, etc. Odbywa się to w oparciu o piksele otoczenia punktu charakterystycznego lub piksele samego regionu charakterystycznego. Granica rozróżniająca punkt charakterystyczny i region charakterystyczny jest więc bardzo niewyraźna, tym niemniej występuje w literaturze. Analizę z wykorzystaniem cech tego typu kończy ich \textbf{dopasowanie} (ang. \textit{feature matching}) lub \textbf{śledzenie} (ang. \textit{feature tracking}), np. pomiędzy dwoma kolejnymi klatkami sekwencji video lub obrazami jednej sceny zarejestrowanymi przy użyciu dwóch kamer. Model w postaci zbioru lokalnych cech, którymi są punkty charakterystyczne, nie wymaga żadnych założeń dotyczących wyglądu czy charakterystyki reprezentowanego obiektu jak całości, jak to ma miejsce np. w przypadku reprezentacji konturem. Czyni to punkty charakterystyczne odpowiednią metodą opisu obiektu w przypadku występowania zmian oświetlenia, przysłonięć i innych zakłóceń występujących powszechnie w rzeczywistych, użytkowych sekwencjach video \cite{Treiber2010}.
+\subsection{Punkty charakterystyczne}
+\label{subsec:Punkty_charakterystyczne}
+\textbf{Punkt charakterystyczny} można rozumieć jako punkt na obrazie wyróżniający się spośród otoczenia, np. narożnik występujący w konturze obiektu widocznego na obrazie. Analogicznie, \textbf{region zainteresowania} posiada cechę charakterystyczną odróżniającą go od tła, np. ma jednolity kolor. W obu przypadkach stwierdzenie ,,charakterystyczności'' odbywa się poprzez porównanie z otoczeniem. Porównanie to polega zwykle (w dużym uproszczeniu) na znalezieniu maksimów lokalnych pewnej funkcji oceniającej ,,charakterystyczność'' dla każdego punktu obrazu oraz jego lokalnego otoczenia. Po wykryciu zbioru cech wykonuje się ich \textbf{deskrypcję} (ang. \textit{feature description}), polegającą na wyznaczeniu ich formalnego opisu (zwykle w postaci wektora liczb) cechującego się zwięzłością, powtarzalnością oraz inwariantnością \cite{Szeliski2011}, tzn. odpornością na przekształcenia afiniczne, zmiany oświetlenia, szum, etc. Odbywa się to w oparciu o piksele otoczenia punktu charakterystycznego lub piksele samego regionu charakterystycznego. Granica rozróżniająca punkt charakterystyczny i region charakterystyczny jest więc bardzo niewyraźna, tym niemniej występuje w literaturze. Analizę z wykorzystaniem cech tego typu kończy ich \textbf{dopasowanie} (ang. \textit{feature matching}) lub \textbf{śledzenie} (ang. \textit{feature tracking}), np. pomiędzy dwoma kolejnymi klatkami sekwencji video lub obrazami jednej sceny zarejestrowanymi przy użyciu dwóch kamer. Model w postaci zbioru lokalnych cech, którymi są punkty charakterystyczne, nie wymaga żadnych założeń dotyczących wyglądu czy charakterystyki reprezentowanego obiektu jak całości, jak to ma miejsce np. w przypadku reprezentacji konturem. Czyni to punkty charakterystyczne odpowiednią metodą opisu obiektu w przypadku występowania zmian oświetlenia, przysłonięć i innych zakłóceń występujących powszechnie w rzeczywistych, użytkowych sekwencjach video \cite{Treiber2010}.
 
 Ze względu na dużą użyteczność, algorytmy ekstrakcji i deskrypcji puntów charakterystycznych stanowiły w ostatniej dekadzie przedmiot intensywnych badań \cite{Treiber2010}. W literaturze zaproponowano wiele różnych podejść do tego zagadnienia, jednak jako najważniejszy przykład, dobrze obrazujący poszczególne etapy jego realizacji wymienia się algorytm \textit{SIFT} (\textit{Scale-Invariant Feature Transform}) \cite{Treiber2010} \cite{Szeliski2011}. Wykryte przy jego pomocy punkty charakterystyczne cechują się inwariantnością na zmiany skali i rotacji obrazu, a także częściowo na zmiany oświetlenia oraz zmiany widoku wynikającej z przesunięcia kamery rejestrującej scenę. Dodatkowo wykazują one dużą specyficzność (tzn. cechy odpowiadające poszczególnym fragmentom obrazu znacznie się między sobą różnią), zaś sam algorytm jest efektywny obliczeniowo \cite{Lowe2004}. Opis działania metody \textit{SIFT} zostanie poniżej przytoczony w całości.
 
@@ -150,6 +136,8 @@ Obliczone orientacje są następnie kumulowane w histogramie z wagami określony
 
 Na podstawie lokalnych orientacji wyznaczany jest również deskryptor punktu charakterystycznego. Na region o wymiarach $16 \times 16$ pikseli o środku w punkcie charakterystycznym nakładana jest maska Gaussa o wariancji równej połowie jego wielkości. Następnie region ten jest dzielony na tablicę $4 \times 4$ podregionów, w obrębie których następuje akumulacja orientacji w histogramach o $8$ przedziałach (analogicznie jak w wyznaczaniu orientacji samego punktu, z wagami odpowiadającymi modułowi oraz wartości okna Gaussa) \cite{Lowe2004}. W ten sposób powstaje wektor zawierający $4 \times 4 \times 8 = 128$ elementów, opisujących punkt charakterystyczny. Końcowym etapem algorytmu jest wykonanie normalizacji, progowania ograniczającego wartość elementów do $0.2$ (próg wyznaczony eksperymentalnie) oraz renormalizacji. W ten sposób uzyskiwana jest inwariantność na zmiany iluminacji \cite{Lowe2004}. Deskryptory pozwalają na wykonanie dopasowania pomiędzy punktami charakterystycznymi (np. wykrytymi na dwóch różnych ujęciach, przedstawiających ten sam obiekt), np. przy pomocy algorytmu k-najbliższych sąsiadów (ang. \textit{k nearest neighbours}) z zastosowaniem metryki euklidesowej. Przykładowy wynik ekstrakcji i deskrypcji punktów charakterystycznych z wykorzystaniem algorytmu \textit{SIFT} przedstawiono na rysunku \ref{fig:SIFT_przyklad}.
 
+\subsection{Krawędzie}
+\label{subsec:Krawedzie}
 Pomimo swoich zalet, punkty charakterystyczne nie zawsze stanowią optymalny sposób reprezentacji cech obiektu. Istnieje liczna grupa zagadnień, w których istotna jest informacja o obiekcie jako o całości, w szczególności o jego właściwościach geometrycznych. Przykładowo, są one kluczowe w zadaniu automatycznego rozpoznawania znaków drogowych lub wykrywania produktów na przenośniku taśmowym w oparciu o szablony zdefiniowane w postaci ich modeli CAD \cite{Treiber2010}. W takich przypadkach analizę obrazu przeprowadza się w oparciu o wykryte na nim \textbf{krawędzie}.
 
 Krawędzie można zdefiniować jako granice pomiędzy regionami obrazu o różnym kolorze, intensywności bądź teksturze \cite{Szeliski2011}. Wykrywanie tych granic jest jednak zadaniem trudnym i stanowi osobną, złożoną dziedzinę cyfrowego przetwarzania obrazów noszącą nazwę segmentacji \cite{Szeliski2011}. Alternatywnie, na potrzeby zadania ekstrakcji cech, krawędzie można zdefiniować w ujęciu ,,lokalnym'' - jako wystąpienia nagłych zmian intensywności pikseli, czyli formalnie jako punkty, w których modułu lokalnego gradientu funkcji intensywności (równanie \ref{equ:Gradient_definicja}) przyjmuje duże wartości \cite{Szeliski2011}.
@@ -229,11 +217,15 @@ Przedstawione wyżej metody wykrywania krawędzi operują jedynie na obrazach w 
 
 Kolejnym zagadnieniem związanym z wykrywaniem krawędzi jest łączenie pikseli krawędzi izolowanych w ciągłe \textbf{kontury}, które w zależności od zastosowania, mogą być bardziej użyteczne \cite{Szeliski2011}. Kontur jest listą lub posortowaną tablicą punktów krawędzi \cite{Szeliski2011}, ma więc strukturę uporządkowaną. Jeżeli punkt krawędzi wykryto na podstawie zmiany znaku pewnej funkcji (jak, np. opisano powyżej), operacja łączenia w ciąg sprowadza się do wybrania jednego elementu i dołączaniu jego kolejnych sąsiadów w obu kierunkach \cite{Szeliski2011}.
 
+\subsection{Proste i krzywe matematyczne}
+\label{subsec:Proste_i_krzywe_matematyczne}
 W wyniku operacja łączenia punktów krawędzi otrzymuje się reprezentację krzywej w przestrzeni 2-D w postaci należących do niej punktów \cite{Szeliski2011}. Na ich podstawie można następnie wykonać aproksymację, mającą na celu uzyskanie reprezentacji w postaci \textbf{prostej lub krzywej opisanej równaniami matematycznymi}. Przy zastosowaniu odpowiednich metod (w szczególności transformaty Hougha) jest to możliwe nawet w przypadku wystąpienia na obrazie przerw lub przysłonięć konturu \cite{Szeliski2011}. Same cechy o tej postaci nie są jednak użyteczne w przypadku zadania śledzenia obiektów, wobec czego zagadnienie to nie zostanie szerzej omówione.
 
-\subsection{Analiza ruchu i przepływ optyczny}
-\label{subsec:Analiza_ruchu_i_przeplyw_optyczny}
+\section{Analiza ruchu}
+\label{sec:Analiza_ruchu}
 
+\subsection{Ruch w sekwencji obrazów}
+\label{subsec:Ruch_w_sekwencji_obrazow}
 Analiza ruchu obserwowanego w sekwencji obrazów jest kwintesencją algorytmów śledzenia obiektów, oraz wielu innych, jak np. kompresja video (w tym \textit{MPEG} i \textit{H.263}), stabilizacja obrazu, obrazowa diagnostyka medyczna, rekonstrukcja sceny 3-D na podstawie obrazu z poruszającej się kamery, etc. \cite{Szeliski2011}. Ze względu na postać przetwarzanych danych - sekwencje zamiast pojedynczych obrazów - analiza ruchu jest stosunkowo wymagająca obliczeniowo oraz pamięciowo. 
 
 \begin{figure}[!htb]
@@ -254,7 +246,7 @@ Intuicyjnie, opiera się ona na obserwowaniu różnic pomiędzy dwoma kolejnymi 
 \label{fig:Roznica_obrazow_przyklad}
 \end{figure}
 
-Ruch na sekwencji obrazów ujawnia się więc poprzez zmiany wartości pikseli o charakterze przestrzennym i czasowym \cite{Jaehne2005}. W celu jego analizy konieczna jest wiedza o związku pomiędzy punktami na obrazie pierwotnym i następującym, tzn. zdefiniowanie wektorów przemieszczeń, co nie zawsze jest to możliwe w sposób jednoznaczny. Przykładowo, na obrazie obserwowany jest pewien region $x_i$ (rysunek \ref{fig:Problem_apertury}). W zależności od sposobu jego zdefiniowania, ścisłe określenie korespondencji pomiędzy tym regionem a odpowiadającym mu regionem na następnym obrazie sekwencji może być możliwe (rysunek \ref{fig:Problem_apertury}a) lub nie (rysunek \ref{fig:Problem_apertury}b i c). Zjawisko to nosi nazwę \textbf{problemu apertury}.
+Ruch w sekwencji obrazów ujawnia się więc poprzez zmiany wartości pikseli o charakterze przestrzennym i czasowym \cite{Jaehne2005}. W celu jego analizy konieczna jest wiedza o związku pomiędzy punktami na obrazie pierwotnym i następującym, tzn. zdefiniowanie wektorów przemieszczeń, co nie zawsze jest to możliwe w sposób jednoznaczny. Przykładowo, na obrazie obserwowany jest pewien region $x_i$ (rysunek \ref{fig:Problem_apertury}). W zależności od sposobu jego zdefiniowania, ścisłe określenie korespondencji pomiędzy tym regionem a odpowiadającym mu regionem na następnym obrazie sekwencji może być możliwe (rysunek \ref{fig:Problem_apertury}a) lub nie (rysunek \ref{fig:Problem_apertury}b i c). Zjawisko to nosi nazwę \textbf{problemu apertury}.
 
 \begin{figure}[!htb]
 	\begin{center}
@@ -276,6 +268,8 @@ Problem apertury jest szczególnym przypadkiem \textbf{problemu korespondencji},
 
 Przedstawione powyżej przykłady obrazują podstawowy problem analizy ruchu, tzn. brak identyczności pomiędzy fizyczną korespondencją rzeczywistych obiektów a wizualną korespondencją występującą na obrazie \cite{Jaehne2005}. Określenie wizualnej korespondencji pomiędzy obiektami na dwóch obrazach jest możliwe, nawet jeżeli nie występuje pomiędzy nimi fizyczna korespondencja, natomiast fizyczna korespondencja dwóch obiektów nie musi skutkować ich wizualną korespondencją na obrazie \cite{Jaehne2005}.
 
+\subsection{Przepływ optyczny}
+\label{subsec:Przeplyw_optyczny}
 W celu uchwycenia zależności pomiędzy ruchem występującym w sekwencji obrazów a zmianami wartości pikseli konieczne jest wprowadzenie dwóch pojęć - \textbf{pola ruchu} (ang. \textit{motion field}) oraz \textbf{przepływu optycznego} (ang. \textit{optical flow}) \cite{Jaehne2005}. Pole ruchu $\vec{u} = [u_1, u_2]^T = [u, v]^T$ to pole wektorów rzeczywistego ruchu obiektów w przestrzeni trójwymiarowej rzutowanych na dwuwymiarową płaszczyznę obrazu, określone dla każdego jego piksela, o wymiarze prędkości \cite{Jaehne2005} \cite{Baker2011}. Przepływ optyczny $\vec{f} = [f_1, f_2]^T$ jest estymacją pola ruchu \cite{Szeliski2011}, wyznaczaną na podstawie obserwowanych przemieszczeń (,,przepływu'') poszczególnych pikseli obrazu rozróżnianych poprzez ich wartość \cite{Jaehne2005} \cite{Baker2011} \cite{Horn1981}. Pole ruchu i przepływ optyczny są identyczne tylko jeśli obiekty poruszające się na scenie nie zmieniają irradiancji płaszczyzny obrazu \cite{Jaehne2005}. Przykładową sekwencję obrazów oraz wyznaczony dla niej przepływ optyczny przedstawiono na rysunku \ref{fig:Przeplyw_optyczny}.
 
 \begin{figure}[!htb]
@@ -327,7 +321,7 @@ Równania \ref{equ:Warunek_stalej_jasnosci} i \ref{equ:Rownanie_przeplywu_optycz
 	E_D = \sum\limits_{x,y} (u \frac{\partial I}{\partial x} + v \frac{\partial I}{\partial y} + \frac{\partial I}{\partial t})^2
 \end{equation}
 
-W celu zwiększenia odporności na zmiany wyglądu sceny nie wynikające z ruchu, niektóre metody zamiast wartości pikseli używają cech, np. opisanych w podrozdziale \ref{subsec:Ekstrakcja_i_deskrypcja_cech_obrazu} punktów charakterystycznych \textit{SIFT} \cite{Baker2011}, lub innych, specjalnie do tego przystosowanych. 
+W celu zwiększenia odporności na zmiany wyglądu sceny nie wynikające z ruchu, niektóre metody zamiast wartości pikseli używają cech, np. opisanych w podrozdziale \ref{sec:Ekstrakcja_i_deskrypcja_cech_obrazu} punktów charakterystycznych \textit{SIFT} \cite{Baker2011}, lub innych, specjalnie do tego przystosowanych. 
 Zwiększenie odporności można również uzyskać poprzez wprowadzenie do równania \ref{equ:Warunek_stalej_jasnosci} zmiany wartości piksela wprost \cite{Baker2011}
 
 \begin{equation}
@@ -483,182 +477,4 @@ Wyznaczenie przepływu optycznego polega na rozwiązaniu układu równań \ref{e
 	v_{n+1} = \bar{v}_n - I_y \frac{I_x \bar{u}_n + I_y \bar{v}_n + I_t}{\alpha^2 + I_x^2 + I_y^2}
 \end{equation}
 
-Powyższe rozważania dotyczą metod wyznaczania przepływu optycznego dla każdego piksela obrazu, który z tego powodu określa się mianem \textbf{gęstego} (ang. \textit{dense}). Alternatywnym podejściem, realizowanym np. przez algorytm Lucasa-Kanade-Tomasi \ref{subsubsec:Algorytm_Lucasa_Kanade_Tomasi}, jest wyznaczenie przepływu optycznego w postaci \textbf{rzadkiej} (ang. \textit{sparse}), tzn. jedynie dla wybranego zbioru punktów obrazów, np. wykrytych punktów charakterystycznych \cite{Karasulu2013}. Gęsty przepływ optyczny jest z natury dokładniejszą estymacją pola ruchu, jednak jego wyznaczanie jest znacznie bardziej złożone obliczeniowo. 
-
-\section{Śledzenie obiektów w sekwencjach obrazów}
-\label{sec:Sledzenie_obiektow_w_sekwenjach_obrazow}
-
-\subsection{Wprowadzenie}
-\label{subsec:Sledzenie_obiektow_w_sekwencjach_obrazow_wprowadzenie}
-Śledzenie obiektów w sekwencjach obrazów stanowi funkcję licznej grupy zróżnicowanych algorytmów przetwarzania obrazów, o wielu praktycznych zastosowaniach, wśród których można wymienić \cite{Yilmaz2006}:
-
-\begin{itemize}
-
-	\item Wykrywanie obiektów na obrazie w oparciu o ich ruch
-	\item Automatyczny monitoring (ang. \textit{video surveillance}), tzn. wykrywanie i rejestrację podejrzanych zdarzeń
-	\item Indeksację sekwencji video, tzn. ich oznaczanie i klasyfikację ich fragmentów
-	\item Tworzenie interfejsów człowiek-komputer, poprzez rozpoznawanie gestów, okulografię, etc.
-	\item Monitorowanie ruchu ulicznego, tzn. automatyczne gromadzenie danych statystycznych na temat jego natężenia
-	\item Nawigację pojazdów, tzn. planowanie trasy oraz unikanie kolizji w oparciu o obraz z kamery video
-
-\end{itemize}	
-	
-Śledzenie obiektów można zdefiniować jako estymację ich trajektorii na  płaszczyźnie obrazu, lub ich spójne etykietowanie na kolejnych klatkach sekwencji video. Opcjonalnie, algorytm może również dostarczać informacji o cechach samego obiektu, np. jego orientacji, rozmiarze, czy kształcie \cite{Yilmaz2006}. Tak określone zadanie w ogólnym ujęciu jest skomplikowane ze względu na szereg utrudniających je zjawisk, występujących w rzeczywistych sekwencjach video, takich jak \cite{Yilmaz2006}:
-
-\begin{itemize}
-
-	\item Utrata części informacji o obiekcie, wynikająca z projekcji trójwymiarowej rzeczywistości na dwuwymiarową płaszczyznę obrazu
-	\item Zakłócenia występujące na obrazach rejestrowanych kamerą
-	\item Skomplikowany charakter ruchu obiektów zainteresowania
-	\item Brak spełniania warunku sztywności obiektów zainteresowania
-	\item Częściowe i całkowite przysłonięcia obiektów zainteresowania
-	\item Złożony kształt obiektów  zainteresowania
-	\item Zmiany oświetlenia sceny na obrazach
-	\item Wymaganie czasu rzeczywistego obliczeń
-
-\end{itemize}  
-
-Samo zagadnienie od dawna stanowi przedmiot badań (np. pierwsza wersja algorytmu Lucasa-Kanade została opublikowana w roku 1981), w związku z czym powiązane z nim pojęcia i problemy są dokładnie sklasyfikowane i zdefiniowane, zaś dotycząca go literatura jest bardzo obszerna. Tym niemniej ze względu na jego trudność opracowane dotychczas rozwiązania cechują się specjalizacją, tj. wykazują odporność na część z przedstawionych wyżej problemów, przy jednoczesnym jej braku na pozostałe \cite{Smeulders2010}.
-
-\subsection{Ogólny model algorytmów śledzenia obiektów na obrazach}
-\label{subsec:Ogolny_model_algorytmow_sledzenia_obiektow_na_obrazach}
-
-Choć algorytmy śledzenia obiektów na obrazach są bardzo zróżnicowane, można dokonać ich dekompozycji na pięć podstawowych etapów \cite{Smeulders2010}:
-
-\begin{itemize}
-	\item Określenie obszaru występowania obiektu zainteresowania
-	\item Wyznaczenie reprezentacji obiektu zainteresowania
-	\item Wyznaczenie modelu ruchu obiektu zainteresowania
-	\item Wykonanie pomiaru podobieństwa oraz określenie dopasowania obiektu pomiędzy kolejnymi klatkami sekwencji obrazów
-	\item Uaktualnienie reprezentacji obiektu zainteresowania
-\end{itemize}
- 
-Na rysunku \ref{fig:Ogolny_model_dzialania_algorytmow_sledzenia_obiektow} przedstawiono schemat kolejności realizacji tych etapów. Nie uwzględnia on fazy wykrywania obiektu, stanowiącej odrębne zagadnienie cyfrowego przetwarzania obrazów. W kontekście tematu niniejszej pracy zostanie ona omówiona w podrozdziale \ref{subsec:Wykrywanie_obiektow_na_obrazie}.
-
-\begin{figure}[!htb]
-	\begin{center}
-		\includegraphics[width=12cm]{images/object_trackers_reference_model.png}
-	\end{center}	
-	\longcaptionsource{Ogólny model działania algorytmów śledzenia obiektów w sekwencjach video}{\textit{Target region} - Obszar zainteresowania (obszar obrazu zawierający obiekt zainteresowania)\\\textit{Representation - appearance} - Model  obiektu zainteresowania określający jego cechy charakterystyczne\\\textit{Representation - motion and position} - Model ruchu obiektu zainteresowania\\\textit{Method - similarity measuring, matching and optimization} - metoda pomiaru podobieństwa oraz stwierdzenia dopasowania obiektu pomiędzy klatkami\\\textit{Model updating} - metoda aktualizowania modelu cech obiektu zainteresowania	
-}{\cite{Smeulders2010}}
-\label{fig:Ogolny_model_dzialania_algorytmow_sledzenia_obiektow}
-\end{figure}
-
-\subsubsection{Reprezentacje obiektu na obrazie}
-\label{subsubsec:Reprezentacje_obiektu_na_obrazie}
-
-Pierwszym krokiem po uzyskaniu informacji o wystąpieniu obiektu jest zdefiniowanie jego reprezentacji rozumianej tutaj jako wyodrębnione składowe elementy obrazu przynależące do tego obiektu.
-
-W najprostszym przypadku obiekt przybliża się jego \textbf{bryłą brzegową}, o postaci prostokąta lub elipsy zawierającej wszystkie należące do niego piksele. Inaczej mówiąc reprezentację obiektu stanowi fragment obrazu, który go zawiera. Zaletą takiego rozwiązania jest minimalna liczba parametrów opisująca obiekt, wadą natomiast włączeniem do jego reprezentacji dużej liczby pikseli tła \cite{Smeulders2010}.
-
-Pewnym ulepszeniem tej koncepcji, zwiększającym jej odporność, jest stosowanie \textbf{wielu brył brzegowych} jednocześnie. Takie rozwiązanie cechuje się również większą elastycznością w dalszych krokach algorytmu, w których realizowane jest poszukiwane położenia w kolejnej klatce (uproszczone w przypadku pojedynczej bryły brzegowej do jednego punktu) \cite{Smeulders2010}.
-
-Inną możliwą, lecz rzadko stosowaną w tej rodzinie algorytmów reprezentacją jest \textbf{kontur} obiektu zainteresowania. Cechuje się ona małą rygorystycznością w stosunku do zmiany ogólnego wyglądu obiektu, jednak jej użycie jest ograniczone do przypadków, w których stosowanie deskryptorów kształtu zapewnia wysoką dokładność \cite{Smeulders2010}.
-
-Pozornie podobny sposób reprezentacji polega na określeniu \textbf{ciągłego obszaru obrazu} zawierającego piksele należące do obiektu zainteresowania. Należy zwrócić uwagę, że taka reprezentacja obiektu nie jest równoznaczna jego sylwetce (ang. \textit{silhouette}), rozumianej jako sumę zbiorów pikseli konturu obiektu oraz zbioru pikseli zawartych wewnątrz wyznaczonej przez niego bryły. Różnica ta jest wynikiem sposobu wyznaczania tych dwóch reprezentacji. Przedstawienie obiektu w postaci ciągłego obszaru obrazu pozwala na jego precyzyjne oddzielnie od innych obiektów. Wymaga natomiast dużej odporności od metody jego wyznaczenia, w celu uniknięcia wniesienia błędnej informacji o samym obiekcie \cite{Smeulders2010}.  
-
-Nieco bardziej złożona reprezentacja obiektu oparta jest jest o \textbf{skrawki obrazu}. Są to małe obszary obrazu zawierające fragmenty obiektu zainteresowania, którego wygląd może zmieniać się niezależnie w ich obrębie. Odmianą tego modelu jest reprezentacja w postaci punktów charakterystycznych (ang. \textit{sailent points} lub \textit{interest points}), w których występuje pewna cecha charakterystyczna (ang. \textit{feature}) obrazu. Istnieją różne koncepcje definicji zbioru oraz relacji pomiędzy skrawkami obrazu \cite{Smeulders2010}. Cechą charakterystyczną takiej reprezentacji jest brak konieczności wyraźnego rozróżnienia pomiędzy tłem a obiektem zainteresowania. Skutkuje ona zwiększoną odpornością na przysłonięcia oraz zmianę kształtu obiektu zainteresowania. Z drugiej strony, w przypadku małych lub sztywnych obiektów reprezentacja skrawkami obrazu nie jest bardziej wydajna od reprezentacji opierających się o zbiory pojedynczych pikseli (jak np. w postaci bryły brzegowej) \cite{Smeulders2010}.
-
-Na rysunku \ref{fig:Reprezentacje_obiektu_na_obrazie} przedstawiono przykładowy obiekt zainteresowania oraz wizualizacje odpowiadających mu reprezentacje według omówionych koncepcji.
-
-\begin{figure}[!htb]
-	\begin{center}
-		\includegraphics[width=12cm]{images/target_region_representation.png}
-	\end{center}	
-	\longcaptionsource{Reprezentacje obiektu zainteresowania na obrazie}{Kolejno, od lewego górnego rogu: obraz wejściowy, bryła brzegowa (ang. \textit{bounding box}), kontur obiektu, obszar obiektu (ang. \textit{blob}), skrawki obrazu (ang. \textit{image patches}), rozproszony zbiór punktów zainteresowania, części obiektu, wiele brył brzegowych}{\cite{Smeulders2010}}
-\label{fig:Reprezentacje_obiektu_na_obrazie}
-\end{figure}
-
-\subsubsection{Modele obiektu zainteresowania}
-\label{subsubsec:Modele_obiektu_zainteresowania}
-
-Model obiektu, rozumiany jako opis jego cech charakterystycznych, tworzony jest w obrębie zdefiniowanego wcześniej obszaru zainteresowania (\ref{subsubsec:Reprezentacje_obiektu_na_obrazie}). Podstawowym wymaganiem, które musi spełniać jest zdolność do zachowania określonej właściwości pomiędzy kolejnymi klatkami, bez której wykonanie zadania śledzenia obiektu nie jest możliwe \cite{Smeulders2010}.
-
-Istnieją trzy podstawowe reprezentacje cech charakterystycznych obiektu stosowane w algorytmach śledzenia: dwuwymiarowa tablica wartości pikseli, histogram oraz wektor cech \cite{Smeulders2010}.
-
-Najbardziej oczywistą i bezpośrednią jest reprezentacja w postaci \textbf{dwuwymiarowej tablicy wartości pikseli obiektu} (rysunek \ref{fig:Modele_obiektu_zainteresowania}, punkt [a]). Najczęściej w tablicy przechowywane są wartości określające jasności poszczególnych pikseli \cite{Smeulders2010}, pomimo idącego za tym założenia dotyczącego jej stałych wartości, które rzadko jest prawdziwe. Tym niemniej taka reprezentacja nie powoduje utraty informacji o obiekcie wewnątrz obszaru zainteresowania.
-
-Reprezentacja w postaci \textbf{histogramu} (rysunek \ref{fig:Modele_obiektu_zainteresowania}, punkt [b]) wyznaczana jest najczęściej w oparciu kolor pikseli w obszarze zainteresowania, występuje również w wersji przechowującej jedynie ich jasności \cite{Smeulders2010}. Przy reprezentacji w tej postaci następuje całkowita utrata informacji o właściwościach przestrzennych obiektu, przechowywana jest jedynie informacja o wartościach poszczególnych pikseli, co skutkuje największą elastycznością w odniesieniu do zmiany kształtu obiektu \cite{Smeulders2010}.
-
-Reprezentacja w postaci \textbf{wektora cech} (rysunek \ref{fig:Modele_obiektu_zainteresowania}, punkt [c]) polega na wykryciu oraz deskrypcji cech charakterystycznych obiektu (ang. \textit{features}). W jej przypadku również nie przechowuje się informacji o kształcie geometrycznym obiektu \cite{Smeulders2010}. Cechy wraz z ich deskryptorami odwzorowują obiekt w oparciu o jego najbardziej bogate w informację właściwości, pozwalając na ograniczenie rozmiaru jego reprezentacji \cite{Smeulders2010}.
-
-\begin{figure}[!htb]
-	\begin{center}
-		\includegraphics[width=12cm]{images/target_appearance_representation.png}
-	\end{center}	
-	\longcaptionsource{Modele obiektu zainteresowania, stosowane w algorytmach śledzenia obiektów}{a) Tablica dwuwymiarowa b) Histogram c) Wektor cech}{\cite{Smeulders2010}}
-\label{fig:Modele_obiektu_zainteresowania}
-\end{figure}
-
-\subsubsection{Modele ruchu obiektu}
-\label{subsubsec:Modele_ruchu_obiektu}
-
-Przyjęcie założeń dotyczących ruchu obiektu (w tym sensie, stworzenie jego uproszczonego modelu) ma za zadanie zawężenie okna, w którym następuje próba stwierdzenia wystąpienia obiektu na kolejnej klatce sekwencji.
-
-Najprostszy model nie narzuca żadnych ograniczeń poza założeniem, że obiekt po wykonaniu przemieszczenia pomiędzy kolejnymi klatkami znajduje się blisko pozycji początkowej \cite{Smeulders2010}. Jego implikacją jest stwierdzenie możliwości lokalizacji kolejnego położenia obiektu poprzez przeszukanie małego okna wokół poprzedniego \cite{Smeulders2010}, skąd nazwa \textbf{przeszukiwanie jednorodne}. Dzięki braku założeń dotyczących charakteru samego ruchu, rozwiązanie to cechuje duża ogólna odporność, nie sprawdza się ono jednak, jeśli ruch obiektu jest szybki \cite{Smeulders2010}.
-
-Rozwinięciem koncepcji opisanej wyżej jest \textbf{gaussowski model ruchu}, w którym wprowadza prawdopodobieństwo wystąpienia kolejnego położenia obiektu wokół położenia początkowego zmienia się zgodnie z rozkładem normalnym. W tej reprezentacji dopasowaniu obiektu na kolejnej klatce przypisywany jest dodatkowo współczynnik wagowy (w oparciu o prawdopodobieństwo), co pozwala na zwiększenie przestrzeni poszukiwania \cite{Smeulders2010}.
-
-Innym możliwym modelem jest \textbf{predykcja ruchu} obiektu z wykorzystaniem jego liniowego modelu oraz filtru Kalmana \cite{Smeulders2010}. Taką reprezentację można dodatkowo ulepszyć, wykonując predykcję w oparciu o przepływ optyczny \cite{Smeulders2010}.
-
-W \textbf{bezpośredniej predykcji ruchu} nie przyjmuje się założeń odnośnie modelu ruchu, wykorzystuje się natomiast metody optymalizacji do znalezienia najlepiej dopasowanego nowego położenia w oparciu o położenia występujące wcześniej \cite{Smeulders2010}. Taki model jest jednak mało użyteczny, ponieważ wymaga, aby przemieszczenia obiektu były małe w porównaniu do innych zmian występujących na obrazie \cite{Smeulders2010}.
-
-Ostatnia z metod reprezentacji polega na równoległym \textbf{śledzeniu i detekcji} obiektu z zastosowaniem niezależnych algorytmów. Po takim podejściu można oczekiwać dużej odporności na przypadkowe ruchu zarówno obiektu jak i kamery \cite{Smeulders2010}, jednak cechuje się ono największą komplikacją.
-
-Na rysunku \ref{fig:Modele_ruchu_obiektu} zestawiono i porównano przedstawione wyżej sposoby modelowania ruchu. 
-
-\begin{figure}[!htb]
-	\begin{center}
-		\includegraphics[width=12cm]{images/target_motion_representation.png}
-	\end{center}	
-	\longcaptionsource{Modele ruchu obiektu, stosowane w algorytmach śledzenia obiektów}{Od lewej: obiekt zainteresowania, przeszukiwanie jednorodne, gaussowski model ruchu, predykcja ruchu, model wprost, śledzenie i wykrywanie}{\cite{Smeulders2010}}
-\label{fig:Modele_ruchu_obiektu}
-\end{figure}
-
-\subsubsection{Metody pomiaru podobieństwa oraz stwierdzenia dopasowania obiektu pomiędzy klatkami}
-\label{subsubsec:Metody_pomiaru_podobienstwa_oraz_stwierdzenia_dopasowania_obiektu pomiedzy_klatkami}
-
-Metoda pomiaru podobieństwa obiektu oraz stwierdzenia jego dopasowania pomiędzy klatkami to kluczowy element algorytmu śledzenia, które w tym właśnie etapie jest zasadniczo realizowane.
-
-Pierwsza i najprostsza jej realizacja opiera się na wykonaniu \textbf{dopasowania} pomiędzy znanym modelem obiektu zainteresowania na początkowej klatce, do kandydatów, których modele tworzone są dla jego możliwych położeń na kolejnej klatce, zgodnie z przyjętym modelem ruchu. Jednemu znanemu obiektowi zainteresowania jest więc przypisywany zbiór jego możliwych kolejnych instancji (rysunek \ref{fig:Metody_sledzenia_obiektow_na_obrazach}, punkt [a]), spośród których wybierana jest najlepiej dopasowana.
-Inaczej mówiąc, śledzenie w tym przypadku jest zdaniem optymalizacji. Na podstawie podejścia do jego rozwiązania można wyróżnić dwie kategorie - dopasowanie bezpośrednie, polegające na poszukiwaniu najlepszego kandydata wzdłuż gradientu pewnej funkcji określającej dopasowanie, oraz dopasowanie probabilistyczne, polegające na znalezieniu maksimum funkcji gęstości prawdopodobieństwa, opisującej prawdopodobieństwo wystąpienia obiekt zainteresowania w danych punkcie obrazu. Dopasowanie bezpośrednie wykazuje dużą odporność przy wielu różnych modelach ruchu obiektu, przy zachowaniu warunku małej przestrzeni przeszukiwania. Z drugiej strony opiera się one o silne założenia dotyczące opisu modelu obiektu, w skutek jest wrażliwe na lokalne zmiany intensywności pikseli (występujące w rzeczywistych sekwencjach obrazów, w wyniku np. zmiany kąta padania światła) oraz jakość reprezentacji obiektu na obrazie \cite{Smeulders2010}. Dopasowanie probabilistyczne jest efektywne w przypadku możliwości wystąpienia przysłonięcia obiektu oraz niejednoznaczności, pojawiających się np. przy wielu podobnych obiektach \cite{Smeulders2010}.
-
-\textbf{Dopasowanie z rozszerzonym opisem cech} rozszerza koncepcję dopasowania o opis modelu lub stan metody w przeszłości (dla ciągu przednich klatek) \cite{Smeulders2010}. Przy takim podejściu wieloelementowemu zbiorowi znanych wystąpień obiektu zainteresowania w ciągu poprzednich klatek przyporządkowywany jest wieloelementowy zbiorów kandydatów nowej instancji tego obiektu na klatce bieżącej (rysunek \ref{fig:Metody_sledzenia_obiektow_na_obrazach}, punkt [b]). Metoda przechowuje długotrwale trajektorię stanu obiektu zainteresowania, w związku z czym jest użyteczne w zadaniach śledzenia długoterminowego oraz w przypadku możliwości wystąpienia przysłonięć \cite{Smeulders2010}. Dopasowywanie jest wykonywane pomiędzy poszczególnymi elementami obydwu zbiorów, co skutkuje zwiększeniem złożoności obliczeniowej. 
-
-W celu jej ograniczenia wprowadzono \textbf{dopasowywanie z więzami}, przy którym podobieństwo pomiędzy zbiorami wystąpień i kandydatów jest rozpatrywane jedynie dla elementów spełniających zdefiniowane kryteria, lub inaczej, więzy (rysunek \ref{fig:Metody_sledzenia_obiektow_na_obrazach}, punkt [c]). Mogą dotyczyć one, np. zmiany koloru lub kształtu obiektu pomiędzy kolejnymi klatkami. Metody tego typu mogą dobrze sprawdzać się w warunkach dużej zmienności obserwowanej sceny, nadają się również do zastosowania w algorytmach śledzących predefiniowanych wzorców \cite{Smeulders2010}.
-
-Alternatywą dla metod opierających się o dopasowanie jest \textbf{klasyfikacja rozróżniająca}, określana inaczej jako ,,śledzenie przez wykrywanie'' \cite{Smeulders2010}. Opiera się ona o założenie, że samo odróżnienie pojedynczego obiektu zainteresowania od tła jest wystarczające do jego śledzenia \cite{Smeulders2010}. Klasyfikacja rozróżniająca polega więc na określeniu przynależności wszystkich pikseli obrazu do tła bądź obiektu zainteresowania, oraz uaktualnianiu informacji o tej przynależności na kolejnych klatkach sekwencji video. W tej metodzie występuje więc przyporządkowanie pomiędzy oznaczonym obiektem zainteresowania i jego tłem poprzedniej klatce oraz zbiorem par kandydat-tło na kolejnej (rysunek \ref{fig:Metody_sledzenia_obiektow_na_obrazach}, punkt [d]). Klasyfikator może przetwarzać zestaw wielu różnych cech jednocześnie, co pozwala na osiągnięcie dużej odporności w przypadku niskiej specjalizacji algorytmu śledzącego oraz wysokiej niestabilności obserwowanej sceny \cite{Smeulders2010}. U podstaw metody leży jednak domniemanie unikalności cech śledzonego obiektu w skali obrazu, co powoduje jej błędne działanie w przypadku jego wielokrotnego wystąpienia \cite{Smeulders2010}. Jest ona także wrażliwa na błędne etykietowanie pikseli, prowadzące do zakłócenia pracy klasyfikatora oraz przekłamania śledzonej trajektorii obiektu zainteresowania (ang. \textit{drift}).  
-
-\textbf{Klasyfikacja rozróżniająca z więzami} jest rozwinięciem poprzedniej rodziny metod, wśród których główny nacisk kładzie się na poprawną klasyfikację i etykietowanie pikseli, a nie na poszukiwanie najlepszej (najbardziej dopasowanej lub prawdopodobnej) pozycji śledzonego obiektu \cite{Smeulders2010}. Polega ono na syntezie informacji o przynależności zbioru pikseli do obiektu z poszukiwaniem w jego otoczeniu obszaru najlepiej dopasowanego do stworzonego uprzednio modelu, w postaci np. wektora cech (rysunek \ref{fig:Metody_sledzenia_obiektow_na_obrazach}, punkt [e]). Wadą tej metody jest wysoka złożoność obliczeniowa, wynikająca ze stopnia jej komplikacji.
-
-\begin{figure}[!htb]
-	\begin{center}
-		\includegraphics[width=12cm]{images/target_tracking_methods.png}
-	\end{center}	
-	\longcaptionsource{Metody śledzenia obiektów na obrazach}{a) Dopasowanie b) Dopasowanie z rozszerzonym opisem cech c) Dopasowanie z więzami d) Klasyfikacja rozróżniająca e) Klasyfikacja rozróżniająca z więzami. Oznaczenia bloków: T - wystąpienie obiektu zainteresowania, C - potencjalne kolejne wystąpienie obiektu zainteresowania, B - lokalne wystąpienia tła.}{\cite{Smeulders2010}}
-\label{fig:Metody_sledzenia_obiektow_na_obrazach}
-\end{figure}
-
-\subsubsection{Metody uaktualnienia modelu obiektu zainteresowania}
-\label{subsubsec:Metody_uaktualnienia_modelu_obiektu_zainteresowania}
-
-Ostatni krok algorytmu śledzenia obiektu polega na uaktualnieniu stosowanego modelu na podstawie informacji zawartych w nowej klatce sekwencji video. W niektórych przypadkach nie jest on konieczny - poza uproszczeniem całego algorytmu, zaletą takiego rozwiązania jest brak wnoszenia błędnej informacji o obiekcie, która może być skutkiem niedoskonałego modelu \cite{Smeulders2010}.
-
-Najprostsza realizacja uaktualnienia polega na \textbf{zastąpieniu} dotychczasowego opisu modelu opisem wykonanym dla ostatnio zaobserwowanego wystąpienia obiektu. Może się to odbywać w sposób częściowy, poprzez zastępowanie kolejnych fragmentów opisu nowymi, bądź przez okresowe, całościowe jego zastąpienie \cite{Smeulders2010}. 
-
-\textbf{Predykcja} postaci modelu przy użyciu filtru Kalmana (\ref{subsub:Filtr_Kalmana}) jest koncepcyjnie podobna, pozwalając jednocześnie na ograniczenie wpływu zakłóceń, zwłaszcza jeśli przebieg trajektorii obiektu jest łagodny. Gwałtowne jej zmiany skutkują jednak wniesieniem dodatkowego błędu \cite{Smeulders2010}. 
-
-W przypadku reprezentacji obiektu w postaci skrawków obrazu, uaktualnianie modelu polega na odpowiednim ich wstawianiu, usuwaniu, zmienieniu i przesuwaniu. Jest to zadanie złożone, dodatkowo rozwiązywane w oparciu o ograniczony zasób informacji \cite{Smeulders2010}.
-
-Dla algorytmów wykorzystujących rozszerzony opis cech obiektów stosowana jest przyrostowa analiza głównych składowych \cite{Smeulders2010}. Pozwala ona na przechowanie informacji o stanie modelu w przeszłości. 
-
-\subsection{Algorytmy śledzenia obiektów na obrazach w robotyce mobilnej}
-\label{subsec:Algorytmy_sledzenia_obiektow_na_obrazach_w_robotyce_mobilnej}
-
-\subsubsection{Śledzenie z wykorzystaniem przepływu optycznego}
-\label{subsubsec:Sledzenie_z_wykorzystaniem_przeplywu_optycznego}
-
-Jak wspomniano wspomniano w podrozdziale \ref{subsec:Analiza_ruchu_i_przeplyw_optyczny} przepływ optyczny jest użytecznym narzędziem w analizie ruchu obiektów zarejestrowanego w sekwencji obrazów. 
-
-\subsubsection{Śledzenie z wykorzystaniem cech obiektu}
-\label{subsubsec:Sledzenie_z_wykorzystaniem_cech}
+Powyższe rozważania dotyczą metod wyznaczania przepływu optycznego dla każdego piksela obrazu, który z tego powodu określa się mianem \textbf{gęstego} (ang. \textit{dense}). Alternatywnym podejściem, realizowanym np. przez algorytm Lucasa-Kanade-Tomasi \ref{subsec:Algorytm_Lucasa_Kanade_Tomasi}, jest wyznaczenie przepływu optycznego w postaci \textbf{rzadkiej} (ang. \textit{sparse}), tzn. jedynie dla wybranego zbioru punktów obrazów, np. wykrytych punktów charakterystycznych \cite{Karasulu2013}. Gęsty przepływ optyczny jest z natury dokładniejszą estymacją pola ruchu, jednak jego wyznaczanie jest znacznie bardziej złożone obliczeniowo. 

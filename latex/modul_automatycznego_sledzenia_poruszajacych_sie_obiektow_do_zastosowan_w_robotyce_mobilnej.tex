@@ -19,10 +19,15 @@
 \usepackage{array}
 \usepackage{bm}
 \usepackage{todonotes}
+\usepackage{xr-hyper}
+\usepackage{hyperref}
+
 
 \lstloadlanguages{TeX}
 
-
+\hypersetup{%
+    pdfborder = {0 0 0}
+}
 
 % Operator wartości bezwzględnej \abs{} - dwie pionowe kreski 
 \DeclarePairedDelimiter\abs{\lvert}{\rvert}%
@@ -135,8 +140,6 @@
 
 
 
-
-
 %---------------------------------------------------------------------------
 
 \begin{document}
@@ -149,13 +152,9 @@
 
 \clearpage
 
-%\include{Wstep}
-%\include{Pojazdy_UAV_i_systemy_AVS}
-%\include{Architektura_systemu_AVS}
-%\include{Metody_wykrywania_i_sledzenia_poruszajacych_sie_obiektow}
-%\include{Ogolny_zarys_architektury_systemu_sterowania}
-\include{analiza_literaturowa_zagadnienia}
-
+\include{wstep}
+\include{zagadnienia_z_dziedziny_cyfrowego_przetwarzania_obrazow}
+\include{sledzenie_obiektow_w_sekwencjach_obrazow}
 % itd.
 % \appendix
 % \include{dodatekA}

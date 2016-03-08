@@ -14,14 +14,18 @@
 \usepackage{mathtools}
 \usepackage{epstopdf}
 \usepackage[labelfont=bf]{caption}
-\usepackage[nocompress]{cite}
+%\usepackage[nocompress]{cite}
 \usepackage{caption}
 \usepackage{array}
 \usepackage{bm}
 \usepackage{todonotes}
 \usepackage{xr-hyper}
 \usepackage{hyperref}
-
+% Należy zmienić w Texmakerze używane narzędzie BibTeX (Preferencje->Konfiguracja Texmakera->Polecenia->Bib(la)tex) na "biber %" (zamiast "bibtex %.aux")
+\usepackage[backend=biber, maxbibnames=99]{biblatex}
+\usepackage{csquotes}
+% Styl chorwacki taki sam jak polski
+\DeclareQuoteAlias{croatian}{polish}
 
 \lstloadlanguages{TeX}
 
@@ -123,7 +127,7 @@
 \degreeprogramme{Automatyka i Robotyka}
 %\degreeprogramme{Automatics and Robotics}
 
-\date{2014}
+\date{2016}
 
 \department{Katedra Robotyki i Mechatroniki}
 %\department{Department of Department of Robotics and Mechatronics}
@@ -141,6 +145,7 @@
 
 
 %---------------------------------------------------------------------------
+\addbibresource{bibliografia.bib}
 
 \begin{document}
 
@@ -157,7 +162,10 @@
 
 \include{wizyjne_sledzenie_obiektow}
 \include{powiazane_zagadnienia}
+\include{algorytmy_sledzenia_wizyjnego_w_robotyce_mobilnej}
 \include{przeglad_istniejacych_rozwiazan}
+
+\printbibliography
 
 % itd.
 % \appendix
@@ -165,6 +173,6 @@
 % \include{dodatekB}
 % itd.
 
-\bibliography{bibliografia.bib}
-\bibliographystyle{plplain}
+%\bibliography{bibliografia.bib}
+%\bibliographystyle{plplain}
 \end{document}

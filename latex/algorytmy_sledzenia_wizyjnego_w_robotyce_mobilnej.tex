@@ -1,16 +1,18 @@
 \chapter{Algorytmy śledzenia wizyjnego w robotyce mobilnej}
 \label{cha:Algorymty_sledzenia_wizyjnego_w_robotyce_mobilnej}
 
+W niniejszym rozdziale omówione szczegółowo zostaną algorytmy spotykane w literaturze w kontekście systemów śledzenia obiektów dla robotów mobilnych. Opisy konkretnych przykładów istniejących rozwiązań umieszczono w rozdziale \ref{cha:Przeglad_istniejacych_rozwiazan}. Taki podział jest dogodny, ponieważ  istniejące systemy często agregują różne algorytmy, lub wykorzystują ich zmodyfikowane wersje.
+
 \section{Algorytm Lucasa-Kanade}
 \label{sec:Algorytm_Lucasa_Kanade}
-Jak wspomniano wspomniano w podrozdziale \ref{subsec:Przeplyw_optyczny} analizę ruchu zarejestrowanego w sekwencji obrazów można przeprowadzić posługując się przepływem optycznym. Takie podejście znajduje zastosowanie powszechne zastosowanie w systemach śledzenia wizyjnego, również w robotyce mobilnej. Szczególnie popularną metodą jego wyznaczania jest \textbf{algorytm Lucasa-Kanade}, został on wykorzystany w \cite{Markovic2014}, \cite{Sadeghi-Tehran2014}, \cite{Fernandez-Caballero2010}, \cite{Liem2008}.
+Jak wspomniano wspomniano w podrozdziale \ref{subsec:Przeplyw_optyczny} analizę ruchu zarejestrowanego w sekwencji obrazów można przeprowadzić posługując się przepływem optycznym. Takie podejście znajduje zastosowanie powszechne zastosowanie w systemach śledzenia wizyjnego, również w robotyce mobilnej. Szczególnie popularną metodą jego wyznaczania jest \textbf{algorytm Lucasa-Kanade}, wykorzystany w różnych jego odmianach w \cite{Campoy2009}, \cite{Fernandez-Caballero2010}, \cite{Liem2008}, \cite{Markovic2014}, \cite{Olivares-Mendez2009} i \cite{Sadeghi-Tehran2014}.
 
 Zastosowanie algorytmu Lucasa-Kanade wykracza znacznie poza zagadnienie śledzenia obiektów i obejmuje między innymi mozaikowanie obrazów, obrazowanie medyczne czy rozpoznawanie twarzy \cite{Baker2004}. Sam algorytm został po raz pierwszy opublikowany w roku 1981 i od tego czasu w literaturze zaproponowano szereg jego modyfikacji.
 
 \subsection{Klasyczny algorytm Lucasa-Kanade}
 \label{subsec:Klasyczny_algorytm_Lucasa_Kanade}
 
-Oryginalnie funkcją pierwszej wersji algorytmu, nazywanej addytywną \cite{Baker2004}, było dopasowanie obrazu wzorcowego $T(\vec{x})$ do obrazu wejściowego $I(\vec{x})$, gdzie $\vec{x} = (x, y)^T$ jest wektorem współrzędnych pikseli. W przypadku wyznaczania przepływu optycznego, obraz wzorcowy $T(\vec{x})$ jest podregionem obrazu z sekwencji w chwili $t = 1$, natomiast $I(\vec{x})$ jest obrazem w chwili $t = 2$ \cite{Baker2004}. Zakłada się, że wzorzec $T(\vec{x})$ uległ na obrazie $I(\vec{x})$ pewnemu sparametryzowanemu odkształceniu (ang. \textit{warp}) $\matr{W}(\vec{x}, \vec{p})$, gdzie $\vec{p}$ jest wektorem parametrów. Odkształcenie $\matr{W}(\vec{x}, \vec{p})$ przyporządkowuje pikselom wzorca $T(\vec{x})$ ich subpikselowe położenie $W(\vec{x}, \vec{p})$ w układzie współrzędnych obrazu $I$  \cite{Baker2004}, przykład przedstawiono na rysunku \ref{fig:Algorytm_Lucasa_Kanade}. Odkształcenie pomiędzy dwoma kolejnymi obrazami w sekwencji, dla których wyznaczany jest przepływ optyczny ma postać \cite{Baker2004}:
+Pierwsza postać algorytmu pomimo swojego wieku wciąż znajduje praktyczne zastosowanie - wykorzystano ją w rozwiązaniach \cite{Fernandez-Caballero2010} i \cite{Olivares-Mendez2009}. Oryginalną funkcją tej wersji, nazywanej czasem w literaturze addytywną \cite{Baker2004}, było dopasowanie obrazu wzorcowego $T(\vec{x})$ do obrazu wejściowego $I(\vec{x})$, gdzie $\vec{x} = (x, y)^T$ jest wektorem współrzędnych pikseli. W przypadku wyznaczania przepływu optycznego, obraz wzorcowy $T(\vec{x})$ jest podregionem obrazu z sekwencji w chwili $t = 1$, natomiast $I(\vec{x})$ jest obrazem w chwili $t = 2$ \cite{Baker2004}. Zakłada się, że wzorzec $T(\vec{x})$ uległ na obrazie $I(\vec{x})$ pewnemu sparametryzowanemu odkształceniu (ang. \textit{warp}) $\matr{W}(\vec{x}, \vec{p})$, gdzie $\vec{p}$ jest wektorem parametrów. Odkształcenie $\matr{W}(\vec{x}, \vec{p})$ przyporządkowuje pikselom wzorca $T(\vec{x})$ ich subpikselowe położenie $W(\vec{x}, \vec{p})$ w układzie współrzędnych obrazu $I$  \cite{Baker2004}, przykład przedstawiono na rysunku \ref{fig:Algorytm_Lucasa_Kanade}. Odkształcenie pomiędzy dwoma kolejnymi obrazami w sekwencji, dla których wyznaczany jest przepływ optyczny ma postać \cite{Baker2004}:
 \begin{equation}
 \label{equ:Odksztalcenie_przeplyw_optyczny}
 	\matr{W}(\vec{x}, \vec{p}) = \begin{bmatrix}
@@ -91,26 +93,28 @@ Cały algorytm sprowadza się do iteracyjnego wyznaczania równań \ref{equ:Algo
 \subsection{Algorytm Kanade-Lucasa-Tomasi}
 \label{subsec:Algorytm_Kanade_Lucasa_Tomasi}
 
-Sam algorytm Lucasa-Kanade może być w zasadzie jedynie metodą wyznaczania gęstego przepływu optycznego \cite{Yilmaz2006}. Z drugiej strony wiadomo, że pewne punkty obrazu lepiej nadają się do realizacji zadania śledzenia obiektu niż inne \cite{Tomasi1991} - dla punktów leżących na krawędziach ujawnia się problem apertury (rozdział \ref{subsec:Ruch_w_sekwencji_obrazow}), natomiast 
-punkty leżące wewnątrz obszarów o stałej intensywności nie dostarczają żadnej informacji o ruchu. W publikacji \cite{Tomasi1991} zaproponowano metodę wyznaczenia optymalnych punktów charakterystycznych oraz ich śledzenia z wykorzystaniem algorytmu Lucasa-Kanade, nazywaną \textbf{algorytmem Kanade-Lucasa-Tomasi} (ang. \textit{Kanade-Lucas-Tomasi tracker}, w skrócie \textit{KLT}).
+Sam algorytm Lucasa-Kanade może być w zasadzie jedynie metodą wyznaczania gęstego przepływu optycznego \cite{Yilmaz2006}. Z drugiej strony wiadomo, że pewne punkty obrazu lepiej nadają się do realizacji zadania śledzenia obiektu niż inne \cite{Tomasi1991} - dla punktów leżących na krawędziach ujawnia się problem apertury (rozdział \ref{subsec:Ruch_w_sekwencji_obrazow}), natomiast punkty leżące wewnątrz obszarów o stałej intensywności nie dostarczają żadnej informacji o ruchu. W publikacji \cite{Tomasi1991} zaproponowano metodę wyznaczenia optymalnych punktów charakterystycznych oraz ich śledzenia z wykorzystaniem algorytmu Lucasa-Kanade, nazywaną \textbf{algorytmem Kanade-Lucasa-Tomasi} (ang. \textit{Kanade-Lucas-Tomasi tracker}, w skrócie \textit{KLT}). Algorytm Lucasa-Kanade w tej postaci został zastosowany w \cite{Liem2008} i \cite{Sadeghi-Tehran2014}.
 
-\textit{KLT} w odróżnieniu od podstawowego algorytmu Lucasa-Kanade nie śledzi pojedynczych punktów, ale wybrane okna obrazu. Pozwala to zwiększenie odporności na szum oraz zmniejszenie prawdopodobieństwa błędnego rozpoznania punktu na kolejnym obrazie \cite{Tomasi1991}. Z drugiej strony, nie wszystkie piksele należące do konkretnego okna muszą poruszać się w jednakowy sposób (np. jeśli  okno obejmuje obszar na granicy dwóch przysłaniających się obiektów), z czym wiążą się dwa problemy: po pierwsze - jak stwierdzić, czy śledzone jest to samo okno, jeżeli jego zawartość zmienia się w czasie; po drugie - jak na podstawie informacji o prędkościach poszczególnych pikseli wnioskować o przemieszczeniu całego okna \cite{Tomasi1991}. Pierwszy problem można rozwiązać sprawdzając, jak bardzo okno zmienia się pomiędzy kolejnymi klatkami, oraz, ewentualnie, odrzucając je, jeśli zmiana jest zbyt duża. Rozwiązaniem drugiego problemu jest wprowadzenie bardziej skomplikowanego modelu zmiany okna (jak np. przekształcenia afiniczne), jednak tworzy to ryzyko nadokreślenia całego zagadnienia, ze względu na częste występowanie w sekwencjach obrazów obiektów sztywnych \cite{Tomasi1991}. Z tego powodu \textit{KLT} operuje na małych oknach, dla których wyznacza się jedynie wektor przemieszczenia, zaś każda występująca pomiędzy dwoma kolejnymi instancjami okna rozbieżność nie opisana przez niego traktowana jest jako błąd \cite{Tomasi1991}. W skutek przyjęcia założenia o małych rozmiarach okien, oryginalny algorytm \textit{KLT} nie radzi sobie w przypadku dużych przemieszczeń punktów pomiędzy klatkami. 
+Podstawę zasady działania \textit{KLT} stanowi równanie:
 
-Przyjmując oznaczenia:
 \begin{equation}
-\label{equ:Algorytm_Lucasa_Kanade_Tomasi_oznaczenia}
-	J(\vec{x}) = I(x, y, t + \tau)
+\label{equ:Algorytm_Lucasa_Kanade_Tomasi_podstawowe_rówanie}
+	I(x, y, t + \tau) = I(x - \xi, y - \eta, t)
 \end{equation}
-
 \noindent
 gdzie:
 \begin{conditions}
-	\vec{x} & wektor współrzędnych piksela $\vec{x} = (x, y)$ \\
 	I(x,y,t) & wartość piksela na obrazie $I$ o współrzędnych $(x,y)$ w chwili $t$ \\
-	\tau & interwał czasowy pomiędzy dwoma kolejnymi klatkami \\
+	\tau & interwał czasowy pomiędzy dwoma klatkami \\
+	\vec{d} = (\xi, \eta) & przemieszczenie punktu $\vec{x} = (x, y)$ pomiędzy klatkami $t$ i $t + \tau$ \\
 \end{conditions}
 
-Model przemieszczenia punktu pomiędzy klatkami można zdefiniować następująco:
+Jego interpretacja jest następująca - późniejsza klatka $I(x, y, t + \tau)$ może zostać odtworzona z wcześniejszej klatki $I(x, y, t)$ poprzez odpowiednie przesunięcie jej każdego piksela, którego dla danego punktu $\vec{x}$ wynosi $\vec{d}$ (ogólnie jest to funkcja współrzędnych $(x, y)$, czasu $t$ i interwału $\tau$) \cite{Tomasi1991}. W rzeczywistości równanie \ref{equ:Algorytm_Lucasa_Kanade_Tomasi_podstawowe_rówanie} jest rzadko prawdziwe, nawet przy statycznej scenie o stałym oświetleniu \cite{Tomasi1991}.
+
+\textit{KLT} w odróżnieniu od podstawowego algorytmu Lucasa-Kanade nie śledzi pojedynczych punktów, ale wybrane okna obrazu. Pozwala to zwiększenie odporności na szum oraz zmniejszenie prawdopodobieństwa błędnego rozpoznania punktu na kolejnym obrazie \cite{Tomasi1991}. Z drugiej strony, nie wszystkie piksele należące do konkretnego okna muszą poruszać się w jednakowy sposób (np. jeśli  okno obejmuje obszar na granicy dwóch przysłaniających się obiektów), z czym wiążą się dwa problemy: po pierwsze - jak stwierdzić, czy śledzone jest to samo okno, jeżeli jego zawartość zmienia się w czasie; po drugie - jak na podstawie informacji o prędkościach poszczególnych pikseli wnioskować o przemieszczeniu całego okna \cite{Tomasi1991}. Pierwszy problem można rozwiązać sprawdzając, jak bardzo okno zmienia się pomiędzy kolejnymi klatkami, oraz, ewentualnie, odrzucając je, jeśli zmiana jest zbyt duża. Rozwiązaniem drugiego problemu jest wprowadzenie bardziej skomplikowanego modelu zmiany okna (jak np. przekształcenia afiniczne, jak w opisanej dalej modyfikacji według \cite{Shi1994}), jednak tworzy to ryzyko nadokreślenia całego zagadnienia, ze względu na częste występowanie w sekwencjach obrazów obiektów sztywnych \cite{Tomasi1991}. Z tego powodu \textit{KLT} operuje na małych oknach, dla których wyznacza się jedynie wektor przemieszczenia, zaś każda występująca pomiędzy dwoma kolejnymi instancjami okna rozbieżność nie opisana przez niego traktowana jest jako błąd \cite{Tomasi1991}. W skutek przyjęcia założenia o małych rozmiarach okien, oryginalny algorytm \textit{KLT} nie radzi sobie w przypadku dużych przemieszczeń punktów pomiędzy klatkami.  
+
+Przyjmując oznaczenie  $J(\vec{x}) = I(x, y, t + \tau)$, model przemieszczenia punktu pomiędzy klatkami można zdefiniować następująco:
+
 \begin{equation}
 \label{equ:Algorytm_Lucasa_Kanade_Tomasi_model}
 	J(\vec{x}) = I(\vec{x} - \vec{d}) + n(\vec{x})
@@ -121,6 +125,7 @@ gdzie:
 \begin{conditions}
 	\vec{d} & wektor przemieszczenia punktu $\vec{d} = (\xi, \eta)$ \\
 	I(\vec{x}) & Wartość piksela na obrazie $I$ o współrzędnych $\vec{x}$ w chwili $t$ \\
+	n(\vec{x}) & szum \\
 \end{conditions}
 
 Z równania \ref{equ:Algorytm_Lucasa_Kanade_Tomasi_model} należy wyznaczyć wektor przemieszczenia $\vec{d}$ tak, aby zminimalizować błąd dopasowania:
@@ -160,7 +165,37 @@ gdzie:
 
 Wartość progową $\lambda$ można wyznaczyć poprzez uśrednienie wyników pomiarów wartości własnych macierzy $H$ dla arbitralnie wybranych obszarów o stałej jasność (dolna granica) oraz obszarów zróżnicowanych teksturowo (górna granica) \cite{Tomasi1991}.
 
-\citeauthor{Tomasi1991}
+W publikacji \cite{Shi1994} przedstawiono ulepszenie \textit{KLT} polegające wprowadzeniu dodatkowego modelu zmiany śledzonego okna pomiędzy klatkami w postaci przekształcenia afinicznego (oryginalnie \textit{KLT} zakłada wyłącznie czystą translację). Formalnie definicja takiego modelu polega na zastąpieniu w podstawowym równaniu \ref{equ:Algorytm_Lucasa_Kanade_Tomasi_podstawowe_rówanie} wektora przesunięcia $\vec{d}$, stanowiącego czystą translację, wektorem przesunięcia $\vec{\delta}$ (określanym jako afiniczne pole ruchu) \cite{Shi1994}
+
+\begin{equation}
+\label{equ:Algorytmu_Lucasa_Kanade_Tomasi_Shi_model_afiniczny}
+	\vec{\delta} = \matr{D}\vec{x} + \vec{d}
+\end{equation}
+
+\begin{equation}
+\label{equ:Algorytmu_Lucasa_Kanade_Tomasi_Shi_macierz_deformacji}
+	\matr{D} =
+	\begin{bmatrix}
+		d_{xx} & d_{xy} \\
+		d_{yx} & d_{yy} \\	
+	\end{bmatrix}
+\end{equation}
+
+\noindent
+gdzie:
+\begin{conditions}
+	\matr{D} & macierz deformacji \\
+	\vec{d} & wektor przesunięcia środka okna \\
+\end{conditions}
+
+Zależność pomiędzy kolejną klatką $J$ a poprzednią klatką $I$ ma postać:
+\begin{equation}
+\label{equ:Algorytmu_Lucasa_Kanade_Tomasi_Shi_zaleznosc_klatek}
+	J(\matr{A}\vec{x} + \vec{d}) = I(\vec{x})
+\end{equation}
+
+Zadanie śledzenia polega na wyznaczeniu sześciu nieznanych parametrów, tj. elementów wektora $\vec{d}$ i macierzy $\matr{D}$, przy czym jakość ich oszacowania jest zależna od założonej wielkości okna, zróżnicowania teksturowego jego zawartości oraz rozbieżności pomiędzy klatkami (gwałtowności występującego pomiędzy nimi ruchu) \cite{Shi1994}. Im mniejsze okno, tym mniej miarodajna jest wyznaczona postać macierzy $\matr(D)$ (jej wyznaczenie jest trudniejsze przy mniejszych wariancjach ruchu), jednocześnie tym lepiej nadaje się ono do śledzenia (mniej podatne na gwałtowne zmiany zawartości \cite{Tomasi1991} \cite{Shi1994}. Śledzenie jest w związku z tym realizowane, identycznie jak w wyjściowej wersji \textit{KLT}, przy założeniu modelu ruchu w postaci czystej translacji, natomiast model ruchu w postaci przekształcenia afinicznego jest wykorzystywany do monitorowania jakości okna, poprzez porównanie jego postaci na pierwszej i bieżącej klatce \cite{Shi1994}.
+
 
 \section{Filtr Kalmana}
 \label{sec:Filtr_Kalmana}

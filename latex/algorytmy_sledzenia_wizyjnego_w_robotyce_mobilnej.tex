@@ -189,6 +189,7 @@ gdzie:
 \end{conditions}
 
 Zależność pomiędzy kolejną klatką $J$ a poprzednią klatką $I$ ma postać:
+
 \begin{equation}
 \label{equ:Algorytmu_Lucasa_Kanade_Tomasi_Shi_zaleznosc_klatek}
 	J(\matr{A}\vec{x} + \vec{d}) = I(\vec{x})
@@ -196,11 +197,89 @@ Zależność pomiędzy kolejną klatką $J$ a poprzednią klatką $I$ ma postać
 
 Zadanie śledzenia polega na wyznaczeniu sześciu nieznanych parametrów, tj. elementów wektora $\vec{d}$ i macierzy $\matr{D}$, przy czym jakość ich oszacowania jest zależna od założonej wielkości okna, zróżnicowania teksturowego jego zawartości oraz rozbieżności pomiędzy klatkami (gwałtowności występującego pomiędzy nimi ruchu) \cite{Shi1994}. Im mniejsze okno, tym mniej miarodajna jest wyznaczona postać macierzy $\matr(D)$ (jej wyznaczenie jest trudniejsze przy mniejszych wariancjach ruchu), jednocześnie tym lepiej nadaje się ono do śledzenia (mniej podatne na gwałtowne zmiany zawartości \cite{Tomasi1991} \cite{Shi1994}. Śledzenie jest w związku z tym realizowane, identycznie jak w wyjściowej wersji \textit{KLT}, przy założeniu modelu ruchu w postaci czystej translacji, natomiast model ruchu w postaci przekształcenia afinicznego jest wykorzystywany do monitorowania jakości okna, poprzez porównanie jego postaci na pierwszej i bieżącej klatce \cite{Shi1994}.
 
+\subsection{Piramidowa wersja algorytmu Lucasa-Kanade}
+\label{subsec:Piramidowa_wersja_algorytmu_Lucasa_Kanade}
+
+Wielkość śledzonego okna wpływa na dokładność i odporność algorytmu \textit{KLT} - jak wspomniano wcześniej, mniejsze okno jest mniej podatne na zachodzące w sekwencji obrazów zmiany jasności należących do niego pikseli, pozwala więc na osiągnięcie większej dokładności. Z drugiej strony zwiększenie rozmiaru okna pozwala na śledzenie bardziej gwałtownego ruchu (większych przesunięć). Rozwiązanie tego dylematu zaproponowano w \cite{Bouguet2000} - polega ona na reprezentacji obrazu w przestrzeni skali (podobnie jak w algorytmie \textit{SIFT}, \ref{subsec:Punkty_charakterystyczne}), nazywanej \textbf{piramidą obrazów} (ang. \textit{image pyramid}). Takie podejście wykorzystano w rozwiązaniu \cite{Markovic2014}.
+
+\begin{figure}[!htb]
+	\begin{center}
+		\includegraphics[width=12cm]{images/image_pyramid.png}
+	\end{center}	
+	\longcaptionsource{Przykłady piramidy obrazów}{Tworzenie piramidy polega na zastosowaniu rekursywnym filtrowaniu obrazu filtrem dolnoprzepustowym (wygładzającym) oraz jego podpróbkowaniu. Powyższe piramidy utworzono z wykorzystaniem filtru Gaussa. Oznaczenia: a) piramida Gaussa dla obrazu w postaci syntetycznego wzoru (szachownica), im wyższy poziom, tym bardziej ujawnia się przekłamanie początkowych wartości pikseli wnoszone przez filtrację; b) Piramida Gaussa utworzona dla rzeczywistego obrazu (zdjęcie fasady budynku)}{\cite{Jaehne2005}}
+\label{fig:Przyklad_piramidy_obrazow}
+\end{figure}
+
+Obraz wejściowy $I$ ma wymiary $n_x \times n_y$, przyjęto notację, w której $I^L$ oznacza $L$-ty poziom piramidy o wymiarach $n_x^L$ i $n_y^L$, poziom zerowy to obraz nieprzeskalowany ($n_x^0 = n_x$ i $n_y^0 = n_y$). Reprezentacja piramidowa jest wyznaczana rekurencyjnie \cite{Bouguet2000}:
+
+\begin{multline}
+\label{equ:Piramidowy_algorytm_Lucasa_Kanade_piramida}
+	I^L(x,y) = \frac{1}{4} I^{L-1}(2x, 2y) + \frac{1}{8}(I^{L-1}(2x - 1, 2y) + I^{L-1}(2x + 1, 2y) + I^{L-1}(2x, 2y - 1) + I^{L-1}(2x, 2y + 1)) \\ + \frac{1}{16}(I^{L-1}(2x - 1, 2y - 1) + I^{L-1}(2x + 1, 2y + 1) + I^{L-1}(2x - 1, 2y + 1) + I^{L-1}(2x + 1, 2y + 1))
+\end{multline}
+
+Równanie \ref{equ:Piramidowy_algorytm_Lucasa_Kanade_piramida} wymaga ekstrapolacji wartości skrajnych pikseli (o jednej współrzędnej równej zero) na piksle leżące poza obrazem (o jednej współrzędnej równej $-1$). Rozmiar obrazu na poziomie $L$ określany jest przez największe liczby całkowite $n_x^L$ i $n_y^L$ spełniające zależności \cite{Bouguet2000}:
+
+\begin{equation}
+\label{equ:Piramidowy_algorytm_Lucasa_Kanade_piramida_romiar_x}
+	n_x^L \le \frac{n_x^{L-1} + 1}{2}
+\end{equation}
+
+\begin{equation}
+\label{equ:Piramidowy_algorytm_Lucasa_Kanade_piramida_romiar_y}
+	n_y^L \le \frac{n_y^{L-1} + 1}{2}
+\end{equation}
+
+Wysokość piramidy $L_m$ dobierana jest heurystycznie, przeważnie liczba poziomów nie przekracza 4 \cite{Bouguet2000}. W równaniu \ref{equ:Piramidowy_algorytm_Lucasa_Kanade_piramida} zaszyto filtr dolnoprzepustowy o masce:
+
+\begin{equation}
+\label{equ:Piramidowy_algorytm_Lucasa_Kanade_piramida_maska}
+	K = \begin{bmatrix}
+		1/4 & 1/2 & 1/4
+	\end{bmatrix} 
+	\times
+	\begin{bmatrix}
+		1/4 \\ 1/2 \\ 1/4
+	\end{bmatrix}
+\end{equation}
+
+W praktyce stosuje się większe rozmiary maski \cite{Bouguet2000}. Wynikiem końcowym procedury jest ciąg obrazów, z których każdy jest dwukrotnie mniejszy od poprzedniego, podobny przypadek przedstawiono na rysunku \ref{fig:Przyklad_piramidy_obrazow}.
+
+Zasadniczym celem śledzenia jest wyznaczenie dla punktu o współrzędnych $\vec{u}$ leżącego na obrazie $I$ odpowiadających mu współrzędnych $\vec{v}$ na kolejnym obrazie $J$, tzn. wyznaczenie wektora przemieszczeń $\vec{d}$, takiego że $\vec{v} = \vec{u} + \vec{d}$. Dla kolejnych poziomów piramidy obrazów $L = 0, \dots, L_m$ współrzędne punktu $\vec{u}^L = (u_x^L, u_y^L)$ wyznaczane są z zależności \cite{Bouguet2000}:
+
+\begin{equation}
+\label{equ:Piramidowy_algorytm_Lucasa_Kanade_wspolrzedne}
+	\vec{u}^L = \frac{\vec{u}}{2^L}
+\end{equation}
+
+Proces śledzenia w przestrzeni skali rozpoczyna się od wyznaczenia przepływu optycznego dla najwyższego poziomu piramidy $L_m$. Jest on następnie propagowany jako początkowe przybliżenie do niższego poziomu $L_m - 1$. Na podstawie początkowego przybliżenia jest wyznaczany właściwy przepływ optyczny dla poziomu $L_m - 1$, wynik jest propagowany do poziomu $L_m -2$, itd. Rekursja kończy się po osiągnięciu poziomu 0 \cite{Bouguet2000}.
+
+Zakładając znajomość początkowego przybliżenia przepływu optycznego $\vec{g}^L = (g_x^L, g_y^L)$ dla poziomu $L$, na podstawie obliczeń od poziomu $L_m$ do $L + 1$, w celu wyznaczenia właściwego przepływu optycznego należy znaleźć wektor $\vec{d}^L = (d_x^L, d_y^L)$, określany jako residualny przepływ optyczny, minimalizujący funkcję błędu \cite{Bouguet2000}
+
+\begin{equation}
+\label{equ:Piramidowy_algorytm_Lucasa_Kanade_blad}
+	\epsilon^L(\vec{d}^L) = \sum_{x = u_x^L-\omega_x}^{u_x^L + \omega_x} \sum_{y = u_y^L-\omega_y}^{u_y^L + \omega_y} ( I^L(x,y) - J^L(x + g_x^L + d_x^L, y + g_y^L + d_y^L) )^2
+\end{equation}
+
+Zawarte w równaniu \ref{equ:Piramidowy_algorytm_Lucasa_Kanade_blad} liczby całkowite $\omega_x$ i $\omega_y$ określają rozmiar okna równy $(2\omega_x + 1) \times 2\omega_y + 1$, w obrębie którego określa się podobieństwo dla punktów $I(\vec{u})$ i $J(\vec{v})$. Wektor $\vec{d}$ wyznacza się z zastosowaniem standardowego algorytmu Lucasa-Kanade \ref{subsec:Klasyczny_algorytm_Lucasa_Kanade} \cite{Bouguet2000}. Następnie wynik jest propagowany do kolejnego poziomu $L-1$, kolejne przybliżenie początkowe $\vec{g}^{L-1}$ wyznacza się ze wzoru \cite{Bouguet2000}:
+
+\begin{equation}
+\label{equ:Piramidowy_algorytm_Lucasa_Kanade_propagacja_przeplywu}
+	\vec{g}^{L-1} = 2(\vec{g}^L + \vec{d}^L)
+\end{equation} 
+
+Dla poziomu $L-1$ wyznaczany jest optymalny wektor $\vec{d}^{L-1}$ minimalizujący funkcjonał $\epsilon^{L-1}(\vec{d}^{L-1})$, następuje jego propagacja do kolejnego poziomu $L-2$ itd., aż do osiągnięcia poziomu $L = 0$. W pierwszym kroku algorytmu, w którym przetwarzany jest poziom $L_m$ jako przybliżenie początkowe $\vec{g}^{L_m}$ przyjmuje się wektor zerowy \cite{Bouguet2000}. Po wykonaniu obliczeń dla wszystkich poziomów piramidy otrzymuje się rozwiązanie końcowe:
+
+\begin{equation}
+\label{Piramidowy_algorytm_Lucasa_Kanade_wynik_koncowy}
+	\vec{d} = \vec{g}^0 + \vec{d}^0 = \sum_{L = 0}^{L_m} 2^L \vec{d}^L
+\end{equation}
+
+Sens piramidowej wersji algorytmu Lucasa-Kanade leży w dekompozycji właściwego przepływu optycznego dla danego poziomu piramidy na jego znane przybliżenie $\vec{g}^L$ oraz część residualną $\vec{d}^L$ o niewielkich wartościach, które nie wzrastają przy propagacji na kolejne poziomy. Pozwala to z powodzeniem wyznaczać ich postać z wykorzystaniem klasycznego algorytmu Lucasa-Kanade, co ostatecznie skutkuje możliwością śledzenia dużych przemieszczeń $\vec{d}$. Zakładając, że algorytm Lucasa-Kanade operujący na poszczególnych poziomach piramidy może poprawnie śledzić na każdym z nich  przemieszczenie nie większe od $d_max$, ogólne maksymalne przemieszczenie dla którego wersja piramidowa działa poprawnie wynosi $d_{max final} = (2^{L_m+1}-1)$, co przy np. liczbie poziomów piramidy $L_m = 3$ daje piętnastokrotny wzrost \cite{Bouguet2000}.
 
 \section{Filtr Kalmana}
 \label{sec:Filtr_Kalmana}
 
-\textbf{Filtr Kalmana} (ang. \textit{Kalman Filter}, w skórcie \textit{KF}) jest rekurencyjnym algorytmem optymalnej estymacji wektora stanu modelu obiektu, zakładającym jego liniowość oraz rozkład normalny amplitudy występującego szumu procesu i pomiarowego (jest rodzajem optymalnego, rekursywnego filtru Bayesa) \cite{Challa2011}. Od kiedy został po raz pierwszy opublikowany w roku 1960 znalazł szerokie zastosowanie, m.in. w systemach śledzenia obiektów.
+\textbf{Filtr Kalmana} (ang. \textit{Kalman Filter}, w skórcie \textit{KF}) jest rekurencyjnym algorytmem optymalnej estymacji wektora stanu modelu obiektu, zakładającym jego liniowość oraz rozkład normalny amplitudy występującego szumu procesu i pomiarowego (jest rodzajem optymalnego, rekursywnego filtru Bayesa) \cite{Challa2011}. Od kiedy został po raz pierwszy opublikowany w roku 1960 znalazł szerokie zastosowanie, m.in. w systemach śledzenia obiektów \cite{Campoy2009}, \cite{Chen2009}, \cite{Kim2012}, \cite{Rui2009}, \cite{Shibata2010} i \cite{Zhao2013}. 
 
 \subsection{Klasyczny filtr Kalmana}
 \label{subsec:Klasyczny_filtr_Kalmana}
@@ -512,3 +591,7 @@ Równania fazy korekcji \cite{Welch1995}:
 \label{equ:Rozszerzony_Filtr_Kalmana_faza_korekcji_macierz_kowariancji_bledow}
 	\matr{P}_k = (\matr{I} - \matr{K}_k \matr{H}_k) \matr{P}_k^-
 \end{equation}
+
+\section{Algorytm Mean Shift}
+\label{Algorytm_Mean_Shift}
+

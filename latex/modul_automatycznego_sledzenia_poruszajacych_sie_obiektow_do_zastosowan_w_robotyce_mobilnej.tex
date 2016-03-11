@@ -71,11 +71,11 @@
   
   
 % Opis równania conditionseq, użycie:
-% \begin{conditions}
+% \begin{conditionseq}
 %	symbol1 & objaśnienie symbolu1 \\
 %	symbol2 & objaśnienie symbolu2 \\
 %	...		& ...				   \\   
-% \end{conditions}
+% \end{conditionseq}
 \newenvironment{conditionseq}
   {\par\vspace{\abovedisplayskip}\noindent\begin{tabular}{>{$}l<{$} @{${}={}$} l}}
   {\end{tabular}\par\vspace{\belowdisplayskip}}
@@ -84,8 +84,8 @@
 \renewcommand{\vec}[1]{\mathbf{#1}}
 
 % Symbole wektorów z operatorem ^ pogrubiona czcionka
-\let\oldhat\hat
-\renewcommand{\hat}[1]{\oldhat{\mathbf{#1}}}
+%\let\oldhat\hat
+%\renewcommand{\hat}[1]{\oldhat{\mathbf{#1}}}
 
 % Symbole macierzy pgrubiona czcionka
 \newcommand{\matr}[1]{\mathbf{#1}}
@@ -162,7 +162,7 @@
 
 \include{wizyjne_sledzenie_obiektow}
 \include{powiazane_zagadnienia}
-\include{algorytmy_sledzenia_wizyjnego_w_robotyce_mobilnej}
+\include{algorytmy_sledzenia_obiektow_w_robotyce_mobilnej}
 \include{przeglad_istniejacych_rozwiazan}
 
 \printbibliography

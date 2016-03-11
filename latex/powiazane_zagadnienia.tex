@@ -67,25 +67,25 @@ gdzie:
 Przeszukiwanie przestrzeni skali odbywa się poprzez wielokrotne wyznaczenie $D(x, y, \sigma)$, któremu towarzyszy zwiększanie $\sigma$ o stałą wartość. Lokalne ekstrema wyznaczane są poprzez porównywanie wartości $D(x, y, \sigma)$ dla współrzędnych $(x, y, \sigma)$ z punktami sąsiadującymi z punktem $(x, y)$ w skali określonej przez $\sigma$ oraz dwoma regionami o wymiarach $3 \times 3$, współśrodkowymi z $(x, y)$, o sąsiednich skalach \cite{Lowe2004}.
 
 W ten sposób otrzymywany jest zbiór punktów charakterystycznych o określonych współrzędnych $(x, y)$ oraz skali $\sigma$. Pozycja określona tymi współrzędnymi jest jednak niedokładna - punkt charakterystyczny
-może znajdować się pomiędzy pikselami (które stanowią próbki pomiarowe), dodatkowo jeden piksel w niżej skali odpowiada wielu pikselom w wyższej. Położenie ekstremów $\hat{x}$ jest wyznaczane na podstawie interpolacji funkcją kwadratową wyznaczanej poprzez rozwinięcie w szereg Taylora funkcji $G(x, y, \sigma)$ \cite{Lowe2004}:
+może znajdować się pomiędzy pikselami (które stanowią próbki pomiarowe), dodatkowo jeden piksel w niżej skali odpowiada wielu pikselom w wyższej. Położenie ekstremów $\hat{\vec{x}}$ jest wyznaczane na podstawie interpolacji funkcją kwadratową wyznaczanej poprzez rozwinięcie w szereg Taylora funkcji $G(x, y, \sigma)$ \cite{Lowe2004}:
 
 \begin{equation}
 \label{equ:Ekstrema_interpolacja}
-	\hat{x} = - \frac{\partial^2 D^-1}{\partial \hat{x}^2} \frac{\partial D}{\partial \hat{x}}
+	\hat{\vec{x}} = - \frac{\partial^2 D^-1}{\partial \hat{\vec{x}}^2} \frac{\partial D}{\partial \hat{\vec{x}}}
 \end{equation}
 
 \noindent
 gdzie:
 
 \begin{conditions}
-	\hat{x} & wektor współrzędnych w przestrzeni skali
+	\hat{\vec{x}} & wektor współrzędnych w przestrzeni skali
 \end{conditions}
 
 Dodatkowo zbiór ekstremów jest filtrowany - odrzucane są niestabilne punkty charakterystyczne o niskim kontraście \cite{Lowe2004}.
 
 \begin{equation}
 \label{equ:Filtrowanie}
-	D(\hat{x}) = D + \frac{1}{2} \frac{\partial D^T}{\partial \vec{x}} \hat{x}
+	D(\hat{\vec{x}}) = D + \frac{1}{2} \frac{\partial D^T}{\partial \vec{\vec{x}}} \hat{\vec{x}}
 \end{equation}
 
 Ekstrema o wartości bezwzględnej $\abs{D(\hat{x})}$, obliczonej na podstawie równania \ref{equ:Filtrowanie}, mniejszej od wartości progowej $0.03$ są usuwane ze zbioru punktów charakterystycznych \cite{Lowe2004}.

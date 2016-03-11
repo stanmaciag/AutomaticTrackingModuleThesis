@@ -282,6 +282,25 @@
   Timestamp                = {2016.01.27}
 }
 
+@Article{Cheng1995,
+  Title                    = {{M}ean shift, mode seeking, and clustering},
+  Author                   = {Yizong Cheng},
+  Journal                  = {IEEE Transactions on Pattern Analysis and Machine Intelligence},
+  Year                     = {1995},
+
+  Month                    = {August},
+  Number                   = {8},
+  Pages                    = {790 - 799},
+  Volume                   = {17},
+
+  Abstract                 = {{M}ean shift, a simple interactive procedure that shifts each data point to the average of data points in its neighborhood is generalized and analyzed in the paper. {T}his generalization makes some k-means like clustering algorithms its special cases. {I}t is shown that mean shift is a mode-seeking process on the surface constructed with a “shadow” kernal. {F}or {G}aussian kernels, mean shift is a gradient mapping. {C}onvergence is studied for mean shift iterations. {C}luster analysis if treated as a deterministic problem of finding a fixed point of mean shift that characterizes the data. {A}pplications in clustering and {H}ough transform are demonstrated. {M}ean shift is also considered as an evolutionary strategy that performs multistart global optimization},
+  Doi                      = {10.1109/34.400568},
+  File                     = {:../sources/00400568.pdf:PDF},
+  Keywords                 = {Algorithm design and analysis, Clustering algorithms, Computer science, Convergence, Iterative algorithms, Kernel, Surface treatment},
+  Owner                    = {Stanisław Maciąg},
+  Timestamp                = {2016.03.10}
+}
+
 @InProceedings{Cheung2004,
   Title                    = {{R}obust techniques for background subtraction in urban traffic video},
   Author                   = {Cheung, Sen-ching S. and Kamath, Chandrika},
@@ -298,9 +317,28 @@
   Timestamp                = {2015.05.18}
 }
 
+@Article{Comaniciu2002,
+  Title                    = {{M}ean shift: a robust approach toward feature space analysis},
+  Author                   = {Dorin Comaniciu and Peter Meer},
+  Journal                  = {IEEE Transactions on Pattern Analysis and Machine Intelligence},
+  Year                     = {2002},
+
+  Month                    = {May},
+  Number                   = {5},
+  Pages                    = {603 - 619},
+  Volume                   = {24},
+
+  Abstract                 = {{A} general non-parametric technique is proposed for the analysis of a complex multimodal feature space and to delineate arbitrarily shaped clusters in it. {T}he basic computational module of the technique is an old pattern recognition procedure: the mean shift. {F}or discrete data, we prove the convergence of a recursive mean shift procedure to the nearest stationary point of the underlying density function and, thus, its utility in detecting the modes of the density. {T}he relation of the mean shift procedure to the {N}adaraya-{W}atson estimator from kernel regression and the robust {M}-estimators; of location is also established. {A}lgorithms for two low-level vision tasks discontinuity-preserving smoothing and image segmentation - are described as applications. {I}n these algorithms, the only user-set parameter is the resolution of the analysis, and either gray-level or color images are accepted as input. {E}xtensive experimental results illustrate their excellent performance},
+  Doi                      = {10.1109/34.1000236},
+  File                     = {:../sources/01000236.pdf:PDF},
+  Keywords                 = {Density functional theory, Image analysis, Image color analysis, Image resolution, Image segmentation, Kernel, Pattern recognition, Robustness, Smoothing methods},
+  Owner                    = {Stanisław Maciąg},
+  Timestamp                = {2016.03.10}
+}
+
 @InProceedings{Comaniciu1999,
   Title                    = {{M}ean shift analysis and applications},
-  Author                   = {Dorin Comaniciu and  Peter Meer},
+  Author                   = {Dorin Comaniciu and Peter Meer},
   Booktitle                = {The Proceedings of the Seventh IEEE International Conference on Computer Vision},
   Year                     = {1999},
 
@@ -316,6 +354,25 @@
   Keywords                 = {Application software, Color, Computer vision, Convergence, Image quality, Image segmentation, Kernel, Lattices, Pixel, Spatial resolution},
   Owner                    = {Stanisław Maciąg},
   Timestamp                = {2016.03.09}
+}
+
+@Article{Comaniciu2003,
+  Title                    = {{K}ernel-based object tracking},
+  Author                   = {Dorin Comaniciu and Visvanathan Ramesh and Peter Meer},
+  Journal                  = {IEEE Transactions on Pattern Analysis and Machine Intelligence},
+  Year                     = {2003},
+
+  Month                    = {May},
+  Number                   = {5},
+  Pages                    = {564 - 577},
+  Volume                   = {25},
+
+  Abstract                 = {{A} new approach toward target representation and localization, the central component in visual tracking of nonrigid objects, is proposed. {T}he feature histogram-based target representations are regularized by spatial masking with an isotropic kernel. {T}he masking induces spatially-smooth similarity functions suitable for gradient-based optimization, hence, the target localization problem can be formulated using the basin of attraction of the local maxima. {W}e employ a metric derived from the {B}hattacharyya coefficient as similarity measure, and use the mean shift procedure to perform the optimization. {I}n the presented tracking examples, the new method successfully coped with camera motion, partial occlusions, clutter, and target scale variations. {I}ntegration with motion filters and data association techniques is also discussed. {W}e describe only a few of the potential applications: exploitation of background information, {K}alman tracking using motion models, and face tracking.},
+  Doi                      = {10.1109/TPAMI.2003.1195991},
+  File                     = {:../sources/01195991.pdf:PDF},
+  Keywords                 = {Cameras, Face detection, Filtering, Filters, Kernel, Layout, Nonlinear equations, Performance evaluation, State-space methods, Target tracking},
+  Owner                    = {Stanisław Maciąg},
+  Timestamp                = {2016.03.10}
 }
 
 @InProceedings{Comaniciu2000,
@@ -442,6 +499,25 @@
   Owner                    = {Stanisław Maciąg},
   Timestamp                = {2015.05.20},
   Url                      = {http://www.sciencedirect.com/science/article/pii/S0921889010001168}
+}
+
+@Article{Fukunaga1975,
+  Title                    = {{T}he estimation of the gradient of a density function, with applications in pattern recognition},
+  Author                   = {Keinosuke Fukunaga  and  Larry D. Hostetler},
+  Journal                  = {IEEE Transactions on Information Theory},
+  Year                     = {1975},
+
+  Month                    = {January},
+  Number                   = {1},
+  Pages                    = {32 - 40},
+  Volume                   = {21},
+
+  Abstract                 = {{N}onparametric density gradient estimation using a generalized kernel approach is investigated. {C}onditions on the kernel functions are derived to guarantee asymptotic unbiasedness, consistency, and uniform consistency of the estimates. {T}he results are generalized to obtain a simple mean-shift estimate that can be extended in a k-nearest-neighbor approach. {A}pplications of gradient estimation to pattern recognition are presented using clustering and intrinsic dimensionality problems, with the ultimate goal of providing further understanding of these problems in terms of density gradients.},
+  Doi                      = {10.1109/TIT.1975.1055330},
+  File                     = {:../sources/01055330.pdf:PDF},
+  Keywords                 = {Clustering algorithms, Density functional theory, Filtering, Kernel, Laboratories, Pattern recognition, Probability density function},
+  Owner                    = {Stanisław Maciąg},
+  Timestamp                = {2016.03.10}
 }
 
 @InProceedings{Galego2011,
@@ -1545,8 +1621,9 @@ az2006\;;
 3 ExplicitGroup:Przepływ optyczny\;0\;Baker2004\;Baker2011\;Bouguet200
 0\;Jaehne2005\;Karasulu2013\;Lucas1981\;Mohamed2014a\;Shi1994\;Szelisk
 i2011\;Tomasi1991\;;
-3 ExplicitGroup:Mean-Shift\;0\;Comaniciu1999\;Comaniciu2000\;Maggio201
-1\;Zivkovic2004\;;
+3 ExplicitGroup:Mean-Shift\;0\;Cheng1995\;Comaniciu1999\;Comaniciu2000
+\;Comaniciu2002\;Comaniciu2003\;Fukunaga1975\;Maggio2011\;Zivkovic2004
+\;;
 2 ExplicitGroup:Istniejące rozwiązania\;0\;Bahn2011\;Campoy2009\;Chen2
 012\;Fernandez-Caballero2010\;Jung2012\;Kim2011\;Kim2012\;Lang2010\;Li
 2007\;Liem2008\;Markovic2014\;Mohamed2014\;Motokucho2014\;Olivares-Men

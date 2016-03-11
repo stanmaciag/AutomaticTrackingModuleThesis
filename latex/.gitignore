@@ -9,6 +9,7 @@
 *.log
 *.synctex.gz
 *.toc
+*.aux
 
 # JabRef backup files
 *.bak

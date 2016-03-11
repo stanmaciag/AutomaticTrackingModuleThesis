@@ -10,6 +10,9 @@
 *.synctex.gz
 *.toc
 *.aux
+*.bcf
+*.out
+*.run.xml
 
 # JabRef backup files
 *.bak
@@ -18,5 +21,6 @@
 ignored/
 
 # Temporary files 
-bibliografia.bib~
-.gitignore~
+#bibliografia.bib~
+#.gitignore~
+*~

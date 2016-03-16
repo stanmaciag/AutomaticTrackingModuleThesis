@@ -24,6 +24,7 @@
 % Należy zmienić w Texmakerze używane narzędzie BibTeX (Preferencje->Konfiguracja Texmakera->Polecenia->Bib(la)tex) na "biber %" (zamiast "bibtex %.aux")
 \usepackage[backend=biber, maxbibnames=99]{biblatex}
 \usepackage{csquotes}
+\usepackage{textcomp}
 % Styl chorwacki taki sam jak polski
 \DeclareQuoteAlias{croatian}{polish}
 
@@ -68,7 +69,7 @@
 \newenvironment{conditions}
   {\par\vspace{\abovedisplayskip}\noindent\begin{tabular}{>{$}l<{$} @{${}-{}$} l}}
   {\end{tabular}\par\vspace{\belowdisplayskip}}
-  
+
   
 % Opis równania conditionseq, użycie:
 % \begin{conditionseq}

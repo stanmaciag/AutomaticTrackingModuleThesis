@@ -19,6 +19,7 @@ ignored
 *.bcf
 *.out
 *.run.xml
+*.dvi
 
 # JabRef backup files
 *.bak

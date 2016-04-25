@@ -1,0 +1,13 @@
+[1] Config.pm:318> INFO - This is Biber 1.8
+[1] Config.pm:321> INFO - Logfile is 'modul_automatycznego_sledzenia_poruszajacych_sie_obiektow_do_zastosowan_w_robotyce_mobilnej.blg'
+[114] biber:275> INFO - === Åro mar 23, 2016, 17:13:13
+[115] Biber.pm:333> INFO - Reading 'modul_automatycznego_sledzenia_poruszajacych_sie_obiektow_do_zastosowan_w_robotyce_mobilnej.bcf'
+[223] Biber.pm:630> INFO - Found 29 citekeys in bib section 0
+[245] Biber.pm:3053> INFO - Processing section 0
+[265] Biber.pm:3190> INFO - Looking for bibtex format file 'bibliografia.bib' for section 0
+[300] bibtex.pm:933> INFO - Decoding LaTeX character macros into UTF-8
+[339] bibtex.pm:808> INFO - Found BibTeX data source 'bibliografia.bib'
+[501] Biber.pm:2939> INFO - Overriding locale 'pl_PL.UTF-8' default tailoring 'variable = shifted' with 'variable = non-ignorable'
+[502] Biber.pm:2945> INFO - Sorting 'entry' list 'nty' keys
+[649] bbl.pm:482> INFO - Writing 'modul_automatycznego_sledzenia_poruszajacych_sie_obiektow_do_zastosowan_w_robotyce_mobilnej.bbl' with encoding 'UTF-8'
+[657] bbl.pm:555> INFO - Output to modul_automatycznego_sledzenia_poruszajacych_sie_obiektow_do_zastosowan_w_robotyce_mobilnej.bbl

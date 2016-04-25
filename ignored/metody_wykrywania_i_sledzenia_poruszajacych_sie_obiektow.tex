@@ -1,0 +1,111 @@
+\chapter{Metody wykrywania i śledzenia poruszających się obiektów}
+\label{cha:Metody_wykrywania_i_sledzenia_poruszajacych_sie_obiektow}
+
+%---------------------------------------------------------------------------
+
+\section{Podstawowe pojęcia}
+\label{sec:podstawowePoj}
+
+\subsection{Pole ruchu \cite{Trucco1998}}
+\label{subsec:poleRuchu}
+Pole ruchu jest dwuwymiarowym polem wektorowym prędkości punktów obrazu, które są skutkiem względnego ruchu pomiędzy kamerą oraz obserwowaną przez nią sceną. Pole ruchu powstaje poprzez rzutowanie rzeczywistego, trójwymiarowego pola wektorowego prędkości obiektu na płaszczyznę obrazu.
+
+%---------------------------------------------------------------------------
+
+\section{Odejmowanie tła \cite{Benezeth2008}}
+\label{sec:odejmowanieTla}
+Odejmowaniem tła (\textit{Background Subtraction}, w skrócie BS) określa się zbiór metod, w których wykrycie obiektu następuje poprzez segmentację pikseli tła występujących w sekwencji video. W tym celu tworzony jest model tła i dla każdej kolejnej klatki wyszukiwane są piksele stanowiące anomalie. Wszystkie metody BS opierają się na jednym założeniu - obserwowana sekwencja video $I$ składa się z nieruchomego tła $B$, przed którym można zaobserwować obiekty zainteresowania. Zakładając, że poruszający się obiekt w czasie $t$ ma kolor lub rozkład kolorów inny od występującego w $B$, metody BS można opisać następującym równaniem:
+
+\begin{equation}
+    X_{t}(s) = 
+    \begin{cases}
+        1 &\mbox{gdy } d(I_{s,t},B_{s})>\tau \\
+        0 &\mbox{dla pozostałych}
+    \end{cases}
+\end{equation}
+gdzie $X_{t}(s)$ jest polem ruchu (\ref{subsec:poleRuchu}) w czasie $t$, $d$ jest odległością pomiędzy klatką $I_{s,t}$ dla piksela $s$ w chwili $t$ oraz tłem $B_{s}$ dla piksela $s$ a $\tau$ jest założoną wartością progową. Poszczególne metody BS różnią się od siebie definicją metryki $d$ oraz sposobem modelowania tła $B$. Każdy algorytm BS składa się z czterech podstawowych kroków \cite{Cheung2004}:
+\begin{enumerate}
+	\item Wstępne przygotowanie obrazu - konwersja wejściowej sekwencji video do postaci użytecznej w kolejnych krokach
+	\item Modelowanie tła - model tła jest jego opisem statystycznym , uaktualnianym wraz z otrzymaniem każdej kolejnej klatki video 
+	\item Wykrywanie obiektów pierwszoplanowych (ang. \textit{foreground}) - segmentacja pikseli niepasujących do modelu tła
+	\item Walidacja - odrzucenie 
+\end{enumerate}
+
+\subsection{Metoda podstawowa}
+\label{subsec:metodaPodst}
+Najprostsze podejście definiuje model tła jako obraz (kolorowy lub w skali szarości), który można uzyskać poprzez przechwycenie obrazu z kamery bez obecności poruszającego się obiektu lub poprzez zastosowanie filtru medianowego (\textit{Temporal Median Filter}). Model tła może być rekurencyjnie uaktualniane, zgodnie z zależnością:
+\begin{equation}
+	B_{s,t+1} = (1-\alpha)B_{s,t} + \alpha I_{s,t}
+\end{equation}
+gdzie $\alpha$ jest współczynnikiem uczenia o wartości z przedziału pomiędzy $0$ a $1$. Wykrywanie pikseli należących do pierwszoplanowego obiektu odbywa się poprzez wykonanie operacji progowania na podstawie przyjętej metryki odległości $d$. Przykładowe metryki:
+
+\begin{equation}
+	d_0 = \abs{I_{s,t} - B_{s,t}}
+\end{equation}  
+\begin{equation}
+	d_1 = \abs{I_{s,t}^{R} - B_{s,t}^{R}} + \abs{I_{s,t}^{G} - B_{s,t}^{G}} + \abs{I_{s,t}^{B} 		- B_{s,t}^{B}}
+\end{equation}
+\begin{equation}
+	d_2 = (I_{s,t}^{R} - B_{s,t}^{R})^2 + (I_{s,t}^{G} - B_{s,t}^{G})^2 + (I_{s,t}^{B} - 			B_{s,t}^{B})^2
+\end{equation}
+\begin{equation}
+	d_3 = \max\{\abs{I_{s,t}^{R} - B_{s,t}^{R}}, \abs{I_{s,t}^{G} - B_{s,t}^{G}}, \abs{I_{s,t}		^{B} - B_{s,t}^{B}}\}
+\end{equation}
+
+Indeksy górne $R$, $G$ i $B$ odnoszą się do składowych koloru obrazu, metryka $d_0$ może być stosowana dla obrazów w skali szarości.
+
+\subsection{One Gaussian (1-G)}
+\label{subsec:oneGauss}
+Piksele tła można modelować jako funkcje gęstości prawdopodobieństwa (\textit{probability density function}, w skrócie PDF) w postaci rozkładu Gaussa $\eta(\mu_{s,t},\Sigma_{s,t})$, gdzie $\mu_{s,t}$ to średni kolor tła dla chwili $t$ oraz piksela $s$, a $\Sigma_{s,t}$ to macierz kowariancji. Wartości tych parametrów są wyznaczane na podstawie zbioru uczącego (składającego się z określonej liczby ostatnich klatek sekwencji wideo), w celu uwzględnienia zmian oświetlenia mogą być uaktualniane zgodnie ze wzorami:
+\begin{equation}
+	\mu_{s,t+1} = (1-\alpha)\mu_{s,t} + \alpha I_{s,t}
+\end{equation}
+\begin{equation}
+	\Sigma_{s,t+1} = (1-\alpha)\Sigma_{s,t} + \alpha(I_{s,t}-\mu_{s,t})(I_{s,t}-				\mu_{s,t})^T
+\end{equation}
+Stosuje się metryki dystansu w postaci logarytmicznej $d_G$ lub Mahalanobisa $d_M$:
+\begin{equation}
+	d_G =  \frac{1}{2}\log((2\pi)^3\abs{\Sigma_{s,t}}) + \frac{1}{2}(I_{s,t}-\mu_{s,t})			\Sigma_{s,t}^{-1}(I_{s,t} - \mu_{s,t})^{T}
+\end{equation} 
+\begin{equation}
+	d_M = \abs{I_{s,t}-\mu_{s,t}}\Sigma_{s,t}^{-1}\abs{I_{s,t}-\mu_{s,t}}^{T}
+\end{equation}
+gdzie $I_{s,t}$ oraz $\mu_{s,t}$ są wektorami składowych koloru $RGB$. 
+
+\subsection{Gaussian Mixture Model (GMM)}
+\label{subsec:GaussianMM}
+Rozwinięciem metody 1-G (\ref{subsec:oneGauss}) jest metoda GMM, w której funkcja PDF ma charakter multimodalny, w wyniku czego każdy piksel jest modelowany przez złożenie $K$ funkcji Gaussa. Prawdopodobieństwo zaobserwowania koloru danego piksela $s$ (tzn. jego wartości) wynosi:
+\begin{equation}
+	P(I_{s,t},t) = \sum_{i=1}^{K}\omega_{i,s,t}\eta(I_{s,t},\mu_{i,s,t},\Sigma_{i,s,t})
+\end{equation}
+gdzie $\eta(I_{s,t},\mu_{i,s,t},\Sigma_{i,s,t})$ to i-ty model Gaussa:
+\begin{equation}
+	\eta(I_{s,t},\mu_{i,s,t},\Sigma_{i,s,t}) = \frac{1}{(2\pi)^\frac{n}{2}\abs{\Sigma}^{\frac{1}{2}}}e^{-\frac{1}{2}(I_{s,t}-\mu_{i,s,t})^T\Sigma^{-1}(I_{s,t}-\mu_{i,s,t})}
+\end{equation}
+Parametr $K$ dobiera się w zależności od dostępnej mocy obliczeniowej oraz zasobów pamięci. Parametr $\omega_{i,s,t}$ oznacza wagę danego modelu. W celu redukcji złożoności obliczeniowej, macierz kowariancji $\Sigma_{i,s,t}$ sprowadza się do postaci diagonalnej. W przypadku dopasowania określonego piksela $I_{s,t}$ do określonego modelu składowego  wykonuje się aktualizację jego parametrów. Dopasowanie definiuje się jako rozbieżność od średniej wartości, która nie przekracza $2,5$ krotności odchylenia standardowego. Uaktualnienie wartości parametrów wykonywane jest według zależności:
+\begin{equation}
+	\omega_{i,s,t} = (1-\alpha)\omega_{i,s,t-1}+\alpha
+\end{equation}
+\begin{equation}
+	\mu_{i,s,t} = (1-\rho)\mu_{i,s,t-1}+\rho I_{i,s,t}
+\end{equation}
+\begin{equation}
+	\sigma_{i,s,t}^2 = (1-\rho)\sigma_{i,s,t-1}^2+\rho(I_{i,s,t} - \mu_{i,s,t})^2
+\end{equation}
+gdzie $\alpha$ to pierwszy, a $\rho$ to drugi współczynnik uczenia zdefiniowany jako:
+\begin{equation}
+	\rho = \alpha \eta(I_{s,t},\mu_{i,s,t},\Sigma_{i,s,t})
+\end{equation}
+Parametry modeli, dla których nie wystąpiły dopasowania pozostają niezmienione, natomiast ich wagi redukowane są zgodnie z zależnością:
+\begin{equation}
+	\omega_{i,s,t} = (1 - \alpha)\omega_{i,s,t-1}
+\end{equation} 
+Jeśli dla piksela nie można określić żadnego dopasowania, model składowy o najniższej wadze zastępuje się rozkładem Gaussa o wartości średniej $I_{s,t}$, dużej początkowej wariancji $\sigma_0$ oraz niskiej początkowej wadze $\omega_0$. Po uaktualnieniu wszystkich składowych modeli wykonywana jest normalizacja wag (ich suma jest sprowadzana do $1$). Następnie składowe są sortowane według współczynnika dopasowania $\omega_{i,s,t}/\sigma_{i,s,t}$ i wybranych zostaje $H$ najbardziej wiarygodnych, stanowiących tło. Wartość $H$ wyznacza się  zgodnie z zależnością:
+\begin{equation}
+	H = \argmin_h(\sum_{i=1}^h\omega_i > \tau)
+\end{equation}
+gdzie $\tau$ jest wartością progową. Piksele, które są więcej niż $2,5$ razy odległe od wybranych modeli składowych klasyfikowane są jako należące do poruszającego się obiektu.
+
+
+\section{Przepływ optyczny (\textit{Optical flow}}
+\label{sec:OpticalFlow}

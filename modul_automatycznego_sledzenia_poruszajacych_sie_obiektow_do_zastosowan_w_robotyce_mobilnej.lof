@@ -1,0 +1,55 @@
+\boolfalse {citerequest}\boolfalse {citetracker}\boolfalse {pagetracker}\boolfalse {backtracker}\relax 
+\defcounter {refsection}{0}\relax 
+\select@language {polish}
+\defcounter {refsection}{0}\relax 
+\addvspace {10\p@ }
+\defcounter {refsection}{0}\relax 
+\contentsline {figure}{\numberline {1.1}{\ignorespaces Og\IeC {\'o}lny model systemu \IeC {\'s}ledzenia obiekt\IeC {\'o}w}}{3}{figure.caption.1}
+\defcounter {refsection}{0}\relax 
+\contentsline {figure}{\numberline {1.2}{\ignorespaces Og\IeC {\'o}lny model dzia\IeC {\l }ania algorytm\IeC {\'o}w wizyjnego \IeC {\'s}ledzenia obiekt\IeC {\'o}w}}{5}{figure.caption.2}
+\defcounter {refsection}{0}\relax 
+\contentsline {figure}{\numberline {1.3}{\ignorespaces Reprezentacje obiektu zainteresowania na obrazie}}{6}{figure.caption.3}
+\defcounter {refsection}{0}\relax 
+\contentsline {figure}{\numberline {1.4}{\ignorespaces Modele obiektu zainteresowania, stosowane w algorytmach \IeC {\'s}ledzenia obiekt\IeC {\'o}w}}{7}{figure.caption.4}
+\defcounter {refsection}{0}\relax 
+\contentsline {figure}{\numberline {1.5}{\ignorespaces Modele ruchu obiektu, stosowane w algorytmach wizyjnego \IeC {\'s}ledzenia obiekt\IeC {\'o}w}}{8}{figure.caption.5}
+\defcounter {refsection}{0}\relax 
+\contentsline {figure}{\numberline {1.6}{\ignorespaces Metody \IeC {\'s}ledzenia obiekt\IeC {\'o}w na obrazach}}{9}{figure.caption.6}
+\defcounter {refsection}{0}\relax 
+\addvspace {10\p@ }
+\defcounter {refsection}{0}\relax 
+\contentsline {figure}{\numberline {2.1}{\ignorespaces Przyk\IeC {\l }ady cech wyst\IeC {\k e}puj\IeC {\k a}cych na obrazach}}{12}{figure.caption.11}
+\defcounter {refsection}{0}\relax 
+\contentsline {figure}{\numberline {2.2}{\ignorespaces Przyk\IeC {\l }ad ekstrakcji i deskrypcji punkt\IeC {\'o}w charakterystycznych metod\IeC {\k a} \textit {SIFT}}}{15}{figure.caption.13}
+\defcounter {refsection}{0}\relax 
+\contentsline {figure}{\numberline {2.3}{\ignorespaces Przyk\IeC {\l }ad wykrywania kraw\IeC {\k e}dzi z wykorzystaniem operatora Sobela}}{16}{figure.caption.14}
+\defcounter {refsection}{0}\relax 
+\contentsline {figure}{\numberline {2.4}{\ignorespaces Przyk\IeC {\l }ad r\IeC {\'o}\IeC {\.z}nic pomi\IeC {\k e}dzy kolejnymi obrazami sekwencji}}{18}{figure.caption.15}
+\defcounter {refsection}{0}\relax 
+\contentsline {figure}{\numberline {2.5}{\ignorespaces Przyk\IeC {\l }ad wyniku operacji odejmowania dw\IeC {\'o}ch kolejnych obraz\IeC {\'o}w sekwencji}}{19}{figure.caption.16}
+\defcounter {refsection}{0}\relax 
+\contentsline {figure}{\numberline {2.6}{\ignorespaces Warunki wyst\IeC {\k a}pienia problemu apertury}}{19}{figure.caption.17}
+\defcounter {refsection}{0}\relax 
+\contentsline {figure}{\numberline {2.7}{\ignorespaces Przyk\IeC {\l }ad wyst\IeC {\k e}powania problemu korespondencji}}{20}{figure.caption.18}
+\defcounter {refsection}{0}\relax 
+\contentsline {figure}{\numberline {2.8}{\ignorespaces Przyk\IeC {\l }ad wizualizacji przep\IeC {\l }ywu optycznego}}{21}{figure.caption.19}
+\defcounter {refsection}{0}\relax 
+\addvspace {10\p@ }
+\defcounter {refsection}{0}\relax 
+\contentsline {figure}{\numberline {3.1}{\ignorespaces Przebieg algorytmu Lucasa-Kanade}}{27}{figure.caption.21}
+\defcounter {refsection}{0}\relax 
+\contentsline {figure}{\numberline {3.2}{\ignorespaces Przyk\IeC {\l }ady piramidy obraz\IeC {\'o}w}}{31}{figure.caption.22}
+\defcounter {refsection}{0}\relax 
+\contentsline {figure}{\numberline {3.3}{\ignorespaces Przyk\IeC {\l }ady dzia\IeC {\l }ania metody \textit {Mean Shift}}}{33}{figure.caption.23}
+\defcounter {refsection}{0}\relax 
+\addvspace {10\p@ }
+\defcounter {refsection}{0}\relax 
+\contentsline {figure}{\numberline {4.1}{\ignorespaces Bezza\IeC {\l }ogowy helikopter - platforma testowa}}{45}{figure.caption.26}
+\defcounter {refsection}{0}\relax 
+\contentsline {figure}{\numberline {4.2}{\ignorespaces Przebieg algorytmu wizyjnego \IeC {\'s}ledzenia obiektu}}{47}{figure.caption.27}
+\defcounter {refsection}{0}\relax 
+\contentsline {figure}{\numberline {4.3}{\ignorespaces Przyk\IeC {\l }adowy obraz z kamery sferycznej}}{47}{figure.caption.28}
+\defcounter {refsection}{0}\relax 
+\contentsline {figure}{\numberline {4.4}{\ignorespaces Por\IeC {\'o}wnanie dzia\IeC {\l }ania algorytmu \textit {MCAMSGPF} z innymi metodami}}{49}{figure.caption.29}
+\defcounter {refsection}{0}\relax 
+\contentsline {figure}{\numberline {4.5}{\ignorespaces Schemat systemu sterowania g\IeC {\l }owic\IeC {\k a} \textit {pan-tilt}}}{50}{figure.caption.30}

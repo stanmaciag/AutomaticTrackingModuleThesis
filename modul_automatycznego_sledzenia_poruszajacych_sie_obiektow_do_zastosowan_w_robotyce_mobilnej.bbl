@@ -1,0 +1,904 @@
+% $ biblatex auxiliary file $
+% $ biblatex bbl format version 2.3 $
+% Do not modify the above lines!
+%
+% This is an auxiliary file used by the 'biblatex' package.
+% This file may safely be deleted. It will be recreated by
+% biber as required.
+%
+\begingroup
+\makeatletter
+\@ifundefined{ver@biblatex.sty}
+  {\@latex@error
+     {Missing 'biblatex' package}
+     {The bibliography requires the 'biblatex' package.}
+      \aftergroup\endinput}
+  {}
+\endgroup
+
+
+\refsection{0}
+  \sortlist{entry}{nty}
+    \entry{Arulampalam2002}{article}{}
+      \name{labelname}{4}{}{%
+        {{hash=281872605273b12fafdc5d49993f9518}{Arulampalam}{A\bibinitperiod}{M.\bibnamedelimi Sanjeev}{M\bibinitperiod\bibinitdelim S\bibinitperiod}{}{}{}{}}%
+        {{hash=3b6ea44e9b04f9a5f438169cc8683926}{Maskell}{M\bibinitperiod}{Simon}{S\bibinitperiod}{}{}{}{}}%
+        {{hash=df9469128a8542e7ec681f48d2615e22}{Gordon}{G\bibinitperiod}{Neil}{N\bibinitperiod}{}{}{}{}}%
+        {{hash=ffcc3dddfe24d1666faae7567589a96d}{Clapp}{C\bibinitperiod}{Tim}{T\bibinitperiod}{}{}{}{}}%
+      }
+      \name{author}{4}{}{%
+        {{hash=281872605273b12fafdc5d49993f9518}{Arulampalam}{A\bibinitperiod}{M.\bibnamedelimi Sanjeev}{M\bibinitperiod\bibinitdelim S\bibinitperiod}{}{}{}{}}%
+        {{hash=3b6ea44e9b04f9a5f438169cc8683926}{Maskell}{M\bibinitperiod}{Simon}{S\bibinitperiod}{}{}{}{}}%
+        {{hash=df9469128a8542e7ec681f48d2615e22}{Gordon}{G\bibinitperiod}{Neil}{N\bibinitperiod}{}{}{}{}}%
+        {{hash=ffcc3dddfe24d1666faae7567589a96d}{Clapp}{C\bibinitperiod}{Tim}{T\bibinitperiod}{}{}{}{}}%
+      }
+      \strng{namehash}{8d21133a8294e1f09843c288110c1f56}
+      \strng{fullhash}{fb68a0913ba1bc515dbbb4f35f0c8d29}
+      \field{sortinit}{A}
+      \field{labeltitle}{{A} tutorial on particle filters for online nonlinear/non-{G}aussian {B}ayesian tracking}
+      \field{abstract}{{I}ncreasingly, for many application areas, it is becoming important to include elements of nonlinearity and non-{G}aussianity in order to model accurately the underlying dynamics of a physical system. {M}oreover, it is typically crucial to process data on-line as it arrives, both from the point of view of storage costs as well as for rapid adaptation to changing signal characteristics. {I}n this paper, we review both optimal and suboptimal {B}ayesian algorithms for nonlinear/non-{G}aussian tracking problems, with a focus on particle filters. {P}article filters are sequential {M}onte {C}arlo methods based on point mass (or "particle") representations of probability densities, which can be applied to any state-space model and which generalize the traditional {K}alman filtering methods. {S}everal variants of the particle filter such as {SIR}, {ASIR}, and {RPF} are introduced within a generic framework of the sequential importance sampling ({SIS}) algorithm. {T}hese are discussed and compared with the standard {EKF} through an illustrative example}
+      \field{journaltitle}{IEEE Transactions on Signal Processing}
+      \field{month}{02}
+      \field{number}{2}
+      \field{title}{{A} tutorial on particle filters for online nonlinear/non-{G}aussian {B}ayesian tracking}
+      \field{volume}{50}
+      \field{year}{2002}
+      \field{pages}{174\bibrangedash 188}
+      \verb{doi}
+      \verb 10.1109/78.978374
+      \endverb
+      \verb{file}
+      \verb :../sources/00978374.pdf:PDF
+      \endverb
+      \keyw{Bayesian methods,Costs,Filtering,Kalman filters,Monte Carlo methods,Nonlinear dynamical systems,Particle filters,Particle tracking,Signal processing,Tutorial}
+    \endentry
+    \entry{Baker2004}{article}{}
+      \name{labelname}{2}{}{%
+        {{hash=d6d2aa95037c71f331914a63990512a5}{Baker}{B\bibinitperiod}{Simon}{S\bibinitperiod}{}{}{}{}}%
+        {{hash=de7691b01181d3d91375d999b474c55f}{Matthews}{M\bibinitperiod}{Iain}{I\bibinitperiod}{}{}{}{}}%
+      }
+      \name{author}{2}{}{%
+        {{hash=d6d2aa95037c71f331914a63990512a5}{Baker}{B\bibinitperiod}{Simon}{S\bibinitperiod}{}{}{}{}}%
+        {{hash=de7691b01181d3d91375d999b474c55f}{Matthews}{M\bibinitperiod}{Iain}{I\bibinitperiod}{}{}{}{}}%
+      }
+      \strng{namehash}{9cf06bd688256383b59ca88eb354e37f}
+      \strng{fullhash}{9cf06bd688256383b59ca88eb354e37f}
+      \field{sortinit}{B}
+      \field{labeltitle}{{L}ucas-{K}anade 20 {Y}ears {O}n: {A} {U}nifying {F}ramework}
+      \field{abstract}{{S}ince the {L}ucas-{K}anade algorithm was proposed in 1981 image alignment has become one of the most widely used techniques in computer vision. {A}pplications range from optical flow and tracking to layered motion, mosaic construction, and face coding. {N}umerous algorithms have been proposed and a wide variety of extensions have been made to the original formulation. {W}e present an overview of image alignment, describing most of the algorithms and their extensions in a consistent framework. {W}e concentrate on the inverse compositional algorithm, an efficient algorithm that we recently proposed. {W}e examine which of the extensions to {L}ucas-{K}anade can be used with the inverse compositional algorithm without any significant loss of efficiency, and which cannot. {I}n this paper, {P}art 1 in a series of papers, we cover the quantity approximated, the warp update rule, and the gradient descent approximation. {I}n future papers, we will cover the choice of the error function, how to allow linear appearance variation, and how to impose priors on the parameters.}
+      \field{journaltitle}{International Journal of Computer Vision}
+      \field{month}{02}
+      \field{number}{3}
+      \field{title}{{L}ucas-{K}anade 20 {Y}ears {O}n: {A} {U}nifying {F}ramework}
+      \field{volume}{56}
+      \field{year}{2004}
+      \field{pages}{221\bibrangedash 255}
+      \verb{doi}
+      \verb 10.1023/B:VISI.0000011205.11775.fd
+      \endverb
+      \verb{file}
+      \verb :../sources/Baker&Matthews.pdf:PDF
+      \endverb
+      \keyw{image alignment,Lucas-Kanade,a unifying framework,additive vs. compositional algorithms,forwards vs. inverse algorithms,the inverse compositional algorithm,efficiency,steepest descent,Gauss-Newton,Newton,Levenberg-Marquardt}
+    \endentry
+    \entry{Baker2011}{article}{}
+      \name{labelname}{6}{}{%
+        {{hash=d6d2aa95037c71f331914a63990512a5}{Baker}{B\bibinitperiod}{Simon}{S\bibinitperiod}{}{}{}{}}%
+        {{hash=b14ac2b508357476f1391a183a077ab3}{Scharstein}{S\bibinitperiod}{Daniel}{D\bibinitperiod}{}{}{}{}}%
+        {{hash=25a650f9c5aff6948b1a133b6488f142}{Lewis}{L\bibinitperiod}{J.\bibnamedelimi P.}{J\bibinitperiod\bibinitdelim P\bibinitperiod}{}{}{}{}}%
+        {{hash=507b5db9b42e37f1dc7fd50bac7cd869}{Roth}{R\bibinitperiod}{Stefan}{S\bibinitperiod}{}{}{}{}}%
+        {{hash=aa8ecc491be13ee1dcc52c28fccd6476}{Black}{B\bibinitperiod}{Michael\bibnamedelima J.}{M\bibinitperiod\bibinitdelim J\bibinitperiod}{}{}{}{}}%
+        {{hash=f2e556c93256e7d70895d67702e14f1a}{Szeliski}{S\bibinitperiod}{Richard}{R\bibinitperiod}{}{}{}{}}%
+      }
+      \name{author}{6}{}{%
+        {{hash=d6d2aa95037c71f331914a63990512a5}{Baker}{B\bibinitperiod}{Simon}{S\bibinitperiod}{}{}{}{}}%
+        {{hash=b14ac2b508357476f1391a183a077ab3}{Scharstein}{S\bibinitperiod}{Daniel}{D\bibinitperiod}{}{}{}{}}%
+        {{hash=25a650f9c5aff6948b1a133b6488f142}{Lewis}{L\bibinitperiod}{J.\bibnamedelimi P.}{J\bibinitperiod\bibinitdelim P\bibinitperiod}{}{}{}{}}%
+        {{hash=507b5db9b42e37f1dc7fd50bac7cd869}{Roth}{R\bibinitperiod}{Stefan}{S\bibinitperiod}{}{}{}{}}%
+        {{hash=aa8ecc491be13ee1dcc52c28fccd6476}{Black}{B\bibinitperiod}{Michael\bibnamedelima J.}{M\bibinitperiod\bibinitdelim J\bibinitperiod}{}{}{}{}}%
+        {{hash=f2e556c93256e7d70895d67702e14f1a}{Szeliski}{S\bibinitperiod}{Richard}{R\bibinitperiod}{}{}{}{}}%
+      }
+      \strng{namehash}{51225a0e36a718cb6bd65de091d03d09}
+      \strng{fullhash}{8eb84c8628db4c272d4cfd16dfa71ebe}
+      \field{sortinit}{B}
+      \field{labeltitle}{{A} {D}atabase and {E}valuation {M}ethodology for {O}ptical {F}low}
+      \field{abstract}{{T}he quantitative evaluation of optical flow algorithms by {B}arron et al. (1994) led to significant advances in performance. {T}he challenges for optical flow algorithms today go beyond the datasets and evaluation methods proposed in that paper. {I}nstead, they center on problems associated with complex natural scenes, including nonrigid motion, real sensor noise, and motion discontinuities. {W}e propose a new set of benchmarks and evaluation methods for the next generation of optical flow algorithms. {T}o that end, we contribute four types of data to test different aspects of optical flow algorithms: (1) sequences with nonrigid motion where the ground-truth flow is determined by tracking hidden fluorescent texture, (2) realistic synthetic sequences, (3) high frame-rate video used to study interpolation error, and (4) modified stereo sequences of static scenes. {I}n addition to the average angular error used by {B}arron et al., we compute the absolute flow endpoint error, measures for frame interpolation error, improved statistics, and results at motion discontinuities and in textureless regions. {I}n {O}ctober 2007, we published the performance of several well-known methods on a preliminary version of our data to establish the current state of the art. {W}e also made the data freely available on the web at http://​vision.​middlebury.​edu/​flow/​. {S}ubsequently a number of researchers have uploaded their results to our website and published papers using the data. {A} significant improvement in performance has already been achieved. {I}n this paper we analyze the results obtained to date and draw a large number of conclusions from them.}
+      \field{journaltitle}{International Journal of Computer Vision}
+      \field{month}{03}
+      \field{number}{1}
+      \field{title}{{A} {D}atabase and {E}valuation {M}ethodology for {O}ptical {F}low}
+      \field{volume}{92}
+      \field{year}{2011}
+      \field{pages}{1\bibrangedash 31}
+      \verb{doi}
+      \verb 10.1007/s11263-010-0390-2
+      \endverb
+      \verb{file}
+      \verb :../sources/art%3A10.1007%2Fs11263-010-0390-2.pdf:PDF
+      \endverb
+      \keyw{Optical flow,Survey,Algorithms,Database,Benchmarks,Evaluation,Metrics}
+    \endentry
+    \entry{Bouguet2000}{report}{}
+      \name{labelname}{1}{}{%
+        {{hash=2084284d3010648735279863dd4ed659}{Bouguet}{B\bibinitperiod}{Jean-Yves}{J\bibinithyphendelim Y\bibinitperiod}{}{}{}{}}%
+      }
+      \name{author}{1}{}{%
+        {{hash=2084284d3010648735279863dd4ed659}{Bouguet}{B\bibinitperiod}{Jean-Yves}{J\bibinithyphendelim Y\bibinitperiod}{}{}{}{}}%
+      }
+      \list{institution}{1}{%
+        {Intel Corporation - Microprocessor Research Labs}%
+      }
+      \strng{namehash}{2084284d3010648735279863dd4ed659}
+      \strng{fullhash}{2084284d3010648735279863dd4ed659}
+      \field{sortinit}{B}
+      \field{labeltitle}{{P}yramidal implementation of the {L}ucas {K}anade feature tracker - {D}escription of the algorithm}
+      \field{title}{{P}yramidal implementation of the {L}ucas {K}anade feature tracker - {D}escription of the algorithm}
+      \field{type}{techreport}
+      \field{year}{2000}
+      \verb{file}
+      \verb :../sources/algo_tracking.pdf:PDF
+      \endverb
+    \endentry
+    \entry{Bradski1998}{inproceedings}{}
+      \name{labelname}{1}{}{%
+        {{hash=be76765af6dc6b5ca6c5999365b33eb6}{Bradski}{B\bibinitperiod}{Gary\bibnamedelima R.}{G\bibinitperiod\bibinitdelim R\bibinitperiod}{}{}{}{}}%
+      }
+      \name{author}{1}{}{%
+        {{hash=be76765af6dc6b5ca6c5999365b33eb6}{Bradski}{B\bibinitperiod}{Gary\bibnamedelima R.}{G\bibinitperiod\bibinitdelim R\bibinitperiod}{}{}{}{}}%
+      }
+      \list{location}{1}{%
+        {USA, NJ, Princeton}%
+      }
+      \list{publisher}{1}{%
+        {IEEE}%
+      }
+      \strng{namehash}{be76765af6dc6b5ca6c5999365b33eb6}
+      \strng{fullhash}{be76765af6dc6b5ca6c5999365b33eb6}
+      \field{sortinit}{B}
+      \field{labeltitle}{{R}eal time face and object tracking as a component of a perceptual user interface}
+      \field{abstract}{{A}s a step towards a perceptual user interface, an object tracking algorithm is developed and demonstrated tracking human faces. {C}omputer vision algorithms that are intended to form part of a perceptual user interface must be fast and efficient. {T}hey must be able to track in real time and yet not absorb a major share of computational resources. {A}n efficient, new algorithm is described here based on the mean shift algorithm. {T}he mean shift algorithm robustly finds the mode (peak) of probability distributions. {W}e first describe histogram based methods of producing object probability distributions. {I}n our case, we want to track the mode of an object's probability distribution within a video scene. {S}ince the probability distribution of the object can change and move dynamically in time, the mean shift algorithm is modified to deal with dynamically changing probability distributions. {T}he modified algorithm is called the {C}ontinuously {A}daptive {M}ean {S}hift ({CAMSHIFT}) algorithm. {CAMSHIFT} is then used as an interface for games and graphics}
+      \field{booktitle}{Fourth IEEE Workshop Applications of Computer Vision (WACV)}
+      \field{month}{10}
+      \field{title}{{R}eal time face and object tracking as a component of a perceptual user interface}
+      \field{year}{1998}
+      \field{pages}{214\bibrangedash 219}
+      \verb{doi}
+      \verb 10.1109/ACV.1998.732882
+      \endverb
+      \verb{file}
+      \verb :../sources/00732882.pdf:PDF
+      \endverb
+      \keyw{Computer vision,Face detection,Games,Histograms,Humans,Layout,Probability distribution,Robustness,Time sharing computer systems,User interfaces}
+    \endentry
+    \entry{Challa2011}{book}{}
+      \name{labelname}{4}{}{%
+        {{hash=583e626b909640480145f480156dfdb6}{Challa}{C\bibinitperiod}{Subhash}{S\bibinitperiod}{}{}{}{}}%
+        {{hash=e4a6b29775f3a17a1fd95ed3d44ebb39}{Morelande}{M\bibinitperiod}{Mark\bibnamedelima R.}{M\bibinitperiod\bibinitdelim R\bibinitperiod}{}{}{}{}}%
+        {{hash=e22aed09da86949762c524f7fb72c52d}{Mušicki}{M\bibinitperiod}{Darko}{D\bibinitperiod}{}{}{}{}}%
+        {{hash=c3d3d507c376c7d46e8f621662ab7fdc}{Evans}{E\bibinitperiod}{Robin\bibnamedelima J.}{R\bibinitperiod\bibinitdelim J\bibinitperiod}{}{}{}{}}%
+      }
+      \name{author}{4}{}{%
+        {{hash=583e626b909640480145f480156dfdb6}{Challa}{C\bibinitperiod}{Subhash}{S\bibinitperiod}{}{}{}{}}%
+        {{hash=e4a6b29775f3a17a1fd95ed3d44ebb39}{Morelande}{M\bibinitperiod}{Mark\bibnamedelima R.}{M\bibinitperiod\bibinitdelim R\bibinitperiod}{}{}{}{}}%
+        {{hash=e22aed09da86949762c524f7fb72c52d}{Mušicki}{M\bibinitperiod}{Darko}{D\bibinitperiod}{}{}{}{}}%
+        {{hash=c3d3d507c376c7d46e8f621662ab7fdc}{Evans}{E\bibinitperiod}{Robin\bibnamedelima J.}{R\bibinitperiod\bibinitdelim J\bibinitperiod}{}{}{}{}}%
+      }
+      \list{publisher}{1}{%
+        {Cambridge University Press}%
+      }
+      \strng{namehash}{07e6588a3b71838a20b13342d3c99178}
+      \strng{fullhash}{1d5b2bb403ae1cb357196c9f0bc644aa}
+      \field{sortinit}{C}
+      \field{labeltitle}{{F}undamentals of {O}bject {T}racking}
+      \field{title}{{F}undamentals of {O}bject {T}racking}
+      \field{year}{2011}
+      \verb{doi}
+      \verb http://dx.doi.org/10.1017/CBO9780511975837
+      \endverb
+      \verb{file}
+      \verb :../sources/0521876281_tracking.pdf:PDF
+      \endverb
+    \endentry
+    \entry{Chaumette2006}{article}{}
+      \name{labelname}{2}{}{%
+        {{hash=ab30147b456b623f37466e06be77fff2}{Chaumette}{C\bibinitperiod}{Francois}{F\bibinitperiod}{}{}{}{}}%
+        {{hash=8346db44e6189448a4dff197f5bc47bb}{Hutchinson}{H\bibinitperiod}{Seth}{S\bibinitperiod}{}{}{}{}}%
+      }
+      \name{author}{2}{}{%
+        {{hash=ab30147b456b623f37466e06be77fff2}{Chaumette}{C\bibinitperiod}{Francois}{F\bibinitperiod}{}{}{}{}}%
+        {{hash=8346db44e6189448a4dff197f5bc47bb}{Hutchinson}{H\bibinitperiod}{Seth}{S\bibinitperiod}{}{}{}{}}%
+      }
+      \strng{namehash}{bb7c66fcd444f9890edbb60ce0fc43ec}
+      \strng{fullhash}{bb7c66fcd444f9890edbb60ce0fc43ec}
+      \field{sortinit}{C}
+      \field{labeltitle}{{V}isual servo control. {I}. {B}asic approaches}
+      \field{abstract}{{T}his paper is the first of a two-part series on the topic of visual servo control using computer vision data in the servo loop to control the motion of a robot. {I}n this paper, we describe the basic techniques that are by now well established in the field. {W}e first give a general overview of the formulation of the visual servo control problem. {W}e then describe the two archetypal visual servo control schemes: image-based and position-based visual servo control. {F}inally, we discuss performance and stability issues that pertain to these two schemes, motivating the second article in the series, in which we consider advanced techniques}
+      \field{journaltitle}{IEEE Robotics \& Automation Magazine}
+      \field{month}{12}
+      \field{number}{4}
+      \field{title}{{V}isual servo control. {I}. {B}asic approaches}
+      \field{volume}{13}
+      \field{year}{2006}
+      \field{pages}{82\bibrangedash 90}
+      \verb{doi}
+      \verb 10.1109/MRA.2006.250573
+      \endverb
+      \verb{file}
+      \verb :../sources/04015997.pdf:PDF
+      \endverb
+      \keyw{Automatic control,Cameras,Computer vision,Mobile robots,Motion control,Robot motion,Robot vision systems,Robotics and automation,Servomechanisms,Servosystems}
+    \endentry
+    \entry{Chou2012}{inproceedings}{}
+      \name{labelname}{2}{}{%
+        {{hash=813a5b15ca71e4afcadf6c90461567d6}{Chou}{C\bibinitperiod}{Yu-Cheng}{Y\bibinithyphendelim C\bibinitperiod}{}{}{}{}}%
+        {{hash=cc28691424e2f9aba7d98dcc25113d45}{Huang}{H\bibinitperiod}{Bo-Shiun}{B\bibinithyphendelim S\bibinitperiod}{}{}{}{}}%
+      }
+      \name{author}{2}{}{%
+        {{hash=813a5b15ca71e4afcadf6c90461567d6}{Chou}{C\bibinitperiod}{Yu-Cheng}{Y\bibinithyphendelim C\bibinitperiod}{}{}{}{}}%
+        {{hash=cc28691424e2f9aba7d98dcc25113d45}{Huang}{H\bibinitperiod}{Bo-Shiun}{B\bibinithyphendelim S\bibinitperiod}{}{}{}{}}%
+      }
+      \list{location}{1}{%
+        {China, Suzhou}%
+      }
+      \list{publisher}{1}{%
+        {IEEE}%
+      }
+      \strng{namehash}{eb4c4a6f73d1fbdf14010250aefa90c1}
+      \strng{fullhash}{eb4c4a6f73d1fbdf14010250aefa90c1}
+      \field{sortinit}{C}
+      \field{labeltitle}{{M}ono vision particle filter based object tracking with a mobile robot}
+      \field{abstract}{{T}his paper proposes a new mono vision, particle filter based object tracking method that predicts a moving object's position within an image, and computes the corresponding real-world position relative to a mobile robot. {A}ccordingly, the mobile robot moves toward the moving object to keep it at the central field of view. {E}xperimental results show that the proposed method allows our mobile robot to track a target moving at a moderate speed.}
+      \field{booktitle}{IEEE/ASME International Conference on Mechatronics and Embedded Systems and Applications (MESA)}
+      \field{month}{07}
+      \field{title}{{M}ono vision particle filter based object tracking with a mobile robot}
+      \field{year}{2012}
+      \field{pages}{87\bibrangedash 92}
+      \verb{doi}
+      \verb 10.1109/MESA.2012.6275542
+      \endverb
+      \verb{file}
+      \verb :../sources/06275542.pdf:PDF
+      \endverb
+      \keyw{Cameras,Equations,MONOS devices,Mathematical model,Mobile robots,Particle filters}
+    \endentry
+    \entry{Comaniciu1999}{inproceedings}{}
+      \name{labelname}{2}{}{%
+        {{hash=00467887280b83151c56567803878174}{Comaniciu}{C\bibinitperiod}{Dorin}{D\bibinitperiod}{}{}{}{}}%
+        {{hash=5fe56106e4cb40ead7b0f1a6acf3216f}{Meer}{M\bibinitperiod}{Peter}{P\bibinitperiod}{}{}{}{}}%
+      }
+      \name{author}{2}{}{%
+        {{hash=00467887280b83151c56567803878174}{Comaniciu}{C\bibinitperiod}{Dorin}{D\bibinitperiod}{}{}{}{}}%
+        {{hash=5fe56106e4cb40ead7b0f1a6acf3216f}{Meer}{M\bibinitperiod}{Peter}{P\bibinitperiod}{}{}{}{}}%
+      }
+      \list{location}{1}{%
+        {Greece, Kerkyra}%
+      }
+      \list{publisher}{1}{%
+        {IEEE}%
+      }
+      \strng{namehash}{6e608b584456a16d4a5a4f095fef763d}
+      \strng{fullhash}{6e608b584456a16d4a5a4f095fef763d}
+      \field{sortinit}{C}
+      \field{labeltitle}{{M}ean shift analysis and applications}
+      \field{abstract}{{A} nonparametric estimator of density gradient, the mean shift, is employed in the joint, spatial-range (value) domain of gray level and color images for discontinuity preserving filtering and image segmentation. {P}roperties of the mean shift are reviewed and its convergence on lattices is proven. {T}he proposed filtering method associates with each pixel in the image the closest local mode in the density distribution of the joint domain. {S}egmentation into a piecewise constant structure requires only one more step, fusion of the regions associated with nearby modes. {T}he proposed technique has two parameters controlling the resolution in the spatial and range domains. {S}ince convergence is guaranteed, the technique does not require the intervention of the user to stop the filtering at the desired image quality. {S}everal examples, for gray and color images, show the versatility of the method and compare favorably with results described in the literature for the same images}
+      \field{booktitle}{The Proceedings of the Seventh IEEE International Conference on Computer Vision}
+      \field{month}{09}
+      \field{title}{{M}ean shift analysis and applications}
+      \field{volume}{2}
+      \field{year}{1999}
+      \field{pages}{1197\bibrangedash 1203}
+      \verb{doi}
+      \verb 10.1109/ICCV.1999.790416
+      \endverb
+      \verb{file}
+      \verb :../sources/00790416.pdf:PDF
+      \endverb
+      \keyw{Application software,Color,Computer vision,Convergence,Image quality,Image segmentation,Kernel,Lattices,Pixel,Spatial resolution}
+    \endentry
+    \entry{Comaniciu2003}{article}{}
+      \name{labelname}{3}{}{%
+        {{hash=00467887280b83151c56567803878174}{Comaniciu}{C\bibinitperiod}{Dorin}{D\bibinitperiod}{}{}{}{}}%
+        {{hash=e184248c987a2499f02c70e28de76f97}{Ramesh}{R\bibinitperiod}{Visvanathan}{V\bibinitperiod}{}{}{}{}}%
+        {{hash=5fe56106e4cb40ead7b0f1a6acf3216f}{Meer}{M\bibinitperiod}{Peter}{P\bibinitperiod}{}{}{}{}}%
+      }
+      \name{author}{3}{}{%
+        {{hash=00467887280b83151c56567803878174}{Comaniciu}{C\bibinitperiod}{Dorin}{D\bibinitperiod}{}{}{}{}}%
+        {{hash=e184248c987a2499f02c70e28de76f97}{Ramesh}{R\bibinitperiod}{Visvanathan}{V\bibinitperiod}{}{}{}{}}%
+        {{hash=5fe56106e4cb40ead7b0f1a6acf3216f}{Meer}{M\bibinitperiod}{Peter}{P\bibinitperiod}{}{}{}{}}%
+      }
+      \strng{namehash}{ba1c311d50c716606e312c9b3507f175}
+      \strng{fullhash}{ba1c311d50c716606e312c9b3507f175}
+      \field{sortinit}{C}
+      \field{labeltitle}{{K}ernel-based object tracking}
+      \field{abstract}{{A} new approach toward target representation and localization, the central component in visual tracking of nonrigid objects, is proposed. {T}he feature histogram-based target representations are regularized by spatial masking with an isotropic kernel. {T}he masking induces spatially-smooth similarity functions suitable for gradient-based optimization, hence, the target localization problem can be formulated using the basin of attraction of the local maxima. {W}e employ a metric derived from the {B}hattacharyya coefficient as similarity measure, and use the mean shift procedure to perform the optimization. {I}n the presented tracking examples, the new method successfully coped with camera motion, partial occlusions, clutter, and target scale variations. {I}ntegration with motion filters and data association techniques is also discussed. {W}e describe only a few of the potential applications: exploitation of background information, {K}alman tracking using motion models, and face tracking.}
+      \field{journaltitle}{IEEE Transactions on Pattern Analysis and Machine Intelligence}
+      \field{month}{05}
+      \field{number}{5}
+      \field{title}{{K}ernel-based object tracking}
+      \field{volume}{25}
+      \field{year}{2003}
+      \field{pages}{564\bibrangedash 577}
+      \verb{doi}
+      \verb 10.1109/TPAMI.2003.1195991
+      \endverb
+      \verb{file}
+      \verb :../sources/01195991.pdf:PDF
+      \endverb
+      \keyw{Cameras,Face detection,Filtering,Filters,Kernel,Layout,Nonlinear equations,Performance evaluation,State-space methods,Target tracking}
+    \endentry
+    \entry{Forsyth2012}{book}{}
+      \name{labelname}{2}{}{%
+        {{hash=9d31f4fa6f926c7b3b07a41d44d1a57a}{Forsyth}{F\bibinitperiod}{David\bibnamedelima A.}{D\bibinitperiod\bibinitdelim A\bibinitperiod}{}{}{}{}}%
+        {{hash=ee672c13ddea8aa3bc5a45024cfd7354}{Ponce}{P\bibinitperiod}{Jean}{J\bibinitperiod}{}{}{}{}}%
+      }
+      \name{author}{2}{}{%
+        {{hash=9d31f4fa6f926c7b3b07a41d44d1a57a}{Forsyth}{F\bibinitperiod}{David\bibnamedelima A.}{D\bibinitperiod\bibinitdelim A\bibinitperiod}{}{}{}{}}%
+        {{hash=ee672c13ddea8aa3bc5a45024cfd7354}{Ponce}{P\bibinitperiod}{Jean}{J\bibinitperiod}{}{}{}{}}%
+      }
+      \list{publisher}{1}{%
+        {Prentice Hall}%
+      }
+      \strng{namehash}{98a3b5bda7af3b79dc44a470a68a86f7}
+      \strng{fullhash}{98a3b5bda7af3b79dc44a470a68a86f7}
+      \field{sortinit}{F}
+      \field{labeltitle}{{C}omputer {V}ision - {A} modern approach}
+      \field{edition}{2}
+      \field{title}{{C}omputer {V}ision - {A} modern approach}
+      \field{year}{2012}
+      \verb{file}
+      \verb :../sources/Computer Vision A Modern Approach 2nd Edition.pdf:PDF
+      \endverb
+    \endentry
+    \entry{Horn1981}{article}{}
+      \name{labelname}{2}{}{%
+        {{hash=dbc02519b4727ebb41f6ab2af8e2808d}{Horn}{H\bibinitperiod}{Berthold\bibnamedelimb K.\bibnamedelimi P.}{B\bibinitperiod\bibinitdelim K\bibinitperiod\bibinitdelim P\bibinitperiod}{}{}{}{}}%
+        {{hash=3b66170d6d362a537afb31815573efdb}{Schunck}{S\bibinitperiod}{Brian\bibnamedelima G.}{B\bibinitperiod\bibinitdelim G\bibinitperiod}{}{}{}{}}%
+      }
+      \name{author}{2}{}{%
+        {{hash=dbc02519b4727ebb41f6ab2af8e2808d}{Horn}{H\bibinitperiod}{Berthold\bibnamedelimb K.\bibnamedelimi P.}{B\bibinitperiod\bibinitdelim K\bibinitperiod\bibinitdelim P\bibinitperiod}{}{}{}{}}%
+        {{hash=3b66170d6d362a537afb31815573efdb}{Schunck}{S\bibinitperiod}{Brian\bibnamedelima G.}{B\bibinitperiod\bibinitdelim G\bibinitperiod}{}{}{}{}}%
+      }
+      \strng{namehash}{7fc030046f101885d1b2b9c37a25ee05}
+      \strng{fullhash}{7fc030046f101885d1b2b9c37a25ee05}
+      \field{sortinit}{H}
+      \field{labeltitle}{{D}etermining {O}ptical {F}low}
+      \field{abstract}{{O}ptical flow cannot be computed locally, since only one independent measurement is available from the image sequence at a point, while the flow velocity has two components. {A} second constraint is needed. {A} method for finding the optical flow pattern is presented which assumes that the apparent velocity of the brightness pattern varies smoothly almost everywhere in the image. {A}n iterative implementation is shown which successfully computes the optical flow for a number of synthetic image sequences. {T}he algorithm is robust in that it can handle image sequences that are quantified rather coarsely in space and time. {I}t is also insensitive to quantization of brightness levels and additive noise. {E}xamples are included where the assumption of smoothness is violated at singular points or along lines in the image.}
+      \field{journaltitle}{Artificial Intelligence}
+      \field{title}{{D}etermining {O}ptical {F}low}
+      \field{volume}{17}
+      \field{year}{1981}
+      \field{pages}{185\bibrangedash 203}
+      \verb{file}
+      \verb :../sources/horn81.pdf:PDF
+      \endverb
+    \endentry
+    \entry{Jaehne2005}{book}{}
+      \name{labelname}{1}{}{%
+        {{hash=2af9a87ab3a028f0648eedb98f353969}{Jähne}{J\bibinitperiod}{Bernd}{B\bibinitperiod}{}{}{}{}}%
+      }
+      \name{author}{1}{}{%
+        {{hash=2af9a87ab3a028f0648eedb98f353969}{Jähne}{J\bibinitperiod}{Bernd}{B\bibinitperiod}{}{}{}{}}%
+      }
+      \list{publisher}{1}{%
+        {Springer-Verlag Berlin Heidelberg}%
+      }
+      \strng{namehash}{2af9a87ab3a028f0648eedb98f353969}
+      \strng{fullhash}{2af9a87ab3a028f0648eedb98f353969}
+      \field{sortinit}{J}
+      \field{labeltitle}{{D}igital {I}mage {P}rocessing}
+      \field{edition}{6}
+      \field{title}{{D}igital {I}mage {P}rocessing}
+      \field{year}{2005}
+      \verb{file}
+      \verb :../sources/o54fy.Digital.Image.Processing.Concepts.Algorithms.and.Scientific.Applications.6th.edition.pdf:PDF
+      \endverb
+    \endentry
+    \entry{Karasulu2013}{book}{}
+      \name{labelname}{2}{}{%
+        {{hash=deb7e6747717e170e79d1c51aa3285fd}{Karasulu}{K\bibinitperiod}{Bahadir}{B\bibinitperiod}{}{}{}{}}%
+        {{hash=ef674949eeb548c9af8e50bdbf9d1319}{Korukoglu}{K\bibinitperiod}{Serdar}{S\bibinitperiod}{}{}{}{}}%
+      }
+      \name{author}{2}{}{%
+        {{hash=deb7e6747717e170e79d1c51aa3285fd}{Karasulu}{K\bibinitperiod}{Bahadir}{B\bibinitperiod}{}{}{}{}}%
+        {{hash=ef674949eeb548c9af8e50bdbf9d1319}{Korukoglu}{K\bibinitperiod}{Serdar}{S\bibinitperiod}{}{}{}{}}%
+      }
+      \list{publisher}{1}{%
+        {Springer-Verlag New York}%
+      }
+      \strng{namehash}{6516c9ac6f915c8966d67dda3c87026f}
+      \strng{fullhash}{6516c9ac6f915c8966d67dda3c87026f}
+      \field{sortinit}{K}
+      \field{labeltitle}{{P}erformance {E}valuation {S}oftware - {M}oving {O}bject {D}etection and {T}racking in {V}ideo}
+      \field{abstract}{{P}erformance {E}valuation {S}oftware: {M}oving {O}bject {D}etection and {T}racking in {V}ideos introduces a software approach for the real-time evaluation and performance comparison of the methods specializing in moving object detection and/or tracking ({D}&{T}) in video processing. {D}igital video content analysis is an important item for multimedia content-based indexing ({MCBI}), content-based video retrieval ({CBVR}) and visual surveillance systems. {T}here are some frequently-used generic algorithms for video object {D}&{T} in the literature, such as {B}ackground {S}ubtraction ({BS}), {C}ontinuously {A}daptive {M}ean-shift ({CMS}), {O}ptical {F}low ({OF}), etc. {A}n important problem for performance evaluation is the absence of any stable and flexible software for comparison of different algorithms. {I}n this frame, we have designed and implemented the software for comparing and evaluating the well-known video object {D}&{T} algorithms on the same platform. {T}his software is able to compare them with the same metrics in real-time and on the same platform. {I}t also works as an automatic and/or semi-automatic test environment in real-time, which uses the image and video processing essentials, e.g. morphological operations and filters, and ground-truth ({GT}) {XML} data files, charting/plotting capabilities, etc. {A}long with the comprehensive literature survey of the abovementioned video object {D}&{T} algorithms, this book also covers the technical details of our performance benchmark software as well as a case study on people {D}&{T} for the functionality of the software}
+      \field{edition}{1}
+      \field{series}{SpringerBriefs in Computer Science}
+      \field{title}{{P}erformance {E}valuation {S}oftware - {M}oving {O}bject {D}etection and {T}racking in {V}ideo}
+      \field{year}{2013}
+      \verb{doi}
+      \verb 10.1007/978-1-4614-6534-8
+      \endverb
+      \verb{file}
+      \verb :../sources/Karasulu B., Korukoglu S. - Moving Object Detection and Tracking in Videos.pdf:PDF
+      \endverb
+    \endentry
+    \entry{Kim2011}{inproceedings}{}
+      \name{labelname}{6}{}{%
+        {{hash=f107f23c5f0f9ed191d1375fe1b1f629}{Kim}{K\bibinitperiod}{Kwang-soo}{K\bibinithyphendelim s\bibinitperiod}{}{}{}{}}%
+        {{hash=4d097923f898e285867b53cc212088f4}{Bahn}{B\bibinitperiod}{Wook}{W\bibinitperiod}{}{}{}{}}%
+        {{hash=1f23b719334a2b3f42bf4c3e41ee4b2d}{Lee}{L\bibinitperiod}{Changhun}{C\bibinitperiod}{}{}{}{}}%
+        {{hash=fc36bb42895cf1f455dbd8f021242721}{Lee}{L\bibinitperiod}{Tae-jae}{T\bibinithyphendelim j\bibinitperiod}{}{}{}{}}%
+        {{hash=cf5950477649f375e95a6b12c32c95b4}{Shaikh}{S\bibinitperiod}{M.M.}{M\bibinitperiod}{}{}{}{}}%
+        {{hash=f107f23c5f0f9ed191d1375fe1b1f629}{Kim}{K\bibinitperiod}{Kwang-soo}{K\bibinithyphendelim s\bibinitperiod}{}{}{}{}}%
+      }
+      \name{author}{6}{}{%
+        {{hash=f107f23c5f0f9ed191d1375fe1b1f629}{Kim}{K\bibinitperiod}{Kwang-soo}{K\bibinithyphendelim s\bibinitperiod}{}{}{}{}}%
+        {{hash=4d097923f898e285867b53cc212088f4}{Bahn}{B\bibinitperiod}{Wook}{W\bibinitperiod}{}{}{}{}}%
+        {{hash=1f23b719334a2b3f42bf4c3e41ee4b2d}{Lee}{L\bibinitperiod}{Changhun}{C\bibinitperiod}{}{}{}{}}%
+        {{hash=fc36bb42895cf1f455dbd8f021242721}{Lee}{L\bibinitperiod}{Tae-jae}{T\bibinithyphendelim j\bibinitperiod}{}{}{}{}}%
+        {{hash=cf5950477649f375e95a6b12c32c95b4}{Shaikh}{S\bibinitperiod}{M.M.}{M\bibinitperiod}{}{}{}{}}%
+        {{hash=f107f23c5f0f9ed191d1375fe1b1f629}{Kim}{K\bibinitperiod}{Kwang-soo}{K\bibinithyphendelim s\bibinitperiod}{}{}{}{}}%
+      }
+      \list{location}{1}{%
+        {Japan, Kyoto}%
+      }
+      \list{publisher}{1}{%
+        {IEEE}%
+      }
+      \strng{namehash}{d88fd2c0d375b8d7140ee68a34037388}
+      \strng{fullhash}{e807161175d4517581b88f57a83a310a}
+      \field{sortinit}{K}
+      \field{labeltitle}{{V}ision system for mobile robots for tracking moving targets, based on robot motion and stereo vision information}
+      \field{abstract}{{T}his paper presents a vision-tracking for mobile robots, which tracks a moving target based on robot motion and stereo vision information. {T}he proposed system controls pan and tilt actuators attached to a stereo camera, using the data from a gyroscope, robot wheel encoders, pan and tilt actuator encoders, and the stereo camera. {U}sing this proposed system, the stereo camera always faces the moving target. {T}he developed system calculates the angles of the pan and tilt actuators by estimating the relative position of the target with respect to the position of the robot. {T}he developed system estimates the target position using the robot motion information and the stereo vision information. {T}he movement of the robot is modeled as the transformation of the frame, which consists of a rotation and a translation. {T}he developed system calculates the rotation using 3-axis gyroscope data and the translation using robot wheel encoder data. {T}he proposed system measures the position of the target relative to the robot, combining the encoder data of pan and tilt actuators and the disparity map of the stereo vision. {T}he inevitable mismatch of the data, which occurs from the asynchrony of the multiple sensors, is prevented by the proposed system, which compensates for the communication latency and the computation time. {T}he experimental results show that the developed system achieves excellent tracking performance in several motion scenarios, including combinations of straights and curves and climbing of slopes.}
+      \field{booktitle}{IEEE/SICE International Symposium on System Integration}
+      \field{month}{12}
+      \field{title}{{V}ision system for mobile robots for tracking moving targets, based on robot motion and stereo vision information}
+      \field{year}{2011}
+      \field{pages}{634\bibrangedash 639}
+      \verb{doi}
+      \verb 10.1109/SII.2011.6147522
+      \endverb
+      \verb{file}
+      \verb :../sources/06147522.pdf:PDF
+      \endverb
+      \keyw{Actuators,Cameras,Instruction sets,Mobile robots,Robot vision systems}
+    \endentry
+    \entry{Kim2012}{inproceedings}{}
+      \name{labelname}{8}{}{%
+        {{hash=22ae34ba0fce643e69d65fa5813ea25c}{Kim}{K\bibinitperiod}{Tae-Il}{T\bibinithyphendelim I\bibinitperiod}{}{}{}{}}%
+        {{hash=4d097923f898e285867b53cc212088f4}{Bahn}{B\bibinitperiod}{Wook}{W\bibinitperiod}{}{}{}{}}%
+        {{hash=bdb86deefdd72ed67748ec0cda28a4de}{Lee}{L\bibinitperiod}{Chang-Hun}{C\bibinithyphendelim H\bibinitperiod}{}{}{}{}}%
+        {{hash=ad454bd79434211a9e3433dcaaea4f1b}{Lee}{L\bibinitperiod}{Tae-Jae}{T\bibinithyphendelim J\bibinitperiod}{}{}{}{}}%
+        {{hash=84cb50700b7b8892218e00061d1ec48b}{Jang}{J\bibinitperiod}{Byung-Moon}{B\bibinithyphendelim M\bibinitperiod}{}{}{}{}}%
+        {{hash=c897eaf46432dd156739c0de86e8068e}{Lee}{L\bibinitperiod}{Sang-Hoon}{S\bibinithyphendelim H\bibinitperiod}{}{}{}{}}%
+        {{hash=8d39021fc60eec163d2c17c78994a0d4}{Moon}{M\bibinitperiod}{Min-Wug}{M\bibinithyphendelim W\bibinitperiod}{}{}{}{}}%
+        {{hash=d42447f0bfa3f3bb9aed4ddacafcb371}{Cho}{C\bibinitperiod}{Dong-Il}{D\bibinithyphendelim I\bibinitperiod}{}{}{}{}}%
+      }
+      \name{author}{8}{}{%
+        {{hash=22ae34ba0fce643e69d65fa5813ea25c}{Kim}{K\bibinitperiod}{Tae-Il}{T\bibinithyphendelim I\bibinitperiod}{}{}{}{}}%
+        {{hash=4d097923f898e285867b53cc212088f4}{Bahn}{B\bibinitperiod}{Wook}{W\bibinitperiod}{}{}{}{}}%
+        {{hash=bdb86deefdd72ed67748ec0cda28a4de}{Lee}{L\bibinitperiod}{Chang-Hun}{C\bibinithyphendelim H\bibinitperiod}{}{}{}{}}%
+        {{hash=ad454bd79434211a9e3433dcaaea4f1b}{Lee}{L\bibinitperiod}{Tae-Jae}{T\bibinithyphendelim J\bibinitperiod}{}{}{}{}}%
+        {{hash=84cb50700b7b8892218e00061d1ec48b}{Jang}{J\bibinitperiod}{Byung-Moon}{B\bibinithyphendelim M\bibinitperiod}{}{}{}{}}%
+        {{hash=c897eaf46432dd156739c0de86e8068e}{Lee}{L\bibinitperiod}{Sang-Hoon}{S\bibinithyphendelim H\bibinitperiod}{}{}{}{}}%
+        {{hash=8d39021fc60eec163d2c17c78994a0d4}{Moon}{M\bibinitperiod}{Min-Wug}{M\bibinithyphendelim W\bibinitperiod}{}{}{}{}}%
+        {{hash=d42447f0bfa3f3bb9aed4ddacafcb371}{Cho}{C\bibinitperiod}{Dong-Il}{D\bibinithyphendelim I\bibinitperiod}{}{}{}{}}%
+      }
+      \list{location}{1}{%
+        {Canada, Montreal}%
+      }
+      \list{publisher}{1}{%
+        {Springer Berlin Heidelberg}%
+      }
+      \strng{namehash}{f6838fddd3b75b1154e156e708b0233e}
+      \strng{fullhash}{1c0f61988778aa14d0ad7de62fb6c410}
+      \field{sortinit}{K}
+      \field{labeltitle}{{A} {R}obotic {P}an and {T}ilt 3-{D} {T}arget {T}racking {S}ystem by {D}ata {F}usion of {V}ision, {E}ncoder, {A}ccelerometer, and {G}yroscope {M}easurements}
+      \field{abstract}{{T}his paper presents a vision-tracking system for mobile robots, which travel in a 3-dimentional environment. {T}he developed system controls pan and tilt actuators attached to a camera so that a target is always directly in the line of sight of the camera. {T}his is achieved by using data from robot wheel encoders, a 3-axis accelerometer, a 3-axis gyroscope, pan and tilt motor encoders, and camera. {T}he developed system is a multi-rate sampled data system, where the sampling rate of the camera is different with that of the other sensors. {F}or the accurate estimation of the robot velocity, the developed system detects the slip of robot wheels, by comparing the data from the encoders and the accelerometer. {T}he developed system estimates the target position by using an extended {K}alman filter. {T}he experiments are performed to show the tracking performance of the developed system in several motion scenarios, including climbing slopes and slip cases.}
+      \field{booktitle}{Intelligent Robotics and Applications - 5th International Conference}
+      \field{month}{10}
+      \field{title}{{A} {R}obotic {P}an and {T}ilt 3-{D} {T}arget {T}racking {S}ystem by {D}ata {F}usion of {V}ision, {E}ncoder, {A}ccelerometer, and {G}yroscope {M}easurements}
+      \field{year}{2012}
+      \field{pages}{676\bibrangedash 685}
+      \verb{doi}
+      \verb 10.1007/978-3-642-33515-0_66
+      \endverb
+      \verb{file}
+      \verb :../sources/chp%3A10.1007%2F978-3-642-33515-0_66.pdf:PDF
+      \endverb
+      \keyw{Vision tracking system,Sensor data fusion,Kalman filter,Slip detection}
+    \endentry
+    \entry{Liem2008}{inproceedings}{}
+      \name{labelname}{3}{}{%
+        {{hash=cc6ba3999d10119a399a920cb8212dc4}{Liem}{L\bibinitperiod}{Martijn}{M\bibinitperiod}{}{}{}{}}%
+        {{hash=1cc4c7b4b0200c40d66c81be47799426}{Visser}{V\bibinitperiod}{Arnoud}{A\bibinitperiod}{}{}{}{}}%
+        {{hash=43b3978308c2268de4c012740c38080b}{Groen}{G\bibinitperiod}{Frans}{F\bibinitperiod}{}{}{}{}}%
+      }
+      \name{author}{3}{}{%
+        {{hash=cc6ba3999d10119a399a920cb8212dc4}{Liem}{L\bibinitperiod}{Martijn}{M\bibinitperiod}{}{}{}{}}%
+        {{hash=1cc4c7b4b0200c40d66c81be47799426}{Visser}{V\bibinitperiod}{Arnoud}{A\bibinitperiod}{}{}{}{}}%
+        {{hash=43b3978308c2268de4c012740c38080b}{Groen}{G\bibinitperiod}{Frans}{F\bibinitperiod}{}{}{}{}}%
+      }
+      \list{location}{1}{%
+        {Netherlands, Amsterdam}%
+      }
+      \list{publisher}{1}{%
+        {ACM}%
+      }
+      \strng{namehash}{8151e8c5aa7546b3d38702842a9a77c7}
+      \strng{fullhash}{8151e8c5aa7546b3d38702842a9a77c7}
+      \field{sortinit}{L}
+      \field{labeltitle}{{A} hybrid algorithm for tracking and following people using a robotic dog}
+      \field{abstract}{{T}he capability to follow a person in a domestic environment is an important prerequisite for a robot companion. {I}n this paper, a tracking algorithm is presented that makes it possible to follow a person using a small robot. {T}his algorithm can track a person while moving around, regardless of the sometimes erratic movements of the legged robot. {R}obust performance is obtained by fusion of two algorithms, one based on salient features and one on color histograms. {R}e-initializing object histograms enables the system to track a person even when the illumination in the environment changes. {B}y being able to re-initialize the system on run time using background subtraction, the system gains an extra level of robustness.}
+      \field{booktitle}{Proceedings of the 3rd ACM/IEEE international conference on Human robot interaction}
+      \field{series}{HRI '08}
+      \field{title}{{A} hybrid algorithm for tracking and following people using a robotic dog}
+      \field{year}{2008}
+      \field{pages}{185\bibrangedash 192}
+      \verb{doi}
+      \verb 10.1145/1349822.1349847
+      \endverb
+      \verb{file}
+      \verb :../sources/p185-liem.pdf:PDF
+      \endverb
+      \keyw{awareness and monitoring of humans,robot companion}
+    \endentry
+    \entry{Lowe2004}{article}{}
+      \name{labelname}{1}{}{%
+        {{hash=ecc108666da64b7128e221a0e5aaded6}{Lowe}{L\bibinitperiod}{David\bibnamedelima G.}{D\bibinitperiod\bibinitdelim G\bibinitperiod}{}{}{}{}}%
+      }
+      \name{author}{1}{}{%
+        {{hash=ecc108666da64b7128e221a0e5aaded6}{Lowe}{L\bibinitperiod}{David\bibnamedelima G.}{D\bibinitperiod\bibinitdelim G\bibinitperiod}{}{}{}{}}%
+      }
+      \strng{namehash}{ecc108666da64b7128e221a0e5aaded6}
+      \strng{fullhash}{ecc108666da64b7128e221a0e5aaded6}
+      \field{sortinit}{L}
+      \field{labeltitle}{{D}istinctive {I}mage {F}eatures from {S}cale-{I}nvariant {K}eypoints}
+      \field{abstract}{{T}his paper presents a method for extracting distinctive invariant features from images that can be used to perform reliable matching between different views of an object or scene. {T}he features are invariant to image scale and rotation, and are shown to provide robust matching across a substantial range of affine distortion, change in 3{D} viewpoint, addition of noise, and change in illumination. {T}he features are highly distinctive, in the sense that a single feature can be correctly matched with high probability against a large database of features from many images. {T}his paper also describes an approach to using these features for object recognition. {T}he recognition proceeds by matching individual features to a database of features from known objects using a fast nearest-neighbor algorithm, followed by a {H}ough transform to identify clusters belonging to a single object, and finally performing verification through least-squares solution for consistent pose parameters. {T}his approach to recognition can robustly identify objects among clutter and occlusion while achieving near real-time performance.}
+      \field{journaltitle}{International Journal of Computer Vision}
+      \field{month}{11}
+      \field{number}{2}
+      \field{title}{{D}istinctive {I}mage {F}eatures from {S}cale-{I}nvariant {K}eypoints}
+      \field{volume}{60}
+      \field{year}{2004}
+      \field{pages}{91\bibrangedash 110}
+      \verb{doi}
+      \verb 10.1023/B:VISI.0000029664.99615.94
+      \endverb
+      \verb{file}
+      \verb :../sources/art%3A10.1023%2FB%3AVISI.0000029664.99615.94.pdf:PDF
+      \endverb
+      \keyw{invariant features,object recognition,scale invariance,image matching}
+    \endentry
+    \entry{Maggio2011}{book}{}
+      \name{labelname}{2}{}{%
+        {{hash=7d4e82af8b055a111a7f028aad5261e4}{Maggio}{M\bibinitperiod}{Emilio}{E\bibinitperiod}{}{}{}{}}%
+        {{hash=f22b697dbfc9c99ad2ab0269a290d5e6}{Cavallaro}{C\bibinitperiod}{Andrea}{A\bibinitperiod}{}{}{}{}}%
+      }
+      \name{author}{2}{}{%
+        {{hash=7d4e82af8b055a111a7f028aad5261e4}{Maggio}{M\bibinitperiod}{Emilio}{E\bibinitperiod}{}{}{}{}}%
+        {{hash=f22b697dbfc9c99ad2ab0269a290d5e6}{Cavallaro}{C\bibinitperiod}{Andrea}{A\bibinitperiod}{}{}{}{}}%
+      }
+      \list{publisher}{2}{%
+        {John Wiley}%
+        {Sons}%
+      }
+      \strng{namehash}{5b6ea5e22416299c6862e1f6ae00d857}
+      \strng{fullhash}{5b6ea5e22416299c6862e1f6ae00d857}
+      \field{sortinit}{M}
+      \field{labeltitle}{{V}ideo {T}racking - {T}heory and {P}ractice}
+      \field{edition}{1}
+      \field{title}{{V}ideo {T}racking - {T}heory and {P}ractice}
+      \field{year}{2011}
+      \verb{file}
+      \verb :../sources/Video tracking - theory and practice.pdf:PDF
+      \endverb
+    \endentry
+    \entry{Markovic2014}{inproceedings}{}
+      \name{labelname}{3}{}{%
+        {{hash=7811012fa51b7c87bb40af6e09bc1376}{Marković}{M\bibinitperiod}{Ivan}{I\bibinitperiod}{}{}{}{}}%
+        {{hash=c411c5fc2e856c5798beac39ee2fcb79}{Chaumette}{C\bibinitperiod}{François}{F\bibinitperiod}{}{}{}{}}%
+        {{hash=71c5247a777501bcb6bb1c5af24a77bf}{Petrović}{P\bibinitperiod}{Ivan}{I\bibinitperiod}{}{}{}{}}%
+      }
+      \name{author}{3}{}{%
+        {{hash=7811012fa51b7c87bb40af6e09bc1376}{Marković}{M\bibinitperiod}{Ivan}{I\bibinitperiod}{}{}{}{}}%
+        {{hash=c411c5fc2e856c5798beac39ee2fcb79}{Chaumette}{C\bibinitperiod}{François}{F\bibinitperiod}{}{}{}{}}%
+        {{hash=71c5247a777501bcb6bb1c5af24a77bf}{Petrović}{P\bibinitperiod}{Ivan}{I\bibinitperiod}{}{}{}{}}%
+      }
+      \list{location}{1}{%
+        {Hong Kong}%
+      }
+      \list{publisher}{1}{%
+        {IEEE}%
+      }
+      \strng{namehash}{cfabacfda75466fe179abf2fcc4efd02}
+      \strng{fullhash}{cfabacfda75466fe179abf2fcc4efd02}
+      \field{sortinit}{M}
+      \field{labeltitle}{{M}oving object detection, tracking and following using an omnidirectional camera on a mobile robot}
+      \field{abstract}{{E}quipping mobile robots with an omnidirectional camera is very advantageous in numerous applications as all information about the surrounding scene is stored in a single image frame. {I}n the given context, the present paper is concerned with detection, tracking and following of a moving object with an omnidirectional camera. {T}he camera calibration and image formation is based on the spherical unified projection model thus yielding a representation of the omnidirectional image on the unit sphere. {D}etection of moving objects is performed by calculating a sparse optical flow in the image and then lifting the flow vectors on the unit sphere where they are discriminated as dynamic or static by analytically calculating the distance of the terminal vector point to a great circle arc. {T}he flow vectors are then clustered and the center of gravity is calculated to form the sensor measurement. {F}urthermore, the tracking is posed as a {B}ayesian estimation problem on the unit sphere and the solution based on the von {M}ises-{F}isher distribution is utilized. {V}isual servoing is performed for the object following task where the control law calculation is based on the projection of a point on the unit sphere. {E}xperimental results obtained by a camera with a fish-eye lens mounted on a differential drive mobile robot are presented and discussed.}
+      \field{booktitle}{IEEE International Conference on Robotics and Automation}
+      \field{month}{06}
+      \field{title}{{M}oving object detection, tracking and following using an omnidirectional camera on a mobile robot}
+      \field{year}{2014}
+      \field{pages}{5630\bibrangedash 5635}
+      \verb{doi}
+      \verb 10.1109/ICRA.2014.6907687
+      \endverb
+      \verb{file}
+      \verb :../sources/06907687.pdf:PDF
+      \endverb
+      \keyw{Cameras,Mobile robots,Optical imaging,Robot kinematics,Robot vision systems,Vectors}
+    \endentry
+    \entry{Olivares-Mendez2009}{inproceedings}{}
+      \name{labelname}{4}{}{%
+        {{hash=fafe60255f5400aa5a55bed1ab0edc47}{Olivares-Méndez}{O\bibinithyphendelim M\bibinitperiod}{Miguel\bibnamedelima A.}{M\bibinitperiod\bibinitdelim A\bibinitperiod}{}{}{}{}}%
+        {{hash=87bd462d9e35eedf40fef11c42aacf2c}{Campoy}{C\bibinitperiod}{Pascual}{P\bibinitperiod}{}{}{}{}}%
+        {{hash=2b1c705edba812a1fe82f70175541d73}{Martínez}{M\bibinitperiod}{Carol}{C\bibinitperiod}{}{}{}{}}%
+        {{hash=c662e84c9ad4d19d3ae4161d82cf0a86}{Mondragón}{M\bibinitperiod}{Iván}{I\bibinitperiod}{}{}{}{}}%
+      }
+      \name{author}{4}{}{%
+        {{hash=fafe60255f5400aa5a55bed1ab0edc47}{Olivares-Méndez}{O\bibinithyphendelim M\bibinitperiod}{Miguel\bibnamedelima A.}{M\bibinitperiod\bibinitdelim A\bibinitperiod}{}{}{}{}}%
+        {{hash=87bd462d9e35eedf40fef11c42aacf2c}{Campoy}{C\bibinitperiod}{Pascual}{P\bibinitperiod}{}{}{}{}}%
+        {{hash=2b1c705edba812a1fe82f70175541d73}{Martínez}{M\bibinitperiod}{Carol}{C\bibinitperiod}{}{}{}{}}%
+        {{hash=c662e84c9ad4d19d3ae4161d82cf0a86}{Mondragón}{M\bibinitperiod}{Iván}{I\bibinitperiod}{}{}{}{}}%
+      }
+      \list{location}{1}{%
+        {USA, MO, St. Louis}%
+      }
+      \list{publisher}{1}{%
+        {IEEE}%
+      }
+      \strng{namehash}{1ec88cd92a0cde4b58e11b84288347fc}
+      \strng{fullhash}{c0a8e866168ce867b2616da4c69c56da}
+      \field{sortinit}{O}
+      \field{labeltitle}{{A} pan-tilt camera {F}uzzy vision controller on an unmanned aerial vehicle}
+      \field{abstract}{{T}his paper presents an implementation of two {F}uzzy {L}ogic controllers working in parallel for a pan-tilt camera platform on an {UAV}. {T}his implementation uses a basic {L}ucas-{K}anade tracker algorithm, which sends information about the error between the center of the object to track and the center of the image, to the {F}uzzy controller. {T}his information is enough for the controller to follow the object by moving a two axis servo-platform, regardless the {UAV} vibrations and movements. {T}he two {F}uzzy controllers for each axis, work with a rules-base of 49 rules, two inputs and one output with a more significant sector defined to improve the behavior of those controllers. {T}he controllers have shown very good performances in real flights for statics objects, tested on the {C}olibri prototypes.}
+      \field{booktitle}{IEEE/RSJ International Conference on Intelligent Robots and Systems}
+      \field{month}{10}
+      \field{title}{{A} pan-tilt camera {F}uzzy vision controller on an unmanned aerial vehicle}
+      \field{year}{2009}
+      \field{pages}{2879\bibrangedash 2884}
+      \verb{doi}
+      \verb 10.1109/IROS.2009.5354576
+      \endverb
+      \verb{file}
+      \verb :../sources/05354576.pdf:PDF
+      \endverb
+      \keyw{Cameras,Computer vision,Control systems,Fuzzy control,Fuzzy logic,Helicopters,State estimation,Target tracking,Testing,Unmanned aerial vehicles}
+    \endentry
+    \entry{Shi1994}{inproceedings}{}
+      \name{labelname}{2}{}{%
+        {{hash=159989720a07cffdf1f8afdcf19f925d}{Shi}{S\bibinitperiod}{Jianbo}{J\bibinitperiod}{}{}{}{}}%
+        {{hash=5c51dbff8f01c3b5f905da5777a9f5c8}{Tomasi}{T\bibinitperiod}{Carlo}{C\bibinitperiod}{}{}{}{}}%
+      }
+      \name{author}{2}{}{%
+        {{hash=159989720a07cffdf1f8afdcf19f925d}{Shi}{S\bibinitperiod}{Jianbo}{J\bibinitperiod}{}{}{}{}}%
+        {{hash=5c51dbff8f01c3b5f905da5777a9f5c8}{Tomasi}{T\bibinitperiod}{Carlo}{C\bibinitperiod}{}{}{}{}}%
+      }
+      \list{location}{1}{%
+        {USA, Washington, Seattle}%
+      }
+      \list{publisher}{1}{%
+        {IEEE}%
+      }
+      \strng{namehash}{d35d088e54a649a854b1329051d1356f}
+      \strng{fullhash}{d35d088e54a649a854b1329051d1356f}
+      \field{sortinit}{S}
+      \field{labeltitle}{{G}ood features to track}
+      \field{abstract}{{N}o feature-based vision system can work unless good features can be identified and tracked from frame to frame. {A}lthough tracking itself is by and large a solved problem, selecting features that can be tracked well and correspond to physical points in the world is still hard. {W}e propose a feature selection criterion that is optimal by construction because it is based on how the tracker works, and a feature monitoring method that can detect occlusions, disocclusions, and features that do not correspond to points in the world. {T}hese methods are based on a new tracking algorithm that extends previous {N}ewton-{R}aphson style search methods to work under affine image transformations. {W}e test performance with several simulations and experiments}
+      \field{booktitle}{Computer Society Conference on Computer Vision and Pattern Recognition (CVPR)}
+      \field{month}{06}
+      \field{title}{{G}ood features to track}
+      \field{year}{1994}
+      \field{pages}{593\bibrangedash 600}
+      \verb{doi}
+      \verb 10.1109/CVPR.1994.323794
+      \endverb
+      \verb{file}
+      \verb :../sources/00323794.pdf:PDF
+      \endverb
+      \keyw{Feature extraction,Machine vision,Tracking}
+    \endentry
+    \entry{Smeulders2010}{article}{}
+      \name{labelname}{6}{}{%
+        {{hash=a225cec3fa5df0fc26392102607935fb}{Smeulders}{S\bibinitperiod}{Arnold\bibnamedelimb W.\bibnamedelimi M.}{A\bibinitperiod\bibinitdelim W\bibinitperiod\bibinitdelim M\bibinitperiod}{}{}{}{}}%
+        {{hash=a13e9a5dbe24b2a3186b19fe8ad1ae6a}{Chu}{C\bibinitperiod}{Dung\bibnamedelima M.}{D\bibinitperiod\bibinitdelim M\bibinitperiod}{}{}{}{}}%
+        {{hash=810bd268a2927d0db658eaeda49ff357}{Cucchiara}{C\bibinitperiod}{Rita}{R\bibinitperiod}{}{}{}{}}%
+        {{hash=d1282c8311a9bde0fda7c530f991eb0f}{Calderara}{C\bibinitperiod}{Simone}{S\bibinitperiod}{}{}{}{}}%
+        {{hash=a2c03a7f445d25a8c7e0de57fc48172e}{Dehghan}{D\bibinitperiod}{Afshin}{A\bibinitperiod}{}{}{}{}}%
+        {{hash=c75751f493070716733608d20f74e3af}{Shah}{S\bibinitperiod}{Mubarak}{M\bibinitperiod}{}{}{}{}}%
+      }
+      \name{author}{6}{}{%
+        {{hash=a225cec3fa5df0fc26392102607935fb}{Smeulders}{S\bibinitperiod}{Arnold\bibnamedelimb W.\bibnamedelimi M.}{A\bibinitperiod\bibinitdelim W\bibinitperiod\bibinitdelim M\bibinitperiod}{}{}{}{}}%
+        {{hash=a13e9a5dbe24b2a3186b19fe8ad1ae6a}{Chu}{C\bibinitperiod}{Dung\bibnamedelima M.}{D\bibinitperiod\bibinitdelim M\bibinitperiod}{}{}{}{}}%
+        {{hash=810bd268a2927d0db658eaeda49ff357}{Cucchiara}{C\bibinitperiod}{Rita}{R\bibinitperiod}{}{}{}{}}%
+        {{hash=d1282c8311a9bde0fda7c530f991eb0f}{Calderara}{C\bibinitperiod}{Simone}{S\bibinitperiod}{}{}{}{}}%
+        {{hash=a2c03a7f445d25a8c7e0de57fc48172e}{Dehghan}{D\bibinitperiod}{Afshin}{A\bibinitperiod}{}{}{}{}}%
+        {{hash=c75751f493070716733608d20f74e3af}{Shah}{S\bibinitperiod}{Mubarak}{M\bibinitperiod}{}{}{}{}}%
+      }
+      \list{publisher}{1}{%
+        {IEEE}%
+      }
+      \strng{namehash}{1e9911d69ab7296b7bff1d19a12f241a}
+      \strng{fullhash}{591d2d1e80d96c4d6eca97a4367a1bb6}
+      \field{sortinit}{S}
+      \field{labeltitle}{{V}isual {T}racking: {A}n {E}xperimental {S}urvey}
+      \field{abstract}{{T}here is a large variety of trackers, which have been proposed in the literature during the last two decades with some mixed success. {O}bject tracking in realistic scenarios is a difficult problem, therefore, it remains a most active area of research in computer vision. {A} good tracker should perform well in a large number of videos involving illumination changes, occlusion, clutter, camera motion, low contrast, specularities, and at least six more aspects. {H}owever, the performance of proposed trackers have been evaluated typically on less than ten videos, or on the special purpose datasets. {I}n this paper, we aim to evaluate trackers systematically and experimentally on 315 video fragments covering above aspects. {W}e selected a set of nineteen trackers to include a wide variety of algorithms often cited in literature, supplemented with trackers appearing in 2010 and 2011 for which the code was publicly available. {W}e demonstrate that trackers can be evaluated objectively by survival curves, {K}aplan {M}eier statistics, and {G}rubs testing. {W}e find that in the evaluation practice the {F}-score is as effective as the object tracking accuracy ({OTA}) score. {T}he analysis under a large variety of circumstances provides objective insight into the strengths and weaknesses of trackers.}
+      \field{booktitle}{IEEE Transactions on Pattern Analysis and Machine Intelligence}
+      \field{journaltitle}{IEEE Transactions on Pattern Analysis and Machine Intelligence}
+      \field{month}{11}
+      \field{title}{{V}isual {T}racking: {A}n {E}xperimental {S}urvey}
+      \field{volume}{36}
+      \field{year}{2010}
+      \field{pages}{1442\bibrangedash 1468}
+      \verb{doi}
+      \verb 10.1109/TPAMI.2013.230
+      \endverb
+      \verb{file}
+      \verb :../sources/06671560.pdf:PDF
+      \endverb
+      \keyw{Educational institutions,Object tracking,Radar tracking,Robustness,Target tracking,Videos}
+    \endentry
+    \entry{Szeliski2011}{book}{}
+      \name{labelname}{1}{}{%
+        {{hash=f2e556c93256e7d70895d67702e14f1a}{Szeliski}{S\bibinitperiod}{Richard}{R\bibinitperiod}{}{}{}{}}%
+      }
+      \name{author}{1}{}{%
+        {{hash=f2e556c93256e7d70895d67702e14f1a}{Szeliski}{S\bibinitperiod}{Richard}{R\bibinitperiod}{}{}{}{}}%
+      }
+      \list{publisher}{1}{%
+        {Springer-Verlag London}%
+      }
+      \strng{namehash}{f2e556c93256e7d70895d67702e14f1a}
+      \strng{fullhash}{f2e556c93256e7d70895d67702e14f1a}
+      \field{sortinit}{S}
+      \field{labeltitle}{{C}omputer {V}ision - {A}lgorithms and {A}pplications}
+      \field{title}{{C}omputer {V}ision - {A}lgorithms and {A}pplications}
+      \field{year}{2011}
+      \verb{file}
+      \verb :../sources/Szeliski - Computer Vision Algorithms and Applications.pdf:PDF
+      \endverb
+    \endentry
+    \entry{Tomasi1991}{report}{}
+      \name{labelname}{2}{}{%
+        {{hash=5c51dbff8f01c3b5f905da5777a9f5c8}{Tomasi}{T\bibinitperiod}{Carlo}{C\bibinitperiod}{}{}{}{}}%
+        {{hash=45496c6a7530cfbfb4f3218a2602b77e}{Kanade}{K\bibinitperiod}{Takeo}{T\bibinitperiod}{}{}{}{}}%
+      }
+      \name{author}{2}{}{%
+        {{hash=5c51dbff8f01c3b5f905da5777a9f5c8}{Tomasi}{T\bibinitperiod}{Carlo}{C\bibinitperiod}{}{}{}{}}%
+        {{hash=45496c6a7530cfbfb4f3218a2602b77e}{Kanade}{K\bibinitperiod}{Takeo}{T\bibinitperiod}{}{}{}{}}%
+      }
+      \list{institution}{1}{%
+        {School of Computer Science Carnegie Mellon University}%
+      }
+      \list{location}{1}{%
+        {USA, Pennsylvania, Pittsburgh}%
+      }
+      \strng{namehash}{b96b89292c9e74c531685ccb8ebcaf51}
+      \strng{fullhash}{b96b89292c9e74c531685ccb8ebcaf51}
+      \field{sortinit}{T}
+      \field{labeltitle}{{D}etection and {T}racking of {P}oint {F}eatures}
+      \field{abstract}{{T}he factorization method described in this series of reports requires an algorithm to track the motion of features in an image stream. {G}iven the small inter-frame displacement made possible by the factorization approach, the best tracking method turns out to be the one proposed by {L}ucas and {K}anade in 1981. {T}he method defines the measure of match between fixed-size feature windows in the past and current frame as the sum of squared intensity differences over the windows. {T}he displacement is then defined as the one that minimizes this sum. {F}or small motions, a linearization of the image intensities leads to a {N}ewton-{R}aphson style minimization. {I}n this report, after rederiving the method in a physically intuitive way, we answer the crucial question of how to choose the feature windows that are best suited for tracking. {O}ur selection criterion is based directly on the definition of the tracking algorithm, and expresses how well a feature can be tracked. {A}s a result, the criterion is optimal by construction. {W}e show by experiment that the performance of both the selection and the tracking algorithm are adequate for our factorization method, and we address the issue of how to detect occlusions. {I}n the conclusion, we point out specific open questions for future research.}
+      \field{month}{04}
+      \field{number}{CMU-CS-91-132}
+      \field{title}{{D}etection and {T}racking of {P}oint {F}eatures}
+      \field{type}{techreport}
+      \field{year}{1991}
+      \verb{file}
+      \verb :../sources/10.1.1.45.5770.pdf:PDF
+      \endverb
+      \keyw{Computer vision,Motion,Shape,Time-varying Imagery}
+    \endentry
+    \entry{Treiber2010}{book}{}
+      \name{labelname}{1}{}{%
+        {{hash=130b8de8414f27879f96642deab1c3a3}{Treiber}{T\bibinitperiod}{Marco\bibnamedelima Alexander}{M\bibinitperiod\bibinitdelim A\bibinitperiod}{}{}{}{}}%
+      }
+      \name{author}{1}{}{%
+        {{hash=130b8de8414f27879f96642deab1c3a3}{Treiber}{T\bibinitperiod}{Marco\bibnamedelima Alexander}{M\bibinitperiod\bibinitdelim A\bibinitperiod}{}{}{}{}}%
+      }
+      \list{publisher}{1}{%
+        {Springer-Verlag London}%
+      }
+      \strng{namehash}{130b8de8414f27879f96642deab1c3a3}
+      \strng{fullhash}{130b8de8414f27879f96642deab1c3a3}
+      \field{sortinit}{T}
+      \field{labeltitle}{{A}n {I}ntroduction to {O}bject {R}ecognition - {S}elected {A}lgorithms for a {W}ide {V}ariety of {A}pplications}
+      \field{edition}{1}
+      \field{title}{{A}n {I}ntroduction to {O}bject {R}ecognition - {S}elected {A}lgorithms for a {W}ide {V}ariety of {A}pplications}
+      \field{year}{2010}
+      \verb{file}
+      \verb :../sources/An Introduction to Object Recognition.pdf:PDF
+      \endverb
+    \endentry
+    \entry{Welch1995}{report}{}
+      \name{labelname}{2}{}{%
+        {{hash=19eb8ef0f1cf49ad4375a0a4acc3a385}{Welch}{W\bibinitperiod}{Greg}{G\bibinitperiod}{}{}{}{}}%
+        {{hash=e4f38e96180c309ad00c07afe4fbac50}{Bishop}{B\bibinitperiod}{Gary}{G\bibinitperiod}{}{}{}{}}%
+      }
+      \name{author}{2}{}{%
+        {{hash=19eb8ef0f1cf49ad4375a0a4acc3a385}{Welch}{W\bibinitperiod}{Greg}{G\bibinitperiod}{}{}{}{}}%
+        {{hash=e4f38e96180c309ad00c07afe4fbac50}{Bishop}{B\bibinitperiod}{Gary}{G\bibinitperiod}{}{}{}{}}%
+      }
+      \list{institution}{1}{%
+        {University of North Carolina at Chapel Hill}%
+      }
+      \strng{namehash}{124b6b88ade76463f9b17a4f14042fca}
+      \strng{fullhash}{124b6b88ade76463f9b17a4f14042fca}
+      \field{sortinit}{W}
+      \field{labeltitle}{{A}n {I}ntroduction to the {K}alman {F}ilter}
+      \field{title}{{A}n {I}ntroduction to the {K}alman {F}ilter}
+      \field{type}{techreport}
+      \field{year}{1995}
+      \verb{file}
+      \verb :../sources/kalman_intro.pdf:PDF
+      \endverb
+    \endentry
+    \entry{Yilmaz2006}{article}{}
+      \name{labelname}{3}{}{%
+        {{hash=f7331824d0502c1f76e47c856be64a71}{Yilmaz}{Y\bibinitperiod}{Alper}{A\bibinitperiod}{}{}{}{}}%
+        {{hash=b4d757f7e1650e89378a800f72de7e60}{Javed}{J\bibinitperiod}{Omar}{O\bibinitperiod}{}{}{}{}}%
+        {{hash=c75751f493070716733608d20f74e3af}{Shah}{S\bibinitperiod}{Mubarak}{M\bibinitperiod}{}{}{}{}}%
+      }
+      \name{author}{3}{}{%
+        {{hash=f7331824d0502c1f76e47c856be64a71}{Yilmaz}{Y\bibinitperiod}{Alper}{A\bibinitperiod}{}{}{}{}}%
+        {{hash=b4d757f7e1650e89378a800f72de7e60}{Javed}{J\bibinitperiod}{Omar}{O\bibinitperiod}{}{}{}{}}%
+        {{hash=c75751f493070716733608d20f74e3af}{Shah}{S\bibinitperiod}{Mubarak}{M\bibinitperiod}{}{}{}{}}%
+      }
+      \strng{namehash}{62ebdbf58b28eb78bf1300ce02c9c199}
+      \strng{fullhash}{62ebdbf58b28eb78bf1300ce02c9c199}
+      \field{sortinit}{Y}
+      \field{labeltitle}{{O}bject {T}racking: {A} {S}urvey}
+      \field{abstract}{{T}he goal of this article is to review the state-of-the-art tracking methods, classify them into different categories, and identify new trends. {O}bject tracking, in general, is a challenging problem. {D}ifficulties in tracking objects can arise due to abrupt object motion, changing appearance patterns of both the object and the scene, nonrigid object structures, object-to-object and object-to-scene occlusions, and camera motion. {T}racking is usually performed in the context of higher-level applications that require the location and/or shape of the object in every frame. {T}ypically, assumptions are made to constrain the tracking problem in the context of a particular application. {I}n this survey, we categorize the tracking methods on the basis of the object and motion representations used, provide detailed descriptions of representative methods in each category, and examine their pros and cons. {M}oreover, we discuss the important issues related to tracking including the use of appropriate image features, selection of motion models, and detection of objects.}
+      \field{journaltitle}{ACM Computing Surveys}
+      \field{month}{12}
+      \field{number}{4}
+      \field{title}{{O}bject {T}racking: {A} {S}urvey}
+      \field{volume}{38}
+      \field{year}{2006}
+      \field{pages}{1\bibrangedash 45}
+      \verb{doi}
+      \verb 10.1145/1177352.1177355
+      \endverb
+      \verb{file}
+      \verb :../sources/Yilmaz.pdf:PDF
+      \endverb
+      \keyw{Appearance models,contour evolution,feature selection,object detection,object representation,point tracking,shape tracking}
+    \endentry
+    \entry{Zhang2011}{inproceedings}{}
+      \name{labelname}{3}{}{%
+        {{hash=77e50c0612034d69f85600fe5af4d864}{Zhang}{Z\bibinitperiod}{Zhaoxiang}{Z\bibinitperiod}{}{}{}{}}%
+        {{hash=34627a0de74afd817f660aec9055ac65}{Sa}{S\bibinitperiod}{Ruhan}{R\bibinitperiod}{}{}{}{}}%
+        {{hash=9f46e20757906016ae602d292fc665ed}{Wang}{W\bibinitperiod}{Yunhong}{Y\bibinitperiod}{}{}{}{}}%
+      }
+      \name{author}{3}{}{%
+        {{hash=77e50c0612034d69f85600fe5af4d864}{Zhang}{Z\bibinitperiod}{Zhaoxiang}{Z\bibinitperiod}{}{}{}{}}%
+        {{hash=34627a0de74afd817f660aec9055ac65}{Sa}{S\bibinitperiod}{Ruhan}{R\bibinitperiod}{}{}{}{}}%
+        {{hash=9f46e20757906016ae602d292fc665ed}{Wang}{W\bibinitperiod}{Yunhong}{Y\bibinitperiod}{}{}{}{}}%
+      }
+      \list{location}{1}{%
+        {China, Beijing}%
+      }
+      \list{publisher}{1}{%
+        {IEEE}%
+      }
+      \strng{namehash}{a00679679f7ba6b052fd4d0664adb6af}
+      \strng{fullhash}{a00679679f7ba6b052fd4d0664adb6af}
+      \field{sortinit}{Z}
+      \field{labeltitle}{{A} real time object tracking approach for mobile robot visual servo control}
+      \field{abstract}{{A} key problem of {I}mage {B}ased {V}isual {S}ervo ({IBVS}) {S}ystem is to track objects in image sequences. {T}hus, the tracking algorithm plays an important role in improving the efficiency of {IBVS} systems. {I}n this paper, a novel tracking algorithm called {M}odified {C}am{S}hift {G}uided {P}article {F}ilter ({MCAMSGPF}) is proposed, which interpolated {S}peeded-{U}p {R}obust {F}eatures ({SURF}) into the framework of conventional {C}am{S}hift {G}uided {P}article {F}ilter ({CAMSGPF}) tracking method. {T}his new algorithm outperforms conventional {CAMSGPF} and other baseline trackers with respect to tracking robustness in the clutter background of similar colors and occlusions. {W}e also proposed a new system model to implement and test the new algorithm in a real time moving {IBVS} system, which is applied in a mobile robot with an on-board camera.}
+      \field{booktitle}{First Asian Conference on Pattern Recognition (ACPR)}
+      \field{month}{11}
+      \field{title}{{A} real time object tracking approach for mobile robot visual servo control}
+      \field{year}{2011}
+      \field{pages}{500\bibrangedash 504}
+      \verb{doi}
+      \verb 10.1109/ACPR.2011.6166627
+      \endverb
+      \verb{file}
+      \verb :../sources/06166627.pdf:PDF
+      \endverb
+      \keyw{Cameras,Clutter,Image color analysis,Robots,Robustness,Target tracking}
+    \endentry
+  \endsortlist
+\endrefsection
+\endinput
+

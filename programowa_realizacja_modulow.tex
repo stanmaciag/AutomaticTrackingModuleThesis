@@ -1,0 +1,59 @@
+\chapter{Programowa realizacja modułów śledzenia obiektów}
+\label{cha:Programowa_realizacja_modulow_sledzenia_obiektow}
+
+Dalsza część niniejszej pracy dotyczy praktycznej realizacji modułów wizyjnego śledzenia obiektów. W kolejnych rozdziałach przedstawiono algorytm nadrzędny, definiujący ogólny schemat ich działania oraz omówiono sposoby implementacji jego poszczególnych kroków.
+
+\section{Założenia projektowe}
+\label{sec:Zalozenia_projektowe}
+
+Ze względu na obszar aplikacji, tj. robotykę mobilną, moduł powinien wykazywać następujące cechy:
+\begin{itemize}
+
+	\item Niska złożoność obliczeniowa - wymóg praktyczny, podyktowany relatywnie niską mocą obliczeniową procesorów pokładowych, stanowiącą skutek wymogu niewielkiego poboru mocy
+	\item Wysoka odporność na zmiany iluminacji oraz przesłonięcia śledzonego obiektu - niezbędna cecha modułu umożliwiająca jego poprawne działanie w przypadku założenia dynamicznego charakteru obserwowanej sceny
+	\item Wysoka odporność na szum, \textit{motion blur}, oraz inne niekorzystne zjawiska będące skutkiem gorszą jakością sensora wizyjnego
+	\item Zdolność do działania w czasie rzeczywistym, rozumiana jako zdolność do wykonania wszystkich obliczeń pomiędzy dwoma kolejnymi klatkami rejestrowanymi przez sensor wizyjny - niższa częstotliwość próbkowania (omijanie klatek) skutkuje zwiększeniem różnic pomiędzy klatkami przetwarzanymi przez moduł, co bezpośrednio przekłada się na pogorszenie jakości procesu śledzenia 
+	
+\end{itemize}
+
+Moduł powinien dostarczać następujących funkcjonalności:
+
+\begin{itemize}
+
+	\item Zdefiniowanie obiektu zainteresowania na podstawie zawierającego go obszaru zainteresowania na klatce początkowej
+	\item Estymacja położenia obiektu na kolejnych klatkach
+	\item Estymacja orientacji (rozumianej jako obrotu wokół osi prostopadłej do płaszczyzny obrazu) obiektu
+	\item Estymacja wymiarów obiektu w postaci wymiarów ograniczającego go prostokąta
+	\item Pomiar prawdopodobieństwa powodzenia procesu śledzenia na podstawie estymowanego stanu
+	\item Określenie niepowodzenia zadania śledzenia w przypadku utraty informacji o stanie obiektu zainteresowania
+
+\end{itemize}
+
+\section{Algorytm nadrzędny}
+\label{sec:Algorytm_nadrzedny}
+
+Nadrzędny algorytm realizowany przez moduł śledzenia składa się z trzech zasadniczych etapów, z których dwa ostatnie wykonywane są iteracyjnie:
+
+\begin{enumerate}
+
+	\item \textbf{Zogniskowanie} - etap początkowy, dane wejściowe w postaci zewnętrznie zadanego obszaru zainteresowania, dane wyjściowe w postaci modelu obiektu zainteresowania
+	\item \textbf{Śledzenie} - etap zasadniczy, dane wejściowe w postaci poprzedniego położenia obiektu zainteresowania (oraz dodatkowo jego orientacji i wymiarów) oraz jego modelu, dane wyjściowe w postaci estymacji kolejnego położenia obiektu zainteresowania oraz procentowego współczynnika prawdopodobieństwa powodzenia procesu śledzenia
+	\item \textbf{Adaptacja} - etap uzupełniający, dane wejściowe w postaci modelu obiektu zainteresowania, dane wyjściowe w postaci modelu uaktualnionego o informację wniesioną przez ostatnią klatkę
+
+\end{enumerate}
+
+\section{Wybór algorytmów zasadniczych}
+\label{sec:Wybor_algorytmow_zasadniczych}
+
+W ramach przeprowadzonego w we wcześniejszej części niniejszej pracy przeglądu literaturowego wyodrębniono i opisano podstawowe algorytmy śledzenia wizyjnego stosowane w robotyce mobilnej, tj.:
+
+\begin{enumerate}
+
+	\item Algorytm Lucasa-Kanade'a
+	\item Algorytm MeanShift
+	\item Algorytm CAMShift
+	\item Filtr Kalmana
+
+\end{enumerate}
+
+Implementacja osobnego modułu dla każdego wymienionego wyżej algorytmu jest zadaniem rozmiarem przekraczającym zakres niniejszej pracy, w związku z tym z dalszych rozważań i realizacji wykluczono algorytmy gorzej wpisujące się w przedstawiony wyżej projekt. W pierwszej kolejności wykluczono algorytm \textit{MeanShift}, ze względu na jego nieprzystosowanie do zmiany skali śledzonego obiektu oraz mniej stabilną złożoność obliczeniową w porównaniu do jego rozwinięcia, czyli algorytmu \textit{CAMShift}. Następnie zrezygnowano z wdrożenia modułu opartego o filtr Kalmana, który w zadaniu śledzenia obiektów w zasadzie rolę algorytmu pomocniczego (zmniejszając szum, zawężając obszar poszukiwań, etc.). Moduł wykorzystujący filtr Kalmana musiałby posiadać funkcję pomiaru stanu obiektu, polegającą \textit{de facto} na wykryciu obiektu zainteresowania. Wykrywanie obiektów nie stanowi przedmiotu rozważań niniejszej pracy, dodatkowo jest ogólnie rzecz biorąc dużo bardziej złożone obliczeniowo, co można zauważyć np. poprzez porównanie złożoności często wykorzystywanej w nim metody \textit{SIFT} (rozdział \ref{subsec:Punkty_charakterystyczne}) ze złożonością algorytmu wyznaczania punktów zdatnych do śledzenia (rozdział \ref{subsec:Algorytm_Kanade_Lucasa_Tomasi}).

@@ -1,12 +1,32 @@
 \chapter{Wprowadzenie}
 \label{cha:Wprowadzenie}
 
-%---------------------------------------------------------------------------
+Wizyjne śledzenie obiektów od lat stanowi przedmiot intensywnych badań, motywowanych jego szerokim zastosowaniem praktycznym, m. in. w systemach automatycznego monitoringu, interfejsach człowiek-maszyna oraz zaawansowanej nawigacji. W niniejszej pracy przedstawiono projekt modułu wizyjnego śledzenia obiektów dla robotyki mobilnej. Zaprojektowanie wspomnianego modułu wymagało zapoznania się i przedstawienia obszernej literatury przedmiotu, która reprezentuje różne dziedziny wiedzy, przedstawione w części poświęconej zakresowi pracy. Przegląd dokonanych w tej sprawie ustaleń został zawarty w trzech początkowych rozdział pracy, z których pierwszy przybliża ogólną teorię śledzenia obiektów, drugi omawia powiązane zagadnienia z dziedziny cyfrowego przetwarzania obrazów, a trzeci dostarcza szczegółowego opisu algorytmów spotykanych w robotyce mobilnej. Na podstawie dokonanego przeglądu literatury anglojęzycznej, w związku z licznymi i różnorodnymi rozwiązaniami, jakie pojawiają się w tej dziedzinie trzeba było dokonać wyboru tych, które zostaną rozwinięte w niniejszej pracy. W efekcie tego wyboru praca ta omawia dwa równorzędne warianty, zwane modułami, pierwszy oparty na algorytmie Lucasa-Kanade'a i drugi oparty na algorytmie \textit{CAMShift}. Zostały one przedstawione odpowiednio w rozdziale szóstym i siódmym. Wyczerpujący opis powodów, dla których wybrano te, a nie inne algorytmy znajduje się w rozdziale piątym. Rozdział ten zawiera ogólne wymagania projektowe dotyczące implementowanych modułów, takich samych w obydwu wypadkach, choć różnie w nich zrealizowanych. Na podstawie tych wymagań skonfrontowanych ze stanem wiedzy, opisanym w literaturze, wybrano wspomniane wyżej algorytmy, które spełniają założenia projektowe, o jednocześnie zaawansowanym i podstawowym charakterze.
 
 \section{Cele pracy}
 \label{sec:Cele_pracy}
 
-%---------------------------------------------------------------------------
+Celem pracy jest zaprojektowanie modułu wizyjnego śledzenia obiektów, który spełnia wymagania wynikające z zastosowań w robotyce mobilnej. Dla jego realizacji zostały opracowane dwa wariantowe rozwiązania, oparte na algorytmie Lucasa-Kanade'a oraz algorytmie \textit{CAMShift}. Moduł wizyjny służy do estymacji kolejnych położeń wybranego obiektu zainteresowania w sekwencji video i może stanowić użyteczne źródło danych wejściowych dla zaawansowanych systemów sterowania robotów mobilnych. 
 
 \section{Zakres pracy}
 \label{sec:Zakres_pracy}
+
+Praca obejmuje następujące obszary badawcze:
+
+\begin{enumerate}
+
+	\item Teorię śledzenia obiektów
+	\item Cyfrowe przetwarzanie obrazów, w tym:
+	
+	\begin{enumerate}
+	
+		\item Ekstrakcję i deskrypcję cech obiektów
+		\item Analizę ruchu w sekwencjach video, w szczególności estymację przepływu optycznego
+		
+	\end{enumerate}		
+	
+	\item Teorię sterowania, w szczególności teorię estymatorów stanu
+	\item Statystykę nieparametryczną, w szczególności metody jądrowej estymacji gęstości prawdopodobieństwa
+	
+
+\end{enumerate}

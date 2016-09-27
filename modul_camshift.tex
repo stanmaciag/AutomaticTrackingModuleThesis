@@ -1,0 +1,92 @@
+\chapter{Moduł śledzenia oparty o algorytm \textit{CAMShift}}
+\label{cha:Modul_CAMShift}
+
+Algorytm \textit{CAMShift} realizuje funkcję śledzenia obiektu w sposób diametralnie różny od algorytmu Lucasa-Kanade'a. Z założenia operuje w przestrzeni cech o dużo mniejszej dystynktywności oraz abstrahuje całkowicie od właściwości strukturalnych obiektu zainteresowania. Omawiany moduł korzysta z jego klasycznej wersji opisanej w \cite{Bradski1998}, modyfikując sposób wyznaczania modelu obiektu zainteresowania i oraz wdrażając strategię jego uaktualniania.
+
+\section{Model obiektu zainteresowania}
+\label{sec:Modul_CAMShift_model_obiektu}
+
+Algorytm \textit{CAMShift} podobnie jak algorytm \textit{MeanShift} operuje w dziedzinie gęstości prawdopodobieństwa. Jako estymację funkcji gęstości prawdopodobieństwa opisującej rozkład prawdopodobieństwa występowania pikseli o poszczególnych kolorach na obrazie przyjmuje się histogram. Ze względu na późniejszą operację akumulacji histogramów (opisaną w punkcie \ref{sec:Modul_CAMShift_Uaktualnianie_obiektu_zaintersowania}) jako model obiektu przyjęto znormalizowany histogram wyznaczany według wzoru \ref{equ:Mean_Shift_prawdopodobienstwo_cechy_obiektu}. Jak zasugerowano w \cite{Comaniciu2003} do określania wag pikseli wewnątrz obszaru zainteresowania zastosowano jądro Epanecznikowa.
+
+Nawet pomimo precyzyjnego określenia obszaru zainteresowania, model obiektu często zawiera piksele o wartościach podobnych do wartości pikseli tła, co znacznie pogarsza jakość śledzenia. W celu eliminacji tego zjawiska posłużono się rozwiązaniem przytoczonym w \cite{Allen2006}, tj. \textbf{histogramem proporcjonalnym} (ang. \textit{ratio histogram}). Algorytm jego wyznaczanie przebiega następująco:
+
+\begin{enumerate}
+
+	\item Wyznaczenie  znormalizowanego histogramu $\hat{q}$ danego obszaru zainteresowania $I_{ROI}$ według równania \ref{equ:Mean_Shift_prawdopodobienstwo_cechy_obiektu} z zastosowaniem profilu jądra Epanecznikowa $k_e$  o postaci danej równaniem \ref{equ:Mean_Shift_prawdopodobienstwo_cechy_obiektu}.
+	\item Określenie obszaru obliczeniowego $I_{COMP}$ dla histogramu tła $\hat{O}$ na podstawie danej wartości pasma $h$.
+	\item Wyznaczenie znormalizowanego histogramu tła $\hat{O}$ dla obszaru  $I_{COMP}$ z zastosowaniem profilu skalującego $k_r$  o postaci danej równaniem \ref{equ:Modul_CAMShift_profil_skalujacy}.
+	\item Wyznaczenie wagi $w$ dla każdego przedziału klasowego $u$ zgodnie z równaniem \ref{equ:Modul_CAMShift_waga_tla}.
+	\item Pomnożenie wartości przypisanych do przedziałów klasowych  $\hat{q}_u$ przez odpowiadające im wagi $w_u$ i normalizacja 
+	
+\end{enumerate}
+
+\begin{equation}
+\label{equ:Modul_CAMShift_profil_skalujacy}
+	k_r(x) = 
+	\begin{cases}
+		a r  & \text{dla } 1 \le r \leq  h \\
+		0 & \text{dla } r \leq 1 \lor r > h
+	\end{cases}
+\end{equation}
+
+\noindent
+gdzie:
+\begin{conditions}
+	 a & założony współczynnik skalujący  \\
+\end{conditions}
+
+\begin{equation}
+\label{equ:Modul_CAMShift_profil_epanecznikowa}
+	k_e(x) = 
+	\begin{cases}
+		2 \pi^{-1} (1 - x) & \text{dla } x \leq 1 \\
+		0 & \text{dla } x > 1
+	\end{cases}
+\end{equation}
+
+\begin{equation}
+\label{equ:Modul_CAMShift_waga_tla}
+	\hat{w}_u = min \left( \frac{\hat{O}^*}{\hat{O}_u}, 1 \right)
+\end{equation}
+
+\noindent
+gdzie:
+\begin{conditions}
+	 u & indeks przedziału klasowego  \\
+	 \hat{O}^* & minimalna niezerowa wartość przedziału klasowego w histogramie $\hat{O}$
+\end{conditions}
+
+Wynikiem opisanego wyżej algorytmu jest histogram opisujący rozkład cechy w postaci koloru z zadanym obszarze zainteresowania, w którym wartości przedziałów klasowych występujących jednocześnie w tle dla horyzontu zadanego pasmem $h$ są zmniejszane proporcjonalnie do odległości od miejsca ich wystąpienia do obszaru zainteresowania.
+
+Ostatecznie model śledzonego obiektu składa się z trzech składowych:
+
+\begin{itemize}
+
+	\item Początkowego histogramu obiektu zainteresowania $\hat{q}_0$
+	\item Początkowego rozmiaru obiektu zainteresowania w określonego jako rozmiar zadanego obszaru zainteresowania $d_0$
+	\item Bieżącego histogramu obiektu zainteresowania $\hat{q}$
+
+\end{itemize}
+
+\section{Śledzenie obiektu zainteresowania}
+\label{sec:Modul_CAMShift_Sledzenie_obiektu_zainteresowania}
+
+Śledzenie obiektu rozpoczyna się od konwersji przestrzeni kolorów nowej klatki do przestrzeni \textit{HSV}, o której wspomniano w rozdziale \ref{subsec:Algorytm_CAMSHIFT}. Jej wygodną własnością jest brak sprzężeń pomiędzy poszczególnymi kanałami przy określaniu koloru (występujące np. w przestrzeni kolorów $RGB$), tj. cała informacja o barwie piksela zawarta jest w kanale $H$. Pozwala to na niejednorodne zdefiniowanie liczby przedziałów klasowych dla poszczególnych kanałów, dzięki czemu zmniejsza się precyzję pomiaru tych mniej istotnych (w tym przypadku $S$ i $V$). Śledzenie jest realizowane zgodnie z algorytmem przedstawionym w rozdziale \ref{subsec:Algorytm_CAMSHIFT}, przy czym zakłada się kwadratowe okno poszukiwań. Twórcy algorytmu \textit{CAMShift} nie zaproponowali metody pomiaru podobieństwa obiektu, na potrzeby prezentowanego rozwiązania wyznacza się go jako estymację współczynnika Bhattacharyya (równanie \ref{equ:Mean_Shift_wspolczynnik_Bhattacharyya_aproksymacja} pomiędzy obecnym a początkowym histogramem obiektu zainteresowania. Dodatkowo narzucono warunek minimalnego stosunku bieżącego i początkowego rozmiaru obiektu $\frac{d}{d_0}$, którego niespełnienie skutkuje stwierdzeniem niepowadzenia procesu śledzenia i jego zakończenie. Jego wprowadzenie umotywowano obserwacją, że algorytm często po faktycznym zgubieniu obiektu zainteresowania skupia się na pewnym obszarze statycznego tła i przy każdym przebiegu zmniejsza jego rozmiar, aż do osiągnięcia wartości zerowej. Jest to więc dodatkowy sposób na uzyskanie informacji o niepowodzeniu zadania śledzenia.
+
+\section{Uaktualnianie obiektu zainteresowania}
+\label{sec:Modul_CAMShift_Uaktualnianie_obiektu_zaintersowania}
+
+Oryginalny algorytm \textit{CAMShift} nie zakłada strategii uaktualnia modelu obiektu zainteresowania. Do jej realizacji zastosowano podejście przedstawione w \cite{Exner2010}, tzn. kumulację histogramów. Algorytm uaktualniania modelu obiektu przedstawiono poniżej:
+
+\begin{enumerate}
+
+	\item Wyznaczenie znormalizowanego histogramu $\hat{q}_n$ obszaru zainteresowania określonego przez obecną pozycję oraz wymiary obiektu zainteresowania.
+	\item Wyznaczenie histogramu skumulowanego $\hat{q} =  \hat{q}_n + \hat{q}$.
+	\item Normalizacja histogramu skumulowanego
+
+\end{enumerate}
+
+\section{Podsumowanie}
+\label{sec:Modul_CAMShift_podsumowanie}
+
+Porównując moduł wykorzystujący \textit{CAMShift} z modułem opartym o algorytmem Lucasa-Kanade'a można ogólnie stwierdzić, że zakłada on mniej restrykcyjną metodę stwierdzenia dopasowania obiektu, co zgadza się z klasyfikacją przedstawioną w rozdziale \ref{subsec:Metody_pomiaru_podobienstwa_oraz_stwierdzenia_dopasowania_obiektu pomiedzy_klatkami}, według której ma ona postać dopasowania z rozszerzonym opisem cech (bez więzów). Jego zaletą jest większa tolerancja na zakłócenia, zniekształcenia, rozmycie obiektu zainteresowania i podobne problemy, przy czym sam algorytm \textit{CAMShift} bez strategii uaktualniania stanu obiektu jest dość podatny na zmiany iluminacji obiektu zainteresowania. Wadą jest dużo większa skłonność do gubienia właściwego obiektu zainteresowania (np. w przypadku gwałtownego ruchu w pobliżu fragmentu tła o podobnym rozkładzie kolorów) i kontynuowania procesu błędnego śledzenia (bez stwierdzenia jego niepowodzenia). Algorytm \textit{CAMShift} może stanowić dobry algorytm bazowy dla bardziej złożonych rozwiązań, np. działając pod przewodnictwem filtru Kalmana lub filtru cząsteczkowego.

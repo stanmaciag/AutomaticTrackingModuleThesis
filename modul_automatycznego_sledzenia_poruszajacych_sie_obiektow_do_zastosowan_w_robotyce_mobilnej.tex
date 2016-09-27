@@ -1,9 +1,6 @@
 \documentclass{aghdpl}
 % \documentclass[11pt]{aghdpl}
 % \documentclass[en,11pt]{aghdpl}  % praca w języku angielskim
-
-
-
 % dodatkowe pakiety
 \usepackage[T1]{fontenc}
 \usepackage[utf8]{inputenc}
@@ -143,21 +140,21 @@
 \faculty{Wydział Inżynierii Mechanicznej i Robotyki}
 %\faculty{Faculty of Mechanical Engineering and Robotics}
 
-\acknowledgements{...}
+\acknowledgements{}
 
 
 \setlength{\cftsecnumwidth}{10mm}
 
 \renewcommand\UrlFont{\rmfamily\itshape}
 
-
+\addbibresource{bibliografia.bib}
 
 %---------------------------------------------------------------------------
-\addbibresource{bibliografia.bib}
+
 
 \begin{document}
 
-%\titlepages
+\titlepages
 
 \tableofcontents
 
@@ -165,13 +162,14 @@
 
 \clearpage
 
-%\include{wstep}
-
-
+\include{wstep}
 \include{wizyjne_sledzenie_obiektow}
 \include{powiazane_zagadnienia}
 \include{algorytmy_sledzenia_obiektow_w_robotyce_mobilnej}
 \include{przeglad_istniejacych_rozwiazan}
+\include{programowa_realizacja_modulow}
+\include{modul_lucas_kanade}
+\include{modul_camshift}
 
 \printbibliography
 

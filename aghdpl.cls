@@ -57,7 +57,7 @@
 \def\thesistable{
 \begin{tabular}{p{45mm}l}
 Autor: & {\itshape \@author}\\[-1mm]
-Kierunek studi�w: & {\itshape \@degreeprogramme}\\[-1mm]
+Kierunek studi\'{o}w: & {\itshape \@degreeprogramme}\\[-1mm]
 Opiekun pracy: & {\itshape \@supervisor}\\
 \end{tabular}
 }
@@ -85,7 +85,7 @@ Supervisor: & {\itshape \@supervisor}\\
 \begin{center}
 \vspace*{1.5cm}
 
-\includegraphics[natwidth=304,natheight=591,scale=0.6]{Images/agh.jpg}
+\includegraphics[natwidth=304,natheight=591,scale=0.6]{images/agh.jpg}
 
 \vspace*{2mm}
 

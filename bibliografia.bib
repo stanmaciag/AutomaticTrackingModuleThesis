@@ -39,6 +39,23 @@
   Url                      = {http://www.sciencedirect.com/science/article/pii/S0924424714003458}
 }
 
+@InProceedings{Allen2006,
+  Title                    = {{O}bject tracking using {C}am{S}hift algorithm and multiple quantized feature spaces},
+  Author                   = {John G. Allen and Richard Y. D. Xu and Jesse S. Jin},
+  Booktitle                = {Proceedings of the Pan-Sydney area workshop on visual information processing},
+  Year                     = {2006},
+
+  Address                  = {Australia, Darlinghurst},
+  Pages                    = {3 - 7},
+  Volume                   = {36},
+
+  Abstract                 = {{T}he {C}ontinuously {A}daptive {M}ean {S}hift {A}lgorithm ({C}am{S}hift) is an adaptation of the {M}ean {S}hift algorithm for object tracking that is intended as a step towards head and face tracking for a perceptual user interface. {I}n this paper, we review the {C}am{S}hift {A}lgorithm and extend a default implementation to allow tracking in an arbitrary number and type of feature spaces.{I}n order to compute the new probability that a pixel value belongs to the target model, we weight the multidimensional histogram with a simple monotonically decreasing kernel profile prior to histogram back-projection.{W}e evaluate the effectiveness of this approach by comparing the results with a generic implementation of the {M}ean {S}hift algorithm in a quantized feature space of equivalent dimension.{T}he aim if this paper is to examine the effectiveness of the {C}am{S}hift algorithm as a general-purpose object tracking approach in the case where no assumptions have been made about the target to be tracked.},
+  File                     = {:sources/10.1.1.90.4741.pdf:PDF},
+  Keywords                 = {Object tracking, Video, Mean shift},
+  Owner                    = {Stanisław Maciąg},
+  Timestamp                = {2016.08.30}
+}
+
 @Article{Arulampalam2002,
   Title                    = {{A} tutorial on particle filters for online nonlinear/non-{G}aussian {B}ayesian tracking},
   Author                   = {M. Sanjeev Arulampalam and Simon Maskell and Neil Gordon and Tim Clapp},
@@ -556,6 +573,23 @@
   Owner                    = {Stanisław Maciąg},
   Timestamp                = {2015.05.20},
   Url                      = {http://www.sciencedirect.com/science/article/pii/S0263224113005241}
+}
+
+@InProceedings{Exner2010,
+  Title                    = {{F}ast and robust {CAMS}hift tracking},
+  Author                   = {David Exner and Erich Bruns and Daniel Kurz and Anselm Grundhöfer and Oliver Bimber},
+  Booktitle                = {IEEE Computer Society Conference on Computer Vision and Pattern Recognition Workshops (CVPRW)},
+  Year                     = {2010},
+  Month                    = {June},
+  Pages                    = {9 - 16},
+  Publisher                = {IEEE},
+
+  Abstract                 = {{CAMS}hift is a well-established and fundamental algorithm for kernel-based visual object tracking. {W}hile it performs well with objects that have a simple and constant appearance, it is not robust in more complex cases. {A}s it solely relies on back projected probabilities it can fail in cases when the object's appearance changes (e.g., due to object or camera movement, or due to lighting changes), when similarly colored objects have to be re-detected or when they cross their trajectories. {W}e propose low-cost extensions to {CAMS}hift that address and resolve all of these problems. {T}hey allow the accumulation of multiple histograms to model more complex object appearances and the continuous monitoring of object identities to handle ambiguous cases of partial or full occlusion. {M}ost steps of our method are carried out on the {GPU} for achieving real-time tracking of multiple targets simultaneously. {W}e explain efficient {GPU} implementations of histogram generation, probability back projection, computation of image moments, and histogram intersection. {A}ll of these techniques make full use of a {GPU}'s high parallelization capabilities.},
+  Doi                      = {10.1109/CVPRW.2010.5543787},
+  File                     = {:sources/05543787.pdf:PDF},
+  Keywords                 = {Robustness, Histograms, Target tracking, Probability distribution, Distributed computing, Concurrent computing, Cameras, Monitoring, Application software, User interfaces},
+  Owner                    = {Stanisław Maciąg},
+  Timestamp                = {2016.09.27}
 }
 
 @Article{Fernandez-Caballero2010,
@@ -1451,6 +1485,17 @@
   Timestamp                = {2015.05.20}
 }
 
+@Book{Solem2012,
+  Title                    = {{P}rogramming {C}omputer {V}ision with {P}ython - {T}ools and algorithms for analyzing images},
+  Author                   = {Jan Erik Solem},
+  Publisher                = {O'Reilly Media},
+  Year                     = {2012},
+  Edition                  = {1},
+
+  Owner                    = {Stanisław Maciąg},
+  Timestamp                = {2016.09.19}
+}
+
 @Book{Szeliski2011,
   Title                    = {{C}omputer {V}ision - {A}lgorithms and {A}pplications},
   Author                   = {Szeliski, Richard},
@@ -1764,7 +1809,7 @@ aug2012\;Haykin2001\;Maggio2011\;;
 \;;
 2 ExplicitGroup:Przetwarzanie obrazów\;0\;;
 3 ExplicitGroup:Monografie\;0\;Forsyth2012\;Gonzalez\;Jaehne2005\;Magg
-io2011\;Pratt2007\;Szeliski2011\;Treiber2010\;;
+io2011\;Pratt2007\;Solem2012\;Szeliski2011\;Treiber2010\;;
 3 ExplicitGroup:Śledzenie obiektów\;0\;Maggio2011\;Smeulders2010\;Yilm
 az2006\;;
 4 ExplicitGroup:Filtr Kalmana\;0\;Chen2012a\;Haug2012\;Haykin2001\;Wel
@@ -1774,10 +1819,10 @@ ch1995\;;
 3 ExplicitGroup:Przepływ optyczny\;0\;Baker2004\;Baker2011\;Bouguet200
 0\;Jaehne2005\;Karasulu2013\;Lucas1981\;Mohamed2014a\;Shi1994\;Szelisk
 i2011\;Tomasi1991\;;
-3 ExplicitGroup:Mean-Shift\;0\;Bradski1998\;Cheng1995\;Comaniciu1999\;
-Comaniciu2000\;Comaniciu2002\;Comaniciu2003\;Fukunaga1975\;Maggio2011\
-;Wang2007\;Zivkovic2004\;;
-4 ExplicitGroup:CAMSHIFT\;0\;Bradski1998\;Wang2007\;;
+3 ExplicitGroup:Mean-Shift\;0\;Allen2006\;Bradski1998\;Cheng1995\;Coma
+niciu1999\;Comaniciu2000\;Comaniciu2002\;Comaniciu2003\;Fukunaga1975\;
+Maggio2011\;Wang2007\;Zivkovic2004\;;
+4 ExplicitGroup:CAMSHIFT\;0\;Allen2006\;Bradski1998\;Wang2007\;;
 2 ExplicitGroup:Istniejące rozwiązania\;0\;Bahn2011\;Campoy2009\;Chen2
 012\;Fernandez-Caballero2010\;Kim2011\;Kim2012\;Lang2010\;Li2007\;Liem
 2008\;Markovic2014\;Mohamed2014\;Motokucho2014\;Olivares-Mendez2009\;P

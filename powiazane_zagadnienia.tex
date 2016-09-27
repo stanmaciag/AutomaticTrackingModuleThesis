@@ -1,14 +1,10 @@
 \chapter{Zagadnienia powiązane z wizyjnym śledzeniem obiektów}
 \label{cha:Zagadnienia_powiazane_z_wizyjnym_sledzeniem_obiektow}
 
-\todo{Rekursywny filtr Bayesa}
-\todo{Ukryty łańcuch Markowa}
-\todo{SURF}
 
 \section{Ekstrakcja i deskrypcja cech obrazu}
 \label{sec:Ekstrakcja_i_deskrypcja_cech_obrazu}
 
-\todo{Uaktualnić według \cite{Maggio2011}}
 
 Pojęcie \textbf{cechy obrazu} (ang. \textit{image feature}) jest z natury nieprecyzyjne i ogólnie może oznaczać dowolną informację związaną z obrazem, która jest przydatna w ramach wykonywania określonego algorytmu. Funkcjonuje ono w literaturze również w nieco konkretniejszym ujęciu i według monografii \cite{Szeliski2011} obiekty określane cechami obrazu należą do jednej z trzech podstawowych kategorii:
 
@@ -31,7 +27,6 @@ Porównanie przykładowych cech obrazów należących do poszczególnych kategor
 \subsection{Punkty charakterystyczne}
 \label{subsec:Punkty_charakterystyczne}
 
-\todo{Przenieść opis SIFT do \ref{cha:Algorymty_sledzenia_obiektow_w_robotyce_mobilnej}}
 
 \textbf{Punkt charakterystyczny} można rozumieć jako punkt na obrazie wyróżniający się spośród otoczenia, np. narożnik występujący w konturze obiektu widocznego na obrazie. Analogicznie, \textbf{region zainteresowania} posiada cechę charakterystyczną odróżniającą go od tła, np. ma jednolity kolor. W obu przypadkach stwierdzenie ,,charakterystyczności'' odbywa się poprzez porównanie z otoczeniem. Porównanie to polega zwykle (w dużym uproszczeniu) na znalezieniu maksimów lokalnych pewnej funkcji oceniającej ,,charakterystyczność'' dla każdego punktu obrazu oraz jego lokalnego otoczenia. Po wykryciu zbioru cech wykonuje się ich \textbf{deskrypcję} (ang. \textit{feature description}), polegającą na wyznaczeniu ich formalnego opisu (zwykle w postaci wektora liczb) cechującego się zwięzłością, powtarzalnością oraz inwariantnością \cite{Szeliski2011}, tzn. odpornością na przekształcenia afiniczne, zmiany oświetlenia, szum, etc. Odbywa się to w oparciu o piksele otoczenia punktu charakterystycznego lub piksele samego regionu charakterystycznego. Granica rozróżniająca punkt charakterystyczny i region charakterystyczny jest więc bardzo niewyraźna, tym niemniej występuje w literaturze. Analizę z wykorzystaniem cech tego typu kończy ich \textbf{dopasowanie} (ang. \textit{feature matching}) lub \textbf{śledzenie} (ang. \textit{feature tracking}), np. pomiędzy dwoma kolejnymi klatkami sekwencji video lub obrazami jednej sceny zarejestrowanymi przy użyciu dwóch kamer. Model w postaci zbioru lokalnych cech, którymi są punkty charakterystyczne, nie wymaga żadnych założeń dotyczących wyglądu czy charakterystyki reprezentowanego obiektu jak całości, jak to ma miejsce np. w przypadku reprezentacji konturem. Czyni to punkty charakterystyczne odpowiednią metodą opisu obiektu w przypadku występowania zmian oświetlenia, przysłonięć i innych zakłóceń występujących powszechnie w rzeczywistych, użytkowych sekwencjach video \cite{Treiber2010}.
 

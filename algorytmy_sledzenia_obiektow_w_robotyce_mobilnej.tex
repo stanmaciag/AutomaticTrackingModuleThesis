@@ -1,8 +1,6 @@
 \chapter{Algorytmy śledzenia obiektów w robotyce mobilnej}
 \label{cha:Algorymty_sledzenia_obiektow_w_robotyce_mobilnej}
 
-\todo{Filtr cząsteczkowy}
-
 W niniejszym rozdziale omówione szczegółowo zostaną algorytmy spotykane w literaturze w kontekście systemów śledzenia obiektów dla robotów mobilnych. Opisy konkretnych przykładów istniejących rozwiązań umieszczono w rozdziale \ref{cha:Przeglad_istniejacych_rozwiazan}. Taki podział jest dogodny, ponieważ  istniejące systemy często agregują różne algorytmy, lub wykorzystują ich zmodyfikowane wersje.
 
 \section{Algorytm Lucasa-Kanade}
@@ -16,7 +14,7 @@ Zastosowanie algorytmu Lucasa-Kanade wykracza znacznie poza zagadnienie śledzen
 
 Pierwsza postać algorytmu pomimo swojego wieku wciąż znajduje praktyczne zastosowanie - wykorzystano ją w rozwiązaniu \cite{Olivares-Mendez2009}. Oryginalną funkcją tej wersji, nazywanej czasem w literaturze addytywną \cite{Baker2004}, było dopasowanie obrazu wzorcowego $T(\vec{x})$ do obrazu wejściowego $I(\vec{x})$, gdzie $\vec{x} = (x, y)^T$ jest wektorem współrzędnych pikseli. W przypadku wyznaczania przepływu optycznego, obraz wzorcowy $T(\vec{x})$ jest podregionem obrazu z sekwencji w chwili $t = 1$, natomiast $I(\vec{x})$ jest obrazem w chwili $t = 2$ \cite{Baker2004}. Zakłada się, że wzorzec $T(\vec{x})$ uległ na obrazie $I(\vec{x})$ pewnemu sparametryzowanemu odkształceniu (ang. \textit{warp}) $\matr{W}(\vec{x}, \vec{p})$, gdzie $\vec{p}$ jest wektorem parametrów. Odkształcenie $\matr{W}(\vec{x}, \vec{p})$ przyporządkowuje pikselom wzorca $T(\vec{x})$ ich subpikselowe położenie $W(\vec{x}, \vec{p})$ w układzie współrzędnych obrazu $I$  \cite{Baker2004}, przykład przedstawiono na rysunku \ref{fig:Algorytm_Lucasa_Kanade}. Odkształcenie pomiędzy dwoma kolejnymi obrazami w sekwencji, dla których wyznaczany jest przepływ optyczny ma postać \cite{Baker2004}:
 \begin{equation}
-\label{equ:Odksztalcenie_przeplyw_optyczny}
+\label{equ:Algorytm_Lucasa_Kanade_odksztalcenie_przeplyw_optyczny}
 	\matr{W}(\vec{x}, \vec{p}) = \begin{bmatrix}
 		x + p_1 \\
 		y + p_2 \\
@@ -409,7 +407,7 @@ Przy danym modelu obiektu $\{\hat{q}_u\}_{u = 1 \dots m}$ i jego położeniu na 
 	\item Jeżeli spełniony jest warunek stopu $\norm{\hat{\vec{y}}_1 - \hat{\vec{y}}_0} < \epsilon$ (gdzie $\epsilon$ oznacza wartość progową) zakończenie, w przeciwnym razie podstawienie $\hat{\vec{y}}_0 \leftarrow \hat{\vec{y}}_1$ i powrót do punktu 2
 \end{enumerate}
 
-W praktyce przytoczony powyżej algorytm można bardzo uprościć. Punkt 5 ma na celu jedynie uniknięcie bardzo rzadko występujących problemów numerycznych, w związku z czym można pominąć jego wykonanie, co pociąga za sobą brak konieczności realizacji punktów 1 i 4, w których wyznacza się współczynnik Bhattacharyya \cite{Comaniciu2003}. Jest on obliczany jednorazowo po zakończeniu działania algorytmu, w celu porównania podobieństwa modelu obiektu i wybranego kandydata \cite{Comaniciu2003}. Dodatkowo zastosowanie jądra Epanecznikowa o postaci danej równaniem \ref{equ:Mean_Shift_jadro_Epanecznikowa} pozwala na znaczne zredukowanie równania \ref{equ:Mean_Shift_przesunięcie} \cite{Comaniciu2003}:
+W praktyce przytoczony powyżej algorytm można bardzo uprościć. Punkt 5 ma na celu jedynie uniknięcie bardzo rzadko występujących problemów numerycznych, w związku z czym można pominąć jego wykonanie, co pociąga za sobą brak konieczności wyznaczenia współczynnika Bhattacharyya w punktach 1 i 4 \cite{Comaniciu2003}. Jest on obliczany jednorazowo po zakończeniu działania algorytmu, w celu porównania podobieństwa modelu obiektu i wybranego kandydata \cite{Comaniciu2003}. Dodatkowo zastosowanie jądra Epanecznikowa o postaci danej równaniem \ref{equ:Mean_Shift_jadro_Epanecznikowa} pozwala na znaczne zredukowanie równania \ref{equ:Mean_Shift_przesunięcie} \cite{Comaniciu2003}:
 
 \begin{equation}
 \label{equ:Mean_Shift_przesunięcie_zredukowane}
@@ -430,18 +428,20 @@ W praktyce przytoczony powyżej algorytm można bardzo uprościć. Punkt 5 ma na
 
 W kontekście wizyjnego śledzenia obiektów główną wadę algorytmu \textit{Mean Shift} stanowi zakładana w nim statyczność rozmiaru stosowanego regionu zainteresowania - jest oczywiste, że w trakcie ruchu obiektu jego rozmiar na obrazie może ulegać zmianie. Propozycją jej eliminacji jest usprawniona wersja algorytmu o nazwie \textbf{\textit{Continously Adaptive Mean Shift}} (w skrócie \textit{CAMSHIFT}), zaproponowana w \cite{Bradski1998}, zastosowana w \cite{Zhang2011}.
 
-Przebieg algorytmu \textit{CAMSHIFT} jest podobny do przedstawionej w sekcji \ref{subsec:Algorytm_Mean_Shift_w_sledzeniu_obiektow} procedury \textit{Mean Shift} i przebiega następująco \cite{Bradski1998}:
+Przebieg algorytmu \textit{CAMSHIFT} jest podobny do przedstawionej w sekcji \ref{subsec:Algorytm_Mean_Shift_w_sledzeniu_obiektow} procedury \textit{Mean Shift}  i przebiega następująco \cite{Bradski1998}:
 
 \begin{enumerate}
+	\item Wyznaczenie modelu obiektu zainteresowania w postaci histogramu
 	\item Wybór początkowego rozmiaru oraz położenia okna poszukiwań
-	\item Obliczenie położenia maksimum wewnątrz okna poszukiwań
-	\item Przesunięcie środka okna do położenia maksimum
+	\item Wyznaczenie \textit{pdf} poprzez wsteczne rzutowanie histogramu 
+	\item Obliczenie położenia środka ciężkości obrazu \textit{pdf} wewnątrz okna poszukiwań
+	\item Przesunięcie środka okna do wyznaczonego położenia środka ciężkości oraz uaktualnienie jego rozmiaru
 	\item Powrót do punktu 2 lub zakończenie w przypadku osiągnięcia zbieżności
 \end{enumerate}
 
-Metoda zakłada wyznaczanie \textit{pdf} dla wybranego obszaru obrazu, większego od okna poszukiwań, jednak w ogólnym przypadku mniejszego od całego obrazu, oraz konstrukcję histogramu w oparciu o kanał H reprezentacji obrazu w przestrzeni barw \textit{HSV} (skrót od ang. \textit{Hue Saturation Value}, kanał H odpowiada za reprezentację barwy piksela) \cite{Bradski1998}.
+Metoda zakłada wyznaczanie \textit{pdf} dla obszaru obrazu większego od okna poszukiwań, jednak w ogólnym przypadku mniejszego od całego obrazu, oraz konstrukcję histogramu w oparciu o kanał H reprezentacji obrazu w przestrzeni barw \textit{HSV} (skrót od ang. \textit{Hue Saturation Value}, kanał H odpowiada za reprezentację barwy piksela) \cite{Bradski1998}.
 
-Do wyznaczenia położenia maksimum $(x_c, y_c)$ wewnątrz okna stosowane są momenty statystyczne zerowego i pierwszego rzędu, obliczane według wzorów \cite{Bradski1998}:
+Do wyznaczenia położenia środka ciężkości $(x_c, y_c)$ wewnątrz okna stosowane są momenty statystyczne zerowego i pierwszego rzędu, obliczane według wzorów \cite{Bradski1998}:
 
 \begin{equation}
 \label{equ:CAMSHIFT_moment_zero}
@@ -477,9 +477,10 @@ gdzie:
 	M_{00} & moment rzędu zerowego \\
 	M_{10} & moment pierwszego rzędu względem osi $x$ \\
 	M_{01} & moment pierwszego rzędu względem osi $y$ \\
+	x_c, y_c & współrzędne środka ciężkości \\
 \end{conditions}
 
-Z wykorzystaniem momentów drugiego rzędu $M_{20}$, $M_{11}$ i $M_{02}$ można wyznaczyć orientację $\theta$, długość $l$ oraz szerokość $w$ śledzonego obiektu \cite{Bradski1998}:
+Z wykorzystaniem momentów drugiego rzędu $M_{20}$, $M_{11}$ i $M_{02}$ można dodatkowo wyznaczyć orientację $\theta$, długość $l$ oraz szerokość $w$ śledzonego obiektu \cite{Bradski1998}:
 
 \begin{equation}
 \label{equ:CAMSHIFT_moment_drugi_xx}
@@ -526,7 +527,7 @@ Z wykorzystaniem momentów drugiego rzędu $M_{20}$, $M_{11}$ i $M_{02}$ można 
 	w = \sqrt{\frac{(a + c) - \sqrt{b^2 + (a-c)^2}}{2}}
 \end{equation}
 
-Rozmiar okna przeszukiwania $s$ jest adaptowany każdorazowo po znalezieniu położenia obiektu, na podstawie zależności:
+Rozmiar okna przeszukiwania $s$ jest uaktualniany każdorazowo po znalezieniu położenia obiektu, na podstawie zależności:
 
 \begin{equation}
 \label{equ:CAMSHIFT_rozmiar_okna}
@@ -537,15 +538,13 @@ Rozmiar okna przeszukiwania $s$ jest adaptowany każdorazowo po znalezieniu poł
 gdzie:
 
 \begin{conditions}
-	P_max & maksymalna możliwa wartość rozkładu $P$
+	P_{max} & maksymalna możliwa wartość rozkładu $P$
 \end{conditions}
 
-W \cite{Bradski1998} zaproponowano określenie szerokości okna jako $w_s = 2 s$ a jego długości jako $l_s = 2,4 s$. Wynika to z pierwotnego zastosowania metody, tj. śledzenia twarzy, których kształt jest w przybliżeniu elipsoidalny. 
+Oryginalnie podejście \cite{Bradski1998} zakładało określenie szerokości okna jako $w_s = 2 s$ a jego długości jako $l_s = 2,4 s$. Wynika to z pierwotnego zastosowania metody, tj. śledzenia twarzy, których kształt jest w przybliżeniu elipsoidalny. 
 
 \section{Filtr Kalmana}
 \label{sec:Filtr_Kalmana}
-
-\todo{Wzbogacić o informacje z \cite{Arulampalam2002}}
 
 \textbf{Filtr Kalmana} (ang. \textit{Kalman Filter}, w skórcie \textit{KF}) jest rekurencyjnym algorytmem optymalnej estymacji wektora stanu modelu obiektu, zakładającym jego liniowość oraz rozkład normalny amplitudy występującego szumu procesu i pomiarowego (jest rodzajem optymalnego, rekursywnego filtru Bayesa) \cite{Challa2011}. Od kiedy został po raz pierwszy opublikowany w roku 1960 przez Rudolfa Kalmana znalazł szerokie zastosowanie, np. w rozwiązaniu \cite{Kim2012}. 
 

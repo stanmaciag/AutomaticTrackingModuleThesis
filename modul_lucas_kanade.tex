@@ -1,0 +1,170 @@
+\chapter{Moduł śledzenia oparty o algorytm Lucasa-Kanade'a}
+\label{cha:Modul_sledzenia_oparty_o_algorytm_Lucasa_Kanadea}
+
+Pierwsze z prezentowanych rozwiązań korzysta z piramidowej wersji algorytmu Lucasa-Kanade'a, opisanej w  \ref{subsec:Piramidowa_wersja_algorytmu_Lucasa_Kanade}. W odniesieniu do zaprezentowanego wcześniej opisu, estymacja przepływu optycznego wykonywana jest przy użyciu \textbf{algorytmu odwrotnie kompozycyjnego} (ang. \textit{Inverse Compositional Algorithm}, w skrócie \textit{ICA}), cechującego się mniejszą złożonością obliczeniową \cite{Baker2004}. Dodatkowo moduł dokonuje oceny poprawności śledzenia poszczególnych punktów zainteresowania poprzez sprawdzenie ich dopasowania do \textbf{przekształcenia afinicznego} wyznaczanego na podstawie ich poprzednich i obecnych położeń. Zaproponowana również została własna strategia uaktualniania modelu obiektu i oceny jego podobieństwa.
+
+\section{Model obiektu zainteresowania}
+\label{sec:LK_Model_obiektu}
+
+Jak wspomniano w rozdziale \ref{subsec:Algorytm_Kanade_Lucasa_Tomasi}, algorytm Lucasa-Kanade'a operuje na zbiorze lokalnych cech w postaci okien, dla których minimalna wartość hesjanu przekracza wartość progową. Dla danego obszaru zainteresowania $J_{ROI}$ proces wyznaczania cech zdatnych do śledzenia przebiega następująco:
+
+\begin{enumerate}
+
+	\item Wyznaczenie zbioru wszystkich możliwych okien $D_E$, rozmiar okna jest dany jako jego  horyzontalny i wertykalny promień $r_x$  i $r_y$.
+	\item Dla każdego okna $d_E \in D_E$:
+	
+	\begin{enumerate}
+	
+		\item Wyznaczenie gradientów przestrzennych $\nabla I_{x}$ i $\nabla I_{y}$ obszaru $I$ na obrazie $J_{ROI}$ ograniczonego przez okno $d_E$.
+		\item Obliczenie hesjanu $\matr{H}$ zgodnie z równaniem \ref{equ:Modul_Lucas_Kanade_hesjan}.
+		\item Obliczenie minimalnej wartości własnej $\lambda_{min}$ hesjanu $\matr{H}$ zgodnie z równaniem \ref{equ:Modul_Lucas_Kanade_min_wartosc_wlasna}.
+	
+	\end{enumerate}
+
+	\item Znalezienie maksymalnej występującej w całym obszarze zainteresowania minimalnej wartości własnej $\lambda^{max}_{min}$ .
+	\item Odrzucenie okien o minimalnej wartości własnej $\lambda_{min}$ mniejszej od $ c \lambda^{max}_{min}$, gdzie $c$ jest narzuconym współczynnikiem o wartości w przedziale $(0,1]$.
+	\item Odrzucenie okien o nie-maksymalnej lokalnie minimalnej wartości własnej $\lambda_{min}$, tj. takich dla, których ich wartość własna nie jest większa od minimalnej wartości własnej każdego z sąsiednich okien.
+	\item Odrzucenie okien dotychczas zakwalifikowanych jako zdatne do śledzenia, jednak znajdujących się w odległości mniejszej od założonej odległości progowej $r$ od innych takich okien. Strategia eliminacji zakłada odrzucenie w pierwszej kolejności okien powodujących najwięcej konfliktów sąsiedztwa, co pozwala na minimalizację liczby okien zdyskwalifikowanych w tym punkcie, oraz zapewnia niezależność końcowego stanu zbioru od kierunku przeszukiwania.
+	\item Zwrócenie położeń punktów zdatnych do śledzenia $\vec{x_f}$ jako środków niewyeliminowanych wcześniej okien oraz odpowiadających im minimalnych wartości własnych $\vec{\lambda_f}$.
+
+\end{enumerate}
+
+\begin{equation}
+\label{equ:Modul_Lucas_Kanade_hesjan}	
+	\matr{H} = \begin{bmatrix}
+		\sum\limits_{d_E} \nabla I_{x}^2 & \sum\limits_{d_E} \nabla I_{x} \nabla  I_{y} \\
+		\sum\limits_{d_E} \nabla I_{y}  I_{x} & \sum\limits_{d_E} \nabla I_{y}^2
+	\end{bmatrix}
+\end{equation}
+
+\begin{equation}
+\label{equ:Modul_Lucas_Kanade_min_wartosc_wlasna}	
+	\lambda_{min} = Tr(\matr{H}) - \sqrt{\frac{1}{4} Tr(\matr{H})^2 - det(\matr{H})}
+\end{equation}
+
+
+Podstawę przytoczonego wyżej algorytmu stanowiło rozwiązanie przedstawione w \cite{Bouguet2000}. Model obiektu zainteresowania zdefiniowany na potrzeby modułu ma trzy elementy składowe:
+
+\begin{itemize}
+
+	\item Wektor położeń punktów zdatnych do śledzenia $\vec{x}_f$
+	\item Wektor odpowiadających im wartości własnych $\vec{\lambda}_f$
+	\item Czworokąt ograniczający $R$, wewnątrz którego zawierają się wszystkie punkty $\vec{x}_f$
+
+\end{itemize}
+
+Czworokąt ograniczający początkowo definiuje się jako prostokąt ograniczający obszar zainteresowania $I_{ROI}$. Maksymalna liczba śledzonych punków jest arbitralnie ograniczona przez zadany parametr $n_{max}$. Jeżeli wykrytych punktów jest więcej, zachowywane jest $n_{max}$ o największych wartościach własnych $\vec{\lambda}_f$. Z drugiej strony nieprzekroczenie określonej minimalnej liczby punktów $n_{min}$ interpretowane jest jako niepowodzenie w tworzeniu modelu obiektu zainteresowania.
+
+\section{Śledzenie obiektu zainteresowania}
+\label{sec:LK_Sledzenie_obiektu}
+
+Śledzenie obiektu zainteresowania odbywa się poprzez estymację przepływu optycznego punktów $\vec{x}_f$ z wykorzystaniem algorytmu \textit{ICA} oraz ich translację zgodnie z równaniem \ref{equ:Algorytm_Lucasa_Kanade_odksztalcenie_przeplyw_optyczny}, tj.:
+
+\begin{equation}
+\label{equ:Modul_Lucas_Kanade_sledzenie}	
+	 \hat{\vec{x}}_f = \matr{W}(\vec{x}_f, \vec{p}_f) = \vec{x}_ f+ \vec{p}_f 
+\end{equation}
+
+\noindent
+gdzie:
+\begin{conditions}
+	 \hat{\vec{x}}_f & estymacja kolejnego położenia zbioru punktów $\vec{x}_f$  \\
+	 \vec{p} & wektor przepływu optycznego wyznaczonego dla zbioru punktów $\vec{x}$ \\
+\end{conditions}
+
+Algorytm \textit{ICA}, w przeciwieństwie do klasycznej wersji algorytmu Lucasa-Kanade'a (według konwencji określanej jako mianem wprost addytywnej \cite{Baker2004}), nie wymaga wyznaczania hesjanu $\matr{H}$ przy każdym przebiegu pętli głównej. Jest to zasadnicza zaleta, ponieważ pozwala na uniknięcie konieczności wielokrotnego wyznaczania gradientów przestrzennych oraz zmniejsza liczbę interpolacji międzypikselowych. Zwracany wynik jest przy tym matematycznie tożsamy z wynikiem zwracanym przez wersję wprost addytywną \cite{Baker2004}. Poniżej przedstawiono poszczególne wykonanej na podstawie \cite{Baker2004} implementacji algorytmu \textit{ICA}:
+
+\begin{enumerate}
+
+	\item Wyznaczenie zbioru okien poszukiwań $D_T$, o danych promieniach $s_x$ i $s_y$ (różnych od promieni okien wykorzystywanych w ekstrakcji cech \ref{sec:LK_Model_obiektu}) o środkach w wejściowym wektorze punktów $\vec{x}_f$
+	\item Dla każdego okna $d_T \in D_T$:
+	
+	\begin{enumerate}
+	
+		\item Pobranie obszaru $T$ zawartego w oknie $d_T$ na poprzedniej klatce $J_p$.
+		\item Wyznaczenie gradientów przestrzennych obszaru $T$  $\nabla T_{x}$ i $\nabla T_{y}$ poprzedniej klatki $J_p$.
+		\item Obliczenie hesjanu $\matr{H}$ zgodnie z równaniem \ref{equ:Modul_Lucas_Kanade_hesjan_sledzenie} oraz jego odwrotności.
+		
+		\item Dopóki nie zostanie spełniony warunek zatrzymania $\sqrt{\Delta p_x^2 + \Delta p_y^2} < t$, gdzie $t$ jest zadaną wartością progową, lub nie zostanie osiągnięta maksymalna liczba iteracji $k_{max}$
+		
+		\begin{enumerate}
+		
+				\item Pobranie obszaru $I$ zawartego w odkształconym oknie $\matr{W}(d_T, \vec{p})$ z obecnej klatki $J_c$.
+				\item Obliczenie gradientu temporalnego $E = I - T$.
+				\item Obliczenie uaktualnienia najszybszego spadku $\matr{SD}$ zgodnie ze wzorem \ref{equ:Modul_Lucas_Kanade_najszybszy_spadek}.
+				\item Obliczenie przyrostu przepływu optycznego $\Delta \vec{p} = \matr{H}^{-1} \matr{SD}$ .
+				\item Uaktualnienie estymacji przepływu optycznego poprzez kompozycję, w tym szczególnym przypadku $\vec{p} = \vec{p} - \Delta \vec{p}$.
+		
+		\end{enumerate}
+	
+	\end{enumerate}
+
+\end{enumerate}  
+
+\begin{equation}
+\label{equ:Modul_Lucas_Kanade_hesjan_sledzenie}	
+	\matr{H} = \begin{bmatrix}
+		\sum\limits_{d_T} \nabla T_{x}^2 K & \sum\limits_{d_T} \nabla T_{x}  \nabla T_{y} K \\
+		\sum\limits_{d_T} \nabla T_{y} \nabla T_{x} K & \sum\limits_{d_T} \nabla T_{y}^2 K
+	\end{bmatrix}
+\end{equation}
+
+\begin{equation}
+\label{equ:Modul_Lucas_Kanade_najszybszy_spadek}	
+	\matr{SD} = \begin{bmatrix}
+		\sum\limits_{d_T} \nabla T_{x} E K \\
+		\sum\limits_{d_T} \nabla T_{y} E K
+	\end{bmatrix}
+\end{equation}
+
+Powyższy algorytm stanowi szczególny przypadek, w którym zakładana postać odkształcenia $\matr{W}$ to czysta translacja (równanie \ref{equ:Algorytm_Lucasa_Kanade_odksztalcenie_przeplyw_optyczny}). Przed rozpoczęciem pętli głównej dodatkowo odrzucane są punkty, dla których wartość wyznacznika hesjanu $det(\matr{H})$ nie przekracza założonej wartości progowej $h$ bliskiej zeru, co pozwala na uniknięcie błędów numerycznych. Punkty, dla których estymowana wartość przepływu optycznego przenosi je poza obszar obrazu również są eliminowane. Powyżej opisano proces estymacji przepływu optycznego dla pojedynczego poziomu piramidy. Jest on powtarzany i propagowany, tak jak to opisano w punkcie \ref{subsec:Piramidowa_wersja_algorytmu_Lucasa_Kanade}. Stosowane jądro $K$ ma postać dwuwymiarowej funkcji Gaussa. 
+
+Po estymacji przepływu optycznego następuje część weryfikacyjna, polegająca na wyznaczeniu macierzy przekształcenia afinicznego pomiędzy poprzednimi a obecnymi położeniami śledzonych punktów. Taką metodę wykrywania nieprawidłowych punktów zaproponowano pierwotnie w \cite{Shi1994}. Do tego celu wykorzystano algorytm \textbf{Random Sample Consensus} (w skrócie \textit{RANSAC}). Jest to niedeterministyczny algorytm estymujący parametry założonego modelu matematycznego w oparciu o zbiór danych, w którym znajdują się zarówno próbki do niego pasujące i niepasujące \cite{Hartley2004}. Poniżej przedstawiono jego zarys w kontekście zadania wyznaczenia modelu przekształcenia afinicznego:
+
+\begin{enumerate}
+
+	\item Założenie liczby iteracji $N$
+	\item Dopóki liczba iteracji nie zostanie przekroczona:
+	
+	\begin{enumerate}
+		
+		\item Pobranie 4 losowych próbek ze zbioru poprzednich i obecnych położeń śledzonych punktów
+		\item Wyznaczenia dokładnej postaci macierzy przekształcenia afinicznego dla wybranego zbioru próbek
+		\item Przekształcenie poprzednich położeń według wyznaczonej postaci transformacji afinicznej
+		\item Obliczenie metryki euklidesowej pomiędzy parami obecnych i przekształconych położeń punktów
+		\item Wyznaczenie zbioru próbek pasujących do modelu na podstawie porównania obliczonej metryki z założoną wartością progową i zapamiętanie tego zbioru, jeśli jego liczebność jest większa od poprzedniej najlepszej próby
+		\item Adaptacja liczby iteracji na podstawie liczebności zbioru próbek pasujących do modelu
+			
+	\end{enumerate}
+	
+	\item Wyznaczenie postaci przekształcenia dla zapamiętanego zbioru pasujących próbek o największej liczebności
+
+\end{enumerate}
+
+Algorytm \textit{RANSAC} nie określa sposobu wyznaczania dokładnej postaci macierzy przekształcenia afinicznego. W tym celu wykorzystano algorytm \textit{Gold Standard}, opisany w \cite{Hartley2004}. Po wyznaczeniu macierzy przekształcenia afinicznego dokonywana jest transformacja czworoboku ograniczającego $R$ oraz odrzucane są śledzone punkty, które się w nim nie zawierają. Podobnie, bieżącą pozycję obiektu zainteresowania definiuje się jako przekształconą pozycję poprzedniej. Macierz przekształcenia afinicznego jest dekomponowana w celu określenia obecnej orientacji oraz wymiarów obiektu. W końcowej fazie obliczana jest wartość współczynnika pewności, który stanowi miarę prawdopodobieństwa udanego śledzenia obiektu zainteresowania. Ze względu na dyskretny i lokalny charakter modelu obiektu, określenie niezawodnej metryki tego typu jest trudne. Poniżej przedstawiono jej propozycję:
+
+\begin{equation}
+\label{equ:Modul_Lucas_Kanade_wspolczynnik_podobienstwa}	
+	s = \left(1 - \frac{\sum \frac{d(\vec{x}_{fi})}{t_i}}{n}\right) \frac{n}{n_{max}} 
+\end{equation}
+\noindent
+gdzie:
+\begin{conditions}
+	s & współczynnik podobieństwa  \\
+	d(\vec{x}_{fi}) & dystans punktu zakwalifikowanych jako pasujących do przyjętej postaci przekształcenia afinicznego \\	
+	t_i & wartość progowa dystansu dla algorytmu \textit{RANSAC} \\
+	n & bieżąca liczba śledzonych punktów \\
+	n_{max} & maksymalna dopuszczalna liczba śledzonych puntków
+\end{conditions}
+
+\section{Uaktualnianie obiektu zainteresowania}
+\label{sec:LK_Uaktualnianie_obiektu}
+
+Wymaganiem stawianym opracowywanym modułom jest zdolność do aktualizowania modelu obiektu zainteresowania na podstawie informacji wnoszonej przez kolejne klatki sekwencji obrazów. W przypadku reprezentacji modelu w postaci zbioru cech wyznaczanych przy pomocy algorytmu z \ref{sec:LK_Model_obiektu} jest to szczególnie ważne, gdyż ich znaną wadą jest skłonność do "dryfowania", tzn. oddalania się od pierwotnego położenia, nawet przy bardzo niewielkich zmianach pomiędzy kolejnymi klatkami \cite{Bouguet2000}. Dodatkowo cechy zdefiniowane w ten sposób wykazują niską odporność na efekt \textit{motion blur}, tzn. rozmycie obiektu na obrazie wywołane jego ruchem. Z drugiej strony model przechowuje informację o własnej konfiguracji przestrzennej. Dzięki temu wykazuje umiarkowaną odporność na przesłonięcia, jednak również zwiększa tendencję do ewentualnego włączania do zbioru śledzonych cech fragmentów tła. Zdolność do auto-uaktualniania powinna być więc kompromisem pomiędzy stabilnością a zdolnością do adaptacji. 
+
+Jak wspomniano wcześniej, zakłada się pewną maksymalną liczbę śledzonych cech $n_{max}$, przy czym należy ją rozumieć raczej jako pożądaną liczbę cech. Jeżeli aktualna liczba cech $n$ jest od niej mniejsza, w obszarze ograniczonym przez czworokąt $R$ zostanie ponownie przeprowadzony proces wykrywania opisany w pukcie \ref{sec:LK_Model_obiektu} ze zmodyfikowanym punktem 6. Dodatkowo bierze się w nim pod uwagę konflikt sąsiedztwa z obecnym zbiorem śledzonych punktów. Wyznaczony zbiór lub podzbiór nowych punktów jest następnie do niego dołączany, tak aby jak najbardziej zbliżyć liczbę $n$ do $n_{max}$. Procedura uaktualniania modelu jest wywoływana w momencie osiągnięcia prze stosunek $\frac{n}{n_{max}}$ pewnej wartości progowej $n_t$. Powinna być ona dość wysoka (na poziomie $0.8 - 0.9$), co pozwoli na wyparcie ewentualnie błędnie dołączonych punktów należących do tła przez resztę zbioru (po przemieszczeniu obiektu nie będą pasowały do wyznaczonego przekształcenia afinicznego).
+
+\section{Podsumowanie}
+\label{sec:LK_Podsumowanie}
+
+Szczególną cechą modułu śledzącego opartego o algorytm Lucasa-Kanade'a jest sposób reprezentacji obiektu zainteresowania i narzucone mu złożenie sztywności. W odniesieniu do modelu ogólnego przedstawionego w rozdziale \ref{subsec:Reprezentacje_obiektu_na_obrazie} sposób reprezentacji jest klasyfikowany jako reprezentacja zbiorem punktów charakterystycznych i dokładnie spełnia przytoczoną tam charakterystykę. Zachowanie informacji o przestrzennej strukturze obiektu zainteresowania pozwala dodatkowo na uzyskanie najpełniejszej informacji o stanie obiektu (przekształcenie afiniczne można np. z powodzeniem zastąpić przekształceniem perspektywicznym i dokonywać rekonstrukcji obiektu zainteresowania), jednak czyni algorytm bardziej podatnym na występujące zakłócenia i artefakty. Według klasyfikacji \ref{subsec:Metody_pomiaru_podobienstwa_oraz_stwierdzenia_dopasowania_obiektu pomiedzy_klatkami} dopasowanie obiektu pomiędzy klatkami w omawianym module wykonywane jest jako dopasowanie z więzami, natomiast strategia uaktualniania modelu obiektu \ref{subsec:Metody_uaktualnienia_modelu_obiektu_zainteresowania} polega na częściowym zastępowaniu.

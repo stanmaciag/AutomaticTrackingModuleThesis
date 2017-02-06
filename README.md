@@ -1,5 +1,7 @@
 # Visual Tracking for Mobile Robotics
 
+## Abstract
+
 Visual object tracking is a field of study, that poses subject of intensive research since a long
 time, which is motivated by its wide practical application, e.g. automatic surveillance systems,
 human-machine interfaces or advanced navigation. For the purposes of this thesis the

@@ -23,6 +23,8 @@
 \usepackage[backend=biber, maxbibnames=99]{biblatex}
 \usepackage{csquotes}
 \usepackage{textcomp}
+\usepackage{pdfpages}
+
 % Styl chorwacki taki sam jak polski
 \DeclareQuoteAlias{croatian}{polish}
 
@@ -154,7 +156,15 @@
 
 \begin{document}
 
-\titlepages
+%\titlepages
+
+\includepdf[pages=-]{tytul.pdf}
+\includepdf[pages=-]{oswiadczenie.pdf}
+\includepdf[pages=-]{oswiadczenie_2.pdf}
+\includepdf[pages=-]{prawa.pdf}
+\includepdf[pages=-]{plan.pdf}
+\includepdf[pages=-]{streszczenie.pdf}
+
 
 \tableofcontents
 

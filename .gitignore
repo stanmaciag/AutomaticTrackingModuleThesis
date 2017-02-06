@@ -8,7 +8,6 @@ ignored
 *.tks
 
 # LaTeX generated files #
-*.pdf
 *.bbl
 *.blg
 *.lof

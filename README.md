@@ -22,7 +22,7 @@ contains general project assumptions.
 	<td>Allen, J.G., Xu, R.Y.D. and Jin, J.S.</td>
 	<td>Object tracking using CamShift algorithm and multiple quantized feature spaces</td>
 	<td>2006</td>
-	<td><br/>Vol. 36Proceedings of the Pan-Sydney area workshop on visual information processing, pp. 3 - 7&nbsp;</td>
+	<td><br/>Proceedings of the Pan-Sydney area workshop on visual information processing, pp. 3 - 7&nbsp;</td>
 	<td>inproceedings</td>
 	<td>&nbsp;</td>
 </tr>
@@ -86,7 +86,7 @@ contains general project assumptions.
 	<td>Comaniciu, D. and Meer, P.</td>
 	<td>Mean shift analysis and applications</td>
 	<td>1999</td>
-	<td><br/>Vol. 2The Proceedings of the Seventh IEEE International Conference on Computer Vision, pp. 1197 - 1203&nbsp;</td>
+	<td><br/>The Proceedings of the Seventh IEEE International Conference on Computer Vision, pp. 1197 - 1203&nbsp;</td>
 	<td>inproceedings</td>
 	<td><a href="http://dx.doi.org/10.1109/ICCV.1999.790416">DOI</a> &nbsp;</td>
 </tr>
